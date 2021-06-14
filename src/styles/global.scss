@@ -1,0 +1,23 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+a{
+  text-decoration: none;
+  :hover{
+    color:#000;
+  }
+}
+.outer-container{
+  margin:0 10px;
+}
+.font-roboto {
+  font-family: 'Roboto', sans-serif;
+}
+input:focus{
+  outline:none;
+}
+@import '../components/header/style.scss';
+

@@ -11,7 +11,7 @@ import Menu from '@material-ui/core/Menu';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
-import MailIcon from '@material-ui/icons/Favorite';
+import FavoriteIcon from '@material-ui/icons/Favorite';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 
@@ -132,12 +132,12 @@ export default function PrimarySearchAppBar() {
             onClose={handleMobileMenuClose}
         >
             <MenuItem>
-                <IconButton aria-label="show 4 new mails" color="inherit">
+                <IconButton aria-label="show 4 new favorites" color="inherit">
                     <Badge badgeContent={4} color="secondary">
-                        <MailIcon />
+                        <FavoriteIcon/>
                     </Badge>
                 </IconButton>
-                <p>Messages</p>
+                <p>Favourites</p>
             </MenuItem>
             <MenuItem>
                 <IconButton aria-label="show 11 new notifications" color="inherit">
@@ -147,17 +147,17 @@ export default function PrimarySearchAppBar() {
                 </IconButton>
                 <p>Notifications</p>
             </MenuItem>
-            <MenuItem onClick={handleProfileMenuOpen}>
-                <IconButton
-                    aria-label="account of current user"
-                    aria-controls="primary-search-account-menu"
-                    aria-haspopup="true"
-                    color="inherit"
-                >
-                    <AccountCircle />
-                </IconButton>
-                <p>Profile</p>
-            </MenuItem>
+            {/*<MenuItem onClick={handleProfileMenuOpen}>*/}
+            {/*    <IconButton*/}
+            {/*        aria-label="account of current user"*/}
+            {/*        aria-controls="primary-search-account-menu"*/}
+            {/*        aria-haspopup="true"*/}
+            {/*        color="inherit"*/}
+            {/*    >*/}
+            {/*        <AccountCircle />*/}
+            {/*    </IconButton>*/}
+            {/*    <p>Profile</p>*/}
+            {/*</MenuItem>*/}
         </Menu>
     );
 
@@ -174,7 +174,7 @@ export default function PrimarySearchAppBar() {
                         <MenuIcon />
                     </IconButton>
                     <Typography className={classes.title} variant="h6" noWrap>
-                        Material-UI
+                        IOFFER.PK
                     </Typography>
                     <div className={classes.search}>
                         <div className={classes.searchIcon}>
@@ -191,9 +191,9 @@ export default function PrimarySearchAppBar() {
                     </div>
                     <div className={classes.grow} />
                     <div className={classes.sectionDesktop}>
-                        <IconButton aria-label="show 4 new mails" color="inherit">
+                        <IconButton aria-label="show 4 new favorites" color="inherit">
                             <Badge badgeContent={4} color="secondary">
-                                <MailIcon />
+                                <FavoriteIcon />
                             </Badge>
                         </IconButton>
                         <IconButton aria-label="show 17 new notifications" color="inherit">

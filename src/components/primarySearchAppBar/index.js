@@ -14,6 +14,8 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
+import ResponsiveDrawer from '../sideDrawer'
+import {Link} from 'react-router-dom'
 
 const useStyles = makeStyles((theme) => ({
     grow: {
@@ -165,17 +167,11 @@ export default function PrimarySearchAppBar() {
         <div className={classes.grow}>
             <AppBar position="static">
                 <Toolbar>
-                    <IconButton
-                        edge="start"
-                        className={classes.menuButton}
-                        color="inherit"
-                        aria-label="open drawer"
-                    >
-                        <MenuIcon />
-                    </IconButton>
-                    <Typography className={classes.title} variant="h6" noWrap>
+                    <ResponsiveDrawer/>
+                
+                   <Link to="/"> <Typography className={classes.title} variant="h6" noWrap>
                         IOFFER.PK
-                    </Typography>
+                    </Typography></Link>
                     <div className={classes.search}>
                         <div className={classes.searchIcon}>
                             <SearchIcon />

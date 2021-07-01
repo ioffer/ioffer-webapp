@@ -5,8 +5,7 @@ import GridListTile from '@material-ui/core/GridListTile';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
 import IconButton from '@material-ui/core/IconButton';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
-import DevicesIcon from '@material-ui/icons/Devices';
-
+import LoyaltyIcon from '@material-ui/icons/Loyalty';
 // import tileData from './tileData';
 
 const useStyles = makeStyles((theme) => ({
@@ -25,7 +24,6 @@ const useStyles = makeStyles((theme) => ({
         flexWrap: 'nowrap',
         // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
         transform: 'translateZ(0)',
-        padding: 8,
     },
     title: {
         color: "white",
@@ -34,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
         background:
             'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
     },
-    gridtitle:{
+    foodtitle:{
         fontSize: 22,
         display: 'flex',
         alignItems: 'center',
@@ -51,9 +49,6 @@ const useStyles = makeStyles((theme) => ({
         marginLeft: 11,
         color: '#3F51B5',
     },
-    imgBorder:{
-        borderRadius: 5,
-    },
 }));
 
 
@@ -63,64 +58,64 @@ const useStyles = makeStyles((theme) => ({
 
 const tileData = [
     {
-        img: 'https://images.pexels.com/photos/788946/pexels-photo-788946.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-        title: 'Cellphones Sales',
+        img: 'https://images.pexels.com/photos/5872364/pexels-photo-5872364.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+        title: 'Italian Restuarant',
         author: 'author',
     },
     {
-        img: 'https://images.pexels.com/photos/51383/photo-camera-subject-photographer-51383.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
-        title: 'Camera & Photography',
+        img:'https://images.pexels.com/photos/4450334/pexels-photo-4450334.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+        title: 'The Disaster Café',
         author: 'author',
     },
     {
-        img: 'https://images.pexels.com/photos/777001/pexels-photo-777001.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-        title: 'Gaming Pc',
+        img:'https://images.pexels.com/photos/2290070/pexels-photo-2290070.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+        title: 'Blue Plate',
         author: 'author',
     },
     {
-        img: 'https://images.pexels.com/photos/577769/pexels-photo-577769.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-        title: 'Headphones ',
+        img:'https://images.pexels.com/photos/5379707/pexels-photo-5379707.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+        title: 'California Pizza kitchen',
         author: 'author',
     },
     {
-        img: 'https://images.pexels.com/photos/265087/pexels-photo-265087.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-        title: 'Laptops',
+        img: 'https://images.pexels.com/photos/5922447/pexels-photo-5922447.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+        title: 'Desi Addicts',
         author: 'author',
     },
     {
-        img: 'https://images.pexels.com/photos/1298601/pexels-photo-1298601.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-        title: 'Controllers',
+        img: 'https://images.pexels.com/photos/761854/pexels-photo-761854.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+        title: 'Cafeteria',
         author: 'author',
     },
     {
-        img:'https://images.pexels.com/photos/1038916/pexels-photo-1038916.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-        title: 'Gaming Accessories',
+        img: 'https://images.pexels.com/photos/1383776/pexels-photo-1383776.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+        title: 'La Poma',
         author: 'author',
     },
     {
-        img: 'https://images.pexels.com/photos/3783471/pexels-photo-3783471.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-        title: 'Voice over Mics',
+        img: 'https://images.pexels.com/photos/2290753/pexels-photo-2290753.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+        title: 'Public House',
         author: 'author',
     },
     {
-        img: 'https://images.pexels.com/photos/8534225/pexels-photo-8534225.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-        title: 'See More',
+        img: 'https://images.pexels.com/photos/205961/pexels-photo-205961.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+        title: 'Buffet House',
         author: 'author',
     }
 ];
 
-export default function FoodLineGridList() {
+export default function OfferSlider() {
     const classes = useStyles();
 
     return (
         <div className={classes.root}>
-            <div className={classes.gridtitle}>
-               <h3>Electronics</h3><DevicesIcon className={classes.icon}/> 
+            <div className={classes.foodtitle}>
+               <h3>Popular Offers</h3><LoyaltyIcon className={classes.icon}/> 
             </div>
             <GridList className={classes.gridList} cols={2.5}>
                 {tileData.map((tile) => (
-                    <GridListTile   key={tile.img}>
-                        <img className="imgBorder" src={tile.img} alt={tile.title}/>
+                    <GridListTile key={tile.img}>
+                        <img src={tile.img} alt={tile.title}/>
                         <GridListTileBar
                             title={tile.title}
                             classes={{

@@ -2,31 +2,43 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import Typography from '@material-ui/core/Typography';
+import shop from '../../assets/images/shop.jpg';
+import deal from '../../assets/images/deal.jpeg';
+import offer from '../../assets/images/offer.png';
+import promotion from '../../assets/images/promotion.png';
+import brand from '../../assets/images/brand.jpg';
+import {Link} from 'react-router-dom'
+
 
 const images = [
     {
-        url: '/static/images/grid-list/breakfast.jpg',
+        url: deal,
         title: 'DEALS',
+        link: '/deals',
         width: '30%',
     },
     {
-        url: '/static/images/grid-list/burgers.jpg',
+        url: offer ,
         title: 'OFFERS',
+        link: '/offers',
         width: '30%',
     },
     {
-        url: '/static/images/grid-list/camera.jpg',
+        url: promotion,
         title: 'PROMOTIONS',
+        link: '/promotions',
         width: '40%',
     },
     {
-        url: '/static/images/grid-list/camera.jpg',
+        url: shop ,
         title: 'SHOPS',
+        link: '/shops',
         width: '40%',
     },
     {
-        url: '/static/images/grid-list/camera.jpg',
+        url: brand,
         title: 'BRANDS',
+        link: '/brands',
         width: '40%',
     },
 ];
@@ -104,6 +116,9 @@ const useStyles = makeStyles((theme) => ({
         left: 'calc(50% - 9px)',
         transition: theme.transitions.create('opacity'),
     },
+    link:{
+        color: 'white',
+    }
 }));
 
 export default function ButtonBases() {
@@ -129,6 +144,7 @@ export default function ButtonBases() {
           />
                     <span className={classes.imageBackdrop} />
                     <span className={classes.imageButton}>
+            <Link className={classes.link} to={image.link}>
             <Typography
                 component="span"
                 variant="subtitle1"
@@ -138,7 +154,9 @@ export default function ButtonBases() {
               {image.title}
                 <span className={classes.imageMarked} />
             </Typography>
+            </Link>
           </span>
+          
                 </ButtonBase>
             ))}
         </div>

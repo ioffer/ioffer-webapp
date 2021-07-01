@@ -19,5 +19,8 @@ a{
 input:focus{
   outline:none;
 }
+body{
+  background: #F2F2F2;
+}
 @import '../components/header/style.scss';
 

@@ -2,67 +2,70 @@ import Header from './components/header'
 import PrimarySearchAppBar from './components/primarySearchAppBar'
 import ButtonBases from './components/complexButton'
 import SingleLineGridList from './components/cardsSlider'
-import FoodLineGridList from './components/foodSlider'
-import FashionGridList from './components/fashionSlider'
-import DealSlider from './components/dealSlider'
-import SecondDealSlider from './components/SecondDealSlider'
 import AllDeals from './components/AllDeals'
-import OfferSlider from './components/offers'
 import Catogeryicons from './components/catogeryicons'
-import AllShops from './components/shop'
+import AllShops from './components/AllShops'
+import './styles/global.scss'
+import AllOffer from './components/AllOffer'
+import Promotion from './components/promotion'
+import HeroImage from './components/HeroImage'
+import {fashionData,electronicsData,FoodData,dealData,SecondDeal,PopularOffer, near} from "./data.js"
+import LocalOfferIcon from '@material-ui/icons/LocalOffer';
+import LoyaltyIcon from '@material-ui/icons/Loyalty';
+import DevicesIcon from '@material-ui/icons/Devices';
+import FastfoodIcon from '@material-ui/icons/Fastfood';
+import StoreIcon from '@material-ui/icons/Store';
+import MovingIcon from './components/MovingIcon'
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link
 } from "react-router-dom";
-import './styles/global.scss'
-import NearbyOffer from './components/NearbyOffer'
-import AllOffer from './components/AllOffer'
-import Promotion from './components/promotion'
-import HeroImage from './components/HeroImage'
+
 
 function App() {
   return (
     <div className="App">
       <Router>
       <PrimarySearchAppBar/>
+
         <Switch>
           <Route exact path='/'>
             <HeroImage />
-          <ButtonBases/>
-          <SingleLineGridList/>
-          <FoodLineGridList/>
-          <FashionGridList />
+            <MovingIcon />
+            <ButtonBases/>
+            <SingleLineGridList title ="Electronics" array={electronicsData} icon={<DevicesIcon/>} />
+            <SingleLineGridList  title="Restaurant" array={FoodData} icon={<FastfoodIcon/>}/>
+            <SingleLineGridList title="Fashion" array={fashionData} icon={<StoreIcon/>}/>
           </Route>
 
           <Route path='/deals'>
-          <DealSlider />
-          <SecondDealSlider />
-          <AllDeals />
+            <SingleLineGridList title="Upto 30% Off" array={dealData} icon={<LocalOfferIcon/>} />
+            <SingleLineGridList title="Upto 50% Off" array={SecondDeal} icon={<LocalOfferIcon/>} />
+            <AllDeals />
           </Route>
 
           <Route path='/offers'>
             <Catogeryicons />
-            <OfferSlider />
-            <NearbyOffer />
+            <SingleLineGridList title="Popular Offers" array={PopularOffer}  icon={<LoyaltyIcon/>}/>
+            <SingleLineGridList title="NearBy Offers" array={near} icon={<LoyaltyIcon/>}/>
             <AllOffer />
           </Route>
 
           <Route path='/promotions'>
-          <Catogeryicons />
-          <Promotion />
+            <Catogeryicons />
+            <Promotion />
           </Route>
 
           <Route path='/shops'>
-          <Catogeryicons />
-          <AllShops />
+            <Catogeryicons />
+            <AllShops />
           </Route>
           
           <Route path='/brands'>
-          <HeroImage />
-          <Catogeryicons />
-          
+            <HeroImage />
+            <Catogeryicons />
           </Route>
 
         </Switch>

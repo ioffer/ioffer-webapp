@@ -5,11 +5,16 @@ import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import List from '@material-ui/core/List';
 import IconButton from '@material-ui/core/IconButton';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import CardGiftcardIcon from '@material-ui/icons/CardGiftcard';
 import LocalOfferIcon from '@material-ui/icons/LocalOffer';
 import MenuIcon from '@material-ui/icons/Menu';
+import ioffer from '../../assets/images/ioffer.png';
+import {Link} from 'react-router-dom';
+import StorefrontIcon from '@material-ui/icons/Storefront';
+import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
+import LocalActivityIcon from '@material-ui/icons/LocalActivity';
+import HomeIcon from '@material-ui/icons/Home';
 
 const useStyles = makeStyles({
   list: {
@@ -18,7 +23,52 @@ const useStyles = makeStyles({
   fullList: {
     width: 'auto',
   },
+  logo:{
+    textAlign: 'center',
+  },
+  linkColor:{
+    color: 'gray',
+  },
+  iconColor:{
+    color: '#3F51B5',
+  },
+  text:{
+    marginLeft: 9,
+  },
 });
+
+const sidebars = [
+  {
+    title: 'Home',
+    link: '/',
+    icon: <HomeIcon />
+},
+  {
+      title: 'Deals',
+      link: '/deals',
+      icon: <CardGiftcardIcon />
+  },
+  {
+    title: 'Offers',
+    link: '/offers',
+    icon: <LocalOfferIcon />
+  },
+  {
+    title: 'Promotions',
+    link: '/promotions',
+    icon: <LocalActivityIcon />
+  },
+  {
+    title: 'Shops',
+    link: '/shops',
+    icon: <StorefrontIcon />
+  },
+  {
+    title: 'Brands',
+    link: '/brands',
+    icon: <AddShoppingCartIcon />
+  },
+];
 
 export default function SwipeableTemporaryDrawer() {
   const classes = useStyles();
@@ -44,11 +94,14 @@ export default function SwipeableTemporaryDrawer() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        {['Deals', 'Offers', 'Promotion', 'Brands'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <CardGiftcardIcon/> : <LocalOfferIcon />}</ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
+        <div className={classes.logo}>
+        <Link to='/'><img src={ioffer} /></Link>
+        </div>
+        {sidebars.map((sidebar) => (
+          <Link className={classes.linkColor} to={sidebar.link}><ListItem button >
+            {sidebar.icon}
+            <ListItemText className={classes.text} primary={sidebar.title} />
+          </ListItem></Link>
         ))}
       </List>
     </div>

@@ -2,7 +2,7 @@
   margin:0;
   padding:0;
   box-sizing: border-box;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
 }
 a{
   text-decoration: none;
@@ -20,7 +20,8 @@ input:focus{
   outline:none;
 }
 body{
-  background: #F2F2F2;
-}
+        background: #F2F2F2;
+        
+    }
 @import '../components/header/style.scss';
 

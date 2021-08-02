@@ -1,0 +1,57 @@
+.profile-banner{
+    background-image: linear-gradient(to right, #4393EB , #0DD2DD);
+    border-radius: 0px 0px 42px 0px;
+    padding: 21px;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    height: 175px;
+    img{
+        border-radius: 50px;
+    }
+    h2{
+        color: white;
+    }
+    p{
+        color: white;
+    }
+    .image-postion{
+        position: absolute;
+        right: 6%;
+        top: 54%;
+    }
+    .avatar-size{
+        width: 119px;
+    height: 109px;
+    }
+    .font-postion{
+        position: absolute;
+        top: 28%;
+    }
+}
+
+.profile-info{
+    display: flex;
+    align-items: center;
+    margin-top: 62px;
+    margin-left: 29px;
+    h2{
+        margin-bottom: 10px;
+    }
+    span{
+        color:#4295EB;
+    }
+    p{
+        color:#0ED0DD;
+    }
+}
+.profile-text{
+    margin-left: 20px;
+}
+.manintext{
+    text-align: center;
+    margin-top: 15px;
+    font-size: 20px;
+    color: #0561F6;
+    margin-bottom: 10px;
+}

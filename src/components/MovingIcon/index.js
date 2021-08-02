@@ -11,7 +11,7 @@ import movingicon4 from '../../assets/images/movingicon4.png';
 function MovingIcon(){
   return (
       <div className="top-icon">
-          <Carousel itemsToShow={2} enableAutoPlay>
+          <Carousel itemsToShow={2} enableAutoPlay infinite>
             <Item><img src={movingicon1} /></Item>
             <Item><img src={movingicon2} /></Item>
             <Item><img src={movingicon3} /></Item>

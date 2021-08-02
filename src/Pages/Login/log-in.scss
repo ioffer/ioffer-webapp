@@ -1,0 +1,42 @@
+.login-flex{
+    display: grid;
+    grid-template-columns: 55% 45%;
+    justify-content: space-between;
+    padding-top: 22px;
+}
+.container{
+    max-width: 1280px;
+    margin: 0 auto;
+}
+.img-width{
+    width: 80%;
+    margin-top: 37px;
+}
+.background{
+    background-color: #FFFFFF;
+    height: 100vh;
+}
+.figure-side{
+    background: white;
+    border-radius: 10px;
+    width: 67%;
+    box-shadow: 4px 4px 5px 5px lightgrey;
+    padding: 25px;
+    margin-bottom: 20px;
+}
+@media only screen and (max-width: 480px)  {
+    .figure-side{
+        display: none;
+    }
+    .login-flex{
+        display: grid;
+        grid-template-columns: 100%;
+        justify-content: center;
+    }
+    .all-item-alighn{
+        text-align: center;
+    }
+    .form-design{
+        margin-left: 55px;
+    }
+}

@@ -1,3 +1,4 @@
+
 export const fashionData=[
     {
         img: 'https://images.pexels.com/photos/2529787/pexels-photo-2529787.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
@@ -47,7 +48,7 @@ export const fashionData=[
 ]
 export const electronicsData=[
     {
-        img: 'https://images.pexels.com/photos/788946/pexels-photo-788946.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+        img: 'https://cdnprod.mafretailproxy.com/sys-master-root/h50/ha4/14130634260510/05072021_pak_app_hb_hp_eid_onsite_appliances_en@x2.jpg',
         title: 'Cellphones Sales',
         author: 'author',
     },

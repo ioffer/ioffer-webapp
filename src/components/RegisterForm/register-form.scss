@@ -1,0 +1,52 @@
+.icon-flex{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 20px;
+    margin-bottom: 18px;
+    
+}
+.facebook{
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    padding: 6px 49px;
+    cursor: pointer;
+    width: 50%;
+}
+.facebook:hover{
+    background-color: lightgray;
+}
+.button-postion{
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid lightgray;
+}
+.background-color{
+    background-color: #FFFFFF;
+}
+.form-grid{
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 33px;
+    margin-bottom: 11px;
+    margin-top: 17px;
+}
+
+@media only screen and (max-width: 480px)  {
+    .facebook{
+        width: 65%;
+    }
+    .register{
+        text-align: center;
+    }
+    .form-grid{
+        display: grid;
+        grid-template-columns: auto;
+        grid-gap: 10px;
+        margin-bottom: 11px;
+        margin-top: 17px;
+    }
+    .h1{
+        font-size: 24px;
+    }
+}

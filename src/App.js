@@ -19,14 +19,43 @@ import VendorShop from './Pages/VendorShop'
 import QuerryRun from './QuerryRun'
 import ProfilePage from './Pages/ProfilePage'
 import EditProfile from './Pages/EditProfile'
+import { login, logout, selectUser } from './redux/reducer/userSlice'
+import {useDispatch, useSelector} from 'react-redux'
+import { gql, useQuery } from '@apollo/client'
+import React,{useEffect } from 'react'
+
+
+const userMe=gql`
+{
+  me{
+  id
+  email
+  userName
+  type
+}
+}`
 
 function App() {
+  const dispatch= useDispatch()
+  const user= useSelector(selectUser)
+  // const { loading, error, data } = useQuery(userMe);
+  // if (loading) return <div className="loader"></div>;
+
+  // useEffect(()=>{
+  //   if(localStorage.getItem('token')){
+  //     console.log(data,"===>")
+  //     dispatch(login(data&&data.me))
+  //    }
+    
+  // },[])
+   
+  
+ 
+
   return (
     <div className="App">
-
-      <Router>
-        
-      <PrimarySearchAppBar/>
+     <Router>
+         <PrimarySearchAppBar/>
       {/* <QuerryRun /> */}
         <Switch>
           <Route exact path='/' component={Home} /> 
@@ -39,7 +68,7 @@ function App() {
           <Route path='/register' component={Register} />
           <Route path='/vendorshop' component={VendorShop} />
           <Route path="/profile" component={ProfilePage} />
-          <Route path="edit-profile" component={EditProfile} />
+          <Route path='/editprofile' component={EditProfile} />
           <Route path='/dashboard'>
             <Dashboard />
           </Route>

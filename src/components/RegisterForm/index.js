@@ -6,6 +6,9 @@ import {Link} from 'react-router-dom'
 import google from '../../assets/images/google.png'
 import './register-form.scss'
 import {gql, useMutation } from '@apollo/client'
+import {useHistory} from 'react-router-dom'
+import {useDispatch} from 'react-redux'
+import { login } from '../../redux/reducer/userSlice';
 
 const register= gql`
 mutation ($name:String!, $userName: String!, $email:String!, $password:String!){
@@ -19,19 +22,22 @@ mutation ($name:String!, $userName: String!, $email:String!, $password:String!){
 
 `;
 function RegisterForm() {
+  const history = useHistory();
   const [state, setState ] = useState({
     fname: "",
     userName: "",
     email: "",
     password:""
 })
+ const dispatch = useDispatch()
 const [registerUser, { data, loading, error }] = useMutation(register);
-      if (loading) return 'Submitting...';
+      if (loading) return <div className="loader"></div>;
       if (error) return `Submission error! ${error.message}`;
 
  const handelChange = (name, value) => {
      setState({...state, [name]: value})
 }
+
 const submitForm=(e)=>{
   e.preventDefault()
   registerUser({
@@ -42,12 +48,19 @@ const submitForm=(e)=>{
       password: state.password
     }
   })
+ dispatch(login({
+  variables:{
+    name: state.fname,
+    userName: state.userName,
+    email: state.email,
+    password: state.password
+  }
+}))
+console.log(login)
+  history.push('/login')
  }
     return (
-
-      
-
-        <div className="all-item-alighn">
+      <div className="all-item-alighn">
               <h1 className="h1"> Get started absolutely free.</h1>
               <p>Free forever. No credit card needed.</p>
 
@@ -59,10 +72,11 @@ const submitForm=(e)=>{
 
             </div>
            
-             <form className="form-design" autoComplete="off" onSubmit={submitForm}>
+             <form className="form-design" autoComplete="off" onSubmit={submitForm} >
                  <div className="form-grid">
              <TextField
             fullWidth
+            required
             autoComplete="Full Name"
             type="text"
             label="Enter Your Name"
@@ -71,6 +85,7 @@ const submitForm=(e)=>{
           />
            <TextField
             fullWidth
+            required
             autoComplete="Username"
             type="text"
             label="Enter Your Username"
@@ -80,7 +95,7 @@ const submitForm=(e)=>{
           </div>
         <TextField
             fullWidth
-            autoComplete="username"
+            autoComplete="email"
             type="email"
             label="Email address"
             onChange={(e) => handelChange('email', e.target.value)}
@@ -101,8 +116,9 @@ const submitForm=(e)=>{
             label="Remember me"
           />
            <button className="button">Register</button>
+           
           </form>
-         
+        
           <div className="register">
           <h4>Already have a account ?<Link to='/login'>Login</Link></h4>
           </div>

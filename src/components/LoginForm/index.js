@@ -7,10 +7,12 @@ import './login-form.scss'
 import {Link} from 'react-router-dom'
 import {gql,  useMutation, useQuery } from '@apollo/client'
 import { useHistory } from 'react-router';
-import {ApolloClient,  ApolloProvider, InMemoryCache} from "@apollo/client";
+import {ApolloClient, InMemoryCache} from "@apollo/client";
+import { useDispatch } from 'react-redux';
+import { login } from '../../redux/reducer/userSlice';
 
 
-const login= gql`
+const signIn= gql`
 query($userName: String!, $password: String!){
   loginUser(userName: $userName, password: $password) {
     user {
@@ -25,29 +27,43 @@ query($userName: String!, $password: String!){
 `;
 
  function LoginForm() {
-  const history = useHistory();
-  const [state, setState ] = useState({
-    userName: "",
+
+   const dispatch= useDispatch()
+   const history = useHistory();
+   const [state, setState ] = useState({
+    email: "",
     password:""
-})
-const handelChange = (name, value) => {
+  })
+ const [error, setError] = useState(false)
+
+ const handelChange = (name, value) => {
   setState({...state, [name]: value})
-}
-const submitForm=(e)=>{
+  
+  }
+ const submitForm=async(e)=>{
   e.preventDefault()
-  const loginUser=  client.query({
-    query:login,
+  setError(false)
+  if(state==""){
+    setError(true)
+    }
+  const loginUser= await client.query({
+    query:signIn,
     variables:{
-      userName: state.userName,
+      userName: state.email,
       password: state.password
     }
-  })
+    }) .catch(error => {
+    console.log(error.toString())
+  });
+ console.log(loginUser.data.loginUser.user)
+  dispatch(login(loginUser.data.loginUser.user))
+ 
+ console.log(loginUser,"loginUser");
+  localStorage.setItem('token', loginUser.data.loginUser.token);
   history.push('/')
-  }
+    }
 
-// const { loading, error, data } = useQuery(login);
-//     if (loading) return <p>Loading...</p>;
-//     if (error) return <p>Error :(</p>;
+
     return (
         <div className="all-item-alighn">
           <h1 className="h1"> Sign in to ioffer</h1>
@@ -62,15 +78,18 @@ const submitForm=(e)=>{
              <form className="form-design" autoComplete="off" onSubmit={submitForm}>
              <TextField
             fullWidth
+            error={error}
             autoComplete="username"
             type="email"
             label="Email address"
-            onChange={(e) => handelChange('userName', e.target.value)}
+            onChange={(e) => handelChange('email', e.target.value)}
             value={state.email}
+            required
           />
 
           <TextField
             fullWidth
+            error={error}
             autoComplete="current-password"
             type="password"
             label="Password"
@@ -93,7 +112,7 @@ const submitForm=(e)=>{
     )
 }
 const client = new ApolloClient({
-  uri: 'http://192.168.1.15:4000/graphql',
+  uri: 'http://192.168.1.8:4000/graphql',
   cache: new InMemoryCache()
 });
 export default LoginForm

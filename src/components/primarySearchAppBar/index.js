@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import { AppBar } from "@material-ui/core";
 import Toolbar from '@material-ui/core/Toolbar';
@@ -15,6 +15,15 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import ResponsiveDrawer from '../sideDrawer'
 import {Link} from 'react-router-dom'
+import StoreIcon from '@material-ui/icons/Store';
+import Avatar from '@material-ui/core/Avatar';
+import './primary-search.scss'
+import TextsmsIcon from '@material-ui/icons/Textsms';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import VpnKeyIcon from '@material-ui/icons/VpnKey';
+import {useDispatch, useSelector} from 'react-redux'
+import { selectUser } from '../../redux/reducer/userSlice';
+import { logout } from '../../redux/reducer/userSlice';
 
 const useStyles = makeStyles((theme) => ({
     grow: {
@@ -81,6 +90,14 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function PrimarySearchAppBar() {
+    const user= useSelector(selectUser)
+    const dispatch=useDispatch()
+    const signout =()=>{
+        localStorage.removeItem('token');
+        window.location.reload(false);
+        dispatch(logout());
+    }
+   
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -116,7 +133,7 @@ export default function PrimarySearchAppBar() {
             open={isMenuOpen}
             onClose={handleMenuClose}
         >
-           <Link to="/brands"> <MenuItem onClick={handleMenuClose}>Profile</MenuItem></Link>
+           <Link to="/profile"> <MenuItem onClick={handleMenuClose}>Profile</MenuItem></Link>
             <Link to="/register"><MenuItem onClick={handleMenuClose}>My account</MenuItem></Link>
         </Menu>
     );
@@ -132,6 +149,43 @@ export default function PrimarySearchAppBar() {
             open={isMobileMenuOpen}
             onClose={handleMobileMenuClose}
         >
+            {
+                !localStorage.getItem('token') &&
+                <div>
+           <Link className="color-link" to="/login">
+               <MenuItem>
+                    <IconButton aria-label="show 4 new favorites" color="inherit">
+                        <VpnKeyIcon/>
+                    </IconButton>
+                    <p>Login </p>
+                </MenuItem>
+            </Link>
+            <MenuItem>
+            <IconButton aria-label="show 11 new notifications" color="inherit">
+                <TextsmsIcon />
+            </IconButton>
+            <p>About Us </p>
+        </MenuItem> 
+        </div>
+            }
+
+                
+              
+             { 
+             localStorage.getItem('token')&& 
+             <div>
+              <Link to="/profile" className="color-link"> <MenuItem>
+                <IconButton aria-label="show 4 new favorites" color="inherit">
+                        <Avatar> </Avatar> 
+                </IconButton>
+                <p> </p>
+            </MenuItem></Link><hr />
+            <Link className="color-link" to="/vendorshop"><MenuItem>
+                <IconButton aria-label="show 4 new favorites" color="inherit">
+                        <StoreIcon/> 
+                </IconButton>
+                <p>Add Shop</p>
+            </MenuItem></Link>
             <MenuItem>
                 <IconButton aria-label="show 4 new favorites" color="inherit">
                     <Badge badgeContent={4} color="secondary">
@@ -148,6 +202,20 @@ export default function PrimarySearchAppBar() {
                 </IconButton>
                 <p>Notifications</p>
             </MenuItem>
+            <MenuItem>
+                <IconButton aria-label="show 11 new notifications" color="inherit">
+                    <TextsmsIcon />
+                </IconButton>
+                <p>About Us </p>
+            </MenuItem>
+           <Link to="/" className="color-link" onClick={signout}><MenuItem>
+                <IconButton aria-label="show 11 new notifications" color="inherit">
+                    <ExitToAppIcon />
+                </IconButton>
+                <p>LogOut </p>
+            </MenuItem></Link> 
+            </div>
+            }
             {/*<MenuItem onClick={handleProfileMenuOpen}>*/}
             {/*    <IconButton*/}
             {/*        aria-label="account of current user"*/}

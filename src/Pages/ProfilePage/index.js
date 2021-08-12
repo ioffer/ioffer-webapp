@@ -9,8 +9,11 @@ import EmailIcon from '@material-ui/icons/Email';
 import PostAddIcon from '@material-ui/icons/PostAdd';
 import LocationCityIcon from '@material-ui/icons/LocationCity';
 import {Link} from 'react-router-dom'
+import { selectUser } from '../../redux/reducer/userSlice';
+import { useSelector } from 'react-redux';
 
 function ProfilePage() {
+    const user= useSelector(selectUser)
     const arrayprofile =[
         {
             icon: <AddLocationIcon /> ,
@@ -47,13 +50,19 @@ function ProfilePage() {
             title: "City" ,
             data: "Islamabad",
         },
+        {
+            icon: <AddLocationIcon /> ,
+            title: "Address" ,
+            data: "House-37-B street No1 Rawalpindi",
+        },
     ];
     return (
+        
         <div>
             <div  className="profile-banner">
             <div className="font-postion">
-            <h2>Danial Rozar</h2>
-            <p>danialrozar@gmail.com</p>
+            <h2>Mohsin Waheed</h2>
+            <p>mohsin@gmail.com</p>
             </div>
             <div className="image-postion">
             <Avatar className="avatar-size" src="https://images.pexels.com/photos/428364/pexels-photo-428364.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" />
@@ -68,14 +77,14 @@ function ProfilePage() {
                       <div className="profile-text">
                       
                       <p>{kyc.title}</p>
-                      <h2>{kyc.data}</h2>
+                      <h3>{kyc.data}</h3>
                       </div>
                       </div>
                  ))
               }
             </div>
 
-           <Link to="/edit-profile"><p className="manintext">Edit Profile</p></Link> 
+           <Link to='/editprofile'><p className="manintext">Edit Profile</p></Link> 
         </div>
     )
 }

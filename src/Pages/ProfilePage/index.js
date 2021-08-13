@@ -61,8 +61,8 @@ function ProfilePage() {
         <div>
             <div  className="profile-banner">
             <div className="font-postion">
-            <h2>Mohsin Waheed</h2>
-            <p>mohsin@gmail.com</p>
+            <h2>{ user ? <p>{user.userName} </p> : !user ?  <p></p> : ""}</h2>
+            <p>{ user ? <p>{user.email} </p> : !user ?  <p></p> : ""}</p>
             </div>
             <div className="image-postion">
             <Avatar className="avatar-size" src="https://images.pexels.com/photos/428364/pexels-photo-428364.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" />

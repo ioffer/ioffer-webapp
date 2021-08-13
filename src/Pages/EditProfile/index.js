@@ -1,13 +1,13 @@
 import React,{useState} from 'react'
 import './edit-profile.scss'
+import {useDispatch} from 'react-redux'
 import TextField from '@material-ui/core/TextField';
-import Avatar from '@material-ui/core/Avatar';
-import AddAPhotoIcon from '@material-ui/icons/AddAPhoto';
 import {gql, useMutation } from '@apollo/client'
 import { useHistory } from 'react-router-dom';
+import { login } from '../../redux/reducer/userSlice';
 
 const addkyc= gql`
-mutation ($mobile: String!, $nationality: String!, $city: String!, $country:String!, $avatar: Upload!){
+mutation ($mobile: String!, $nationality: String!, $city: String!, $birthDate:String!, $postalCode: String!,$country:String!,$building: String!,$avatar: Upload!,$street: String!){
     addKyc(
       id: "60d9d2b456608723e834c284",
       mobile: $mobile,
@@ -15,6 +15,10 @@ mutation ($mobile: String!, $nationality: String!, $city: String!, $country:Stri
       city: $city,
       country: $country
       avatar: $avatar
+      street: $street
+      building: $building
+      birthDate: $birthDate
+      postalCode: $postalCode
     ){
       id
       userName
@@ -30,14 +34,16 @@ mutation ($mobile: String!, $nationality: String!, $city: String!, $country:Stri
 
 function EditProfile() {
   const history = useHistory();
+  const dispatch= useDispatch()
     const [editstate, setEditstate ] = useState({
         city: "",
         number: "",
         dob: "",
         nationality:"",
         postcode: "",
-        address: "",
         country: "",
+        street: "",
+        building:""
     })
     const [pic,setPic]=useState(null)
     
@@ -60,8 +66,26 @@ function EditProfile() {
             city: editstate.city,
             nationality: editstate.nationality,
             country: editstate.country,
+            street: editstate.street,
+            birthDate: editstate.dob,
+            building: editstate.building,
+            postalCode: editstate.postcode
           }
     })
+    dispatch(login({
+      variables:{
+            mobile: editstate.number,
+            city: editstate.city,
+            nationality: editstate.nationality,
+            country: editstate.country,
+            street: editstate.street,
+            birthDate: editstate.dob,
+            building: editstate.building,
+            postalCode: editstate.postcode
+      }
+    }
+    ))
+    console.log(login)
     history.push("/profile")
    }
     return (
@@ -78,14 +102,6 @@ function EditProfile() {
            </div>
             </div>
             <form className="form-design" onSubmit={submitForm}>
-            <TextField
-            fullWidth
-            type="text"
-            defaultValue="Islamabad"
-            label="Location"
-             onChange={(e) => handelChange('city', e.target.value)}
-            value={editstate.city}
-          />
            <TextField
            fullWidth
             autoComplete="mobilenumber"
@@ -96,15 +112,15 @@ function EditProfile() {
             value={editstate.number}
           />
           
-        <TextField
-        fullWidth
-             defaultValue="29-june-1999"
-            autoComplete="dateofbirth"
-            type="date"
-            label="Date of Birth"
-            onChange={(e) => handelChange('dob', e.target.value)}
-            value={editstate.dob}
-          />
+          <TextField
+          fullWidth
+              defaultValue="29-june-1999"
+              autoComplete="dateofbirth"
+              type="date"
+              label="Date of Birth"
+              onChange={(e) => handelChange('dob', e.target.value)}
+              value={editstate.dob}
+            />
 
           <TextField
            fullWidth
@@ -135,12 +151,30 @@ function EditProfile() {
           />
            <TextField
            fullWidth
-           defaultValue="House-37-B street No1 Rawalpindi"
-            autoComplete="current-password"
+           defaultValue=""
+            autoComplete="City"
             type="text"
-            label="Address"
-            onChange={(e) => handelChange('address', e.target.value)}
-            value={editstate.address}
+            label="City"
+            onChange={(e) => handelChange('city', e.target.value)}
+            value={editstate.city}
+          />
+          <TextField
+           fullWidth
+           defaultValue=""
+            autoComplete="street"
+            type="text"
+            label="Street"
+            onChange={(e) => handelChange('street', e.target.value)}
+            value={editstate.street}
+          />
+           <TextField
+           fullWidth
+           defaultValue=""
+            autoComplete="building"
+            type="text"
+            label="Building"
+            onChange={(e) => handelChange('building', e.target.value)}
+            value={editstate.building}
           />
 
           <button className="profile-button">Update Profile</button>

@@ -23,6 +23,7 @@ mutation ($name:String!, $userName: String!, $email:String!, $password:String!){
 `;
 function RegisterForm() {
   const history = useHistory();
+  const[errors,setErrors]=useState({})
   const [state, setState ] = useState({
     fname: "",
     userName: "",
@@ -31,7 +32,7 @@ function RegisterForm() {
 })
  const dispatch = useDispatch()
 const [registerUser, { data, loading, error }] = useMutation(register);
-      if (loading) return <div className="loader"></div>;
+      // if (loading) return <div className="loader"></div>;
       if (error) return `Submission error! ${error.message}`;
 
  const handelChange = (name, value) => {
@@ -72,7 +73,7 @@ console.log(login)
 
             </div>
            
-             <form className="form-design" autoComplete="off" onSubmit={submitForm} >
+             <form className="form-design" autoComplete="off" onSubmit={submitForm} className={loading? "loader" : "" } >
                  <div className="form-grid">
              <TextField
             fullWidth

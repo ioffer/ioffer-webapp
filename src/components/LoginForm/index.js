@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState, useEffect} from 'react'
 import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
@@ -30,6 +30,7 @@ query($userName: String!, $password: String!){
 
    const dispatch= useDispatch()
    const history = useHistory();
+   const[errors,setErrors]=useState({})
    const [state, setState ] = useState({
     email: "",
     password:""
@@ -55,14 +56,19 @@ query($userName: String!, $password: String!){
     }) .catch(error => {
     console.log(error.toString())
   });
+  
+  
  console.log(loginUser.data.loginUser.user)
   dispatch(login(loginUser.data.loginUser.user))
  
  console.log(loginUser,"loginUser");
   localStorage.setItem('token', loginUser.data.loginUser.token);
+  if(localStorage.getItem('token')){
+    dispatch(login(loginUser.data.loginUser.user))
+  }
   history.push('/')
+  
     }
-
 
     return (
         <div className="all-item-alighn">
@@ -104,7 +110,7 @@ query($userName: String!, $password: String!){
           <button className="button">Login</button>
           </form>
           </div>
-         
+        
           <div className="register">
           <h4>Don’t have an account?&nbsp;<Link to='/register'>Register</Link></h4>
           </div>

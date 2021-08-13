@@ -39,20 +39,17 @@ function App() {
   const dispatch= useDispatch()
   const user= useSelector(selectUser)
   // const { loading, error, data } = useQuery(userMe);
-  // if (loading) return <div className="loader"></div>;
-
+  // // if (loading) return <div className="loader"></div>;
+  
   // useEffect(()=>{
   //   if(localStorage.getItem('token')){
-  //     console.log(data,"===>")
-  //     dispatch(login(data&&data.me))
+  //     console.log(data)
+  //     dispatch(login(data))
   //    }
     
-  // },[])
+  // },[userMe])
    
-  
- 
-
-  return (
+   return (
     <div className="App">
      <Router>
          <PrimarySearchAppBar/>

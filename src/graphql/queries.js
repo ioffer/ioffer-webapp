@@ -7,6 +7,17 @@ export const useMeQuery=gql`
   email
   userName
   type
+   kyc {
+        birthDate
+        building
+        city
+        country
+        kycStatus
+        mobile
+        nationality
+        postalCode
+        street
+      }
 }
 }`
 

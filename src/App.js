@@ -40,7 +40,7 @@ const Root=()=>{
           <Route exact path='/' component={Home} />
           <Route path='/deals' component={Deals} />
           <Route path='/offers' component={Offers} />
-          <Route path='/promotions'component={Promotions} />
+          <Route path='/promotions' component={Promotions} />
           <Route path='/shops' component={Shops} />
           <Route path='/brands' component={Brands} />
           <Route path='/login' component={Login} />

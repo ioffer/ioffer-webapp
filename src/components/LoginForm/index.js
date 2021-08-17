@@ -103,5 +103,4 @@ import {useLoginHooks} from "../../hooks/useQueriesHooks";
     )
 }
 
->>>>>>> bf0966effde2ef6b5dcdf21660806cb139943321
 export default LoginForm

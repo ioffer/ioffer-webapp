@@ -93,7 +93,7 @@ function RegisterForm() {
                     onChange={(e) => handelChange('email', e.target.value)}
                     value={state.email}
                 />
-                
+
                     <div className="form-grid">
                         <TextField
                             fullWidth

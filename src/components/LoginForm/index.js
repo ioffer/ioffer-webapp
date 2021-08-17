@@ -14,23 +14,6 @@ import Loader from "../Loader/loader";
 import {useLoginHooks} from "../../hooks/useQueriesHooks";
 
 
-<<<<<<< HEAD
- const signIn= gql`
-query($userName: String!, $password: String!){
-  loginUser(userName: $userName, password: $password) {
-    user {
-    id
-    email
-    userName
-    type
-    }
-    token
-  }
-}
-`;
-=======
->>>>>>> bf0966effde2ef6b5dcdf21660806cb139943321
-
  function LoginForm() {
      const [state, setState ] = useState({
          email: "",

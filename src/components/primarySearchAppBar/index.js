@@ -176,7 +176,7 @@ export default function PrimarySearchAppBar() {
              <div>
               <Link to="/profile" className="color-link"> <MenuItem>
                 <IconButton aria-label="show 4 new favorites" color="inherit">
-                        <Avatar> { user ? <p>{user.email[0]} </p> : !user ?  <p></p> : ""} </Avatar> 
+                        <Avatar>  </Avatar> 
                 </IconButton>
                 { user ? <p>{user.userName} </p> : !user ?  <p></p> : ""}
                

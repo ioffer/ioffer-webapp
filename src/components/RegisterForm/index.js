@@ -73,7 +73,7 @@ console.log(login)
 
             </div>
            
-             <form className="form-design" autoComplete="off" onSubmit={submitForm} className={loading? "loader" : "" } >
+             <form className="form-design" autoComplete="off" onSubmit={submitForm}  >
                  <div className="form-grid">
              <TextField
             fullWidth

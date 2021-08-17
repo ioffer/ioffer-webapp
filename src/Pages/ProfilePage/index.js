@@ -17,8 +17,8 @@ function ProfilePage() {
     const arrayprofile =[
         {
             icon: <AddLocationIcon /> ,
-            title: "Location" ,
-            data: "Islamabad",
+            title: "Country" ,
+            data: "Pakistan",
         },
         {
             icon: <CallIcon /> ,
@@ -52,8 +52,8 @@ function ProfilePage() {
         },
         {
             icon: <AddLocationIcon /> ,
-            title: "Address" ,
-            data: "House-37-B street No1 Rawalpindi",
+            title: "Building" ,
+            data: "1",
         },
     ];
     return (

@@ -1,20 +1,20 @@
 import React,{useState} from 'react'
 import './edit-profile.scss'
-import {useDispatch} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import TextField from '@material-ui/core/TextField';
 import {gql, useMutation } from '@apollo/client'
 import { useHistory } from 'react-router-dom';
-import { login } from '../../redux/reducer/userSlice';
+import { login, selectUser } from '../../redux/reducer/userSlice';
+
 
 const addkyc= gql`
-mutation ($mobile: String!, $nationality: String!, $city: String!, $birthDate:String!, $postalCode: String!,$country:String!,$building: String!,$avatar: Upload!,$street: String!){
+mutation ($id: String!,$mobile: String!, $nationality: String!, $city: String!, $birthDate:String!, $postalCode: String!,$country:String!,$building: String!,$street: String!){
     addKyc(
-      id: "60d9d2b456608723e834c284",
+      id: $id,
       mobile: $mobile,
       nationality:  $nationality,
       city: $city,
       country: $country
-      avatar: $avatar
       street: $street
       building: $building
       birthDate: $birthDate
@@ -31,10 +31,16 @@ mutation ($mobile: String!, $nationality: String!, $city: String!, $birthDate:St
   }
 `
 ;
+const imageUpload =gql `
+mutation( $file: Upload!) {
+  imageUploader(file: $file)
+}
+`
 
 function EditProfile() {
   const history = useHistory();
   const dispatch= useDispatch()
+  const user= useSelector(selectUser)
     const [editstate, setEditstate ] = useState({
         city: "",
         number: "",
@@ -45,23 +51,31 @@ function EditProfile() {
         street: "",
         building:""
     })
-    const [pic,setPic]=useState(null)
-    
-  
 
+    const [file,setFile]=useState([])
+    const [logoPath,setLogoPath]=useState(null)
     const handelChange = (name, value) => {
         setEditstate({...editstate, [name]: value})
    }
+   const [imageUploader]=useMutation(imageUpload,{
+    onCompleted: (data)=> console.log(data)
+  })
+  
    const handleimage= e =>{
-       setPic(URL.createObjectURL(e.target.files[0]))
+    setFile(e.target.files[0])
+    setLogoPath(URL.createObjectURL(e.target.files[0]))
+    imageUploader({ variables: { file  } }); 
    }
+
    const [addKyc, { data, loading, error }] = useMutation(addkyc);
    if (loading) return 'Submitting...';
    if (error) return `Submission error! ${error.message}`;
+   console.log(data)
    const submitForm=(e)=>{
     e.preventDefault()
     addKyc({
         variables:{
+            id:user.id,
             mobile: editstate.number,
             city: editstate.city,
             nationality: editstate.nationality,
@@ -74,17 +88,18 @@ function EditProfile() {
     })
     dispatch(login({
       variables:{
-            mobile: editstate.number,
-            city: editstate.city,
-            nationality: editstate.nationality,
-            country: editstate.country,
-            street: editstate.street,
-            birthDate: editstate.dob,
-            building: editstate.building,
-            postalCode: editstate.postcode
+        mobile: editstate.number,
+        city: editstate.city,
+        nationality: editstate.nationality,
+        country: editstate.country,
+        street: editstate.street,
+        birthDate: editstate.dob,
+        building: editstate.building,
+        postalCode: editstate.postcode
       }
-    }
-    ))
+    }))
+    
+   
     console.log(login)
     history.push("/profile")
    }
@@ -98,10 +113,10 @@ function EditProfile() {
             <div >
             <input className="avatar-icon" type="file" onChange={handleimage} />
            <div className="profile-pic-position">
-           <img className="profile-pic-size" src={pic} />
+           <img className="profile-pic-size" src={logoPath} />
            </div>
             </div>
-            <form className="form-design" onSubmit={submitForm}>
+            <form className="form-design" onSubmit={submitForm}  >
            <TextField
            fullWidth
             autoComplete="mobilenumber"

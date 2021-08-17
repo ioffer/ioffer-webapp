@@ -12,7 +12,7 @@ import { useDispatch } from 'react-redux';
 import { login } from '../../redux/reducer/userSlice';
 
 
-const signIn= gql`
+ const signIn= gql`
 query($userName: String!, $password: String!){
   loginUser(userName: $userName, password: $password) {
     user {
@@ -63,9 +63,9 @@ query($userName: String!, $password: String!){
  
  console.log(loginUser,"loginUser");
   localStorage.setItem('token', loginUser.data.loginUser.token);
-  if(localStorage.getItem('token')){
-    dispatch(login(loginUser.data.loginUser.user))
-  }
+  // if(localStorage.getItem('token')){
+  //   dispatch(login(loginUser.data.loginUser.user))
+  // }
   history.push('/')
   
     }
@@ -118,7 +118,7 @@ query($userName: String!, $password: String!){
     )
 }
 const client = new ApolloClient({
-  uri: 'http://192.168.1.8:4000/graphql',
+  uri: 'http://192.168.1.28:4000/graphql',
   cache: new InMemoryCache()
 });
 export default LoginForm

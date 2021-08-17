@@ -26,28 +26,33 @@ import React,{useEffect } from 'react'
 
 
 const userMe=gql`
+ 
 {
   me{
   id
+  fullName
   email
   userName
   type
 }
-}`
+}
+`
 
 function App() {
   const dispatch= useDispatch()
   const user= useSelector(selectUser)
-  // const { loading, error, data } = useQuery(userMe);
-  // // if (loading) return <div className="loader"></div>;
+  const { loading, error, data } = useQuery(userMe);
+  // if (loading) return <div className="loader"></div>;
   
   // useEffect(()=>{
-  //   if(localStorage.getItem('token')){
+  //   const token= localStorage.getItem('token')
+  //   if(token){
   //     console.log(data)
   //     dispatch(login(data))
-  //    }
-    
-  // },[userMe])
+  //   }
+  //    },[])
+
+ 
    
    return (
     <div className="App">

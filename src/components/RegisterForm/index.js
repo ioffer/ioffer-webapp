@@ -51,21 +51,49 @@ function RegisterForm() {
         })
     }
 
-    return (
-        loading ? <Loader/> :
-            <div className="all-item-alighn">
-                <h1 className="h1"> Get started absolutely free.</h1>
-                <p>Free forever. No credit card needed.</p>
+    return(
+    loading ? <Loader/> :
+        <div className="all-item-alighn">
+            <h1 className="h1"> Get started absolutely free.</h1>
+            <p>Free forever. No credit card needed.</p>
 
-                <div className="button-postion">
-                    <div className="facebook icon-flex">
-                        <img src={google} width="30px" height="30px"/>
-                        <p>Login with Google</p>
-                    </div>
-
+            <div className="button-postion">
+                <div className="facebook icon-flex">
+                    <img src={google} width="30px" height="30px"/>
+                    <p>Login with Google</p>
                 </div>
+            </div>
 
-                <form className="form-design" autoComplete="off" onSubmit={submitForm}>
+            <form className="form-design" autoComplete="off" onSubmit={submitForm} >
+                <div className="form-grid">
+                    <TextField
+                        fullWidth
+                        required
+                        autoComplete="Full Name"
+                        type="text"
+                        label="Enter Your Name"
+                        onChange={(e) => handelChange('fname', e.target.value)}
+                        value={state.fname}
+                    />
+                    <TextField
+                        fullWidth
+                        required
+                        autoComplete="Username"
+                        type="text"
+                        label="Enter Your Username"
+                        onChange={(e) => handelChange('userName', e.target.value)}
+                        value={state.lname}
+                    />
+                </div>
+                <TextField
+                    fullWidth
+                    autoComplete="email"
+                    type="email"
+                    label="Email address"
+                    onChange={(e) => handelChange('email', e.target.value)}
+                    value={state.email}
+                />
+                
                     <div className="form-grid">
                         <TextField
                             fullWidth
@@ -115,7 +143,7 @@ function RegisterForm() {
                 <div className="register">
                     <h4>Already have a account ?<Link to='/login'>Login</Link></h4>
                 </div>
-            </div>
+    </div>
     )
 }
 

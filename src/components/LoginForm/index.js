@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import React,{useState, useEffect} from 'react'
-=======
 import React, {useEffect, useState} from 'react'
->>>>>>> bf0966effde2ef6b5dcdf21660806cb139943321
 import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
@@ -48,49 +44,6 @@ query($userName: String!, $password: String!){
          { error, data,loading }
      ]  =useLoginHooks()
 
-<<<<<<< HEAD
-   const dispatch= useDispatch()
-   const history = useHistory();
-   const[errors,setErrors]=useState({})
-   const [state, setState ] = useState({
-    email: "",
-    password:""
-  })
- const [error, setError] = useState(false)
-
- const handelChange = (name, value) => {
-  setState({...state, [name]: value})
-  
-  }
- const submitForm=async(e)=>{
-  e.preventDefault()
-  setError(false)
-  if(state==""){
-    setError(true)
-    }
-  const loginUser= await client.query({
-    query:signIn,
-    variables:{
-      userName: state.email,
-      password: state.password
-    }
-    }) .catch(error => {
-    console.log(error.toString())
-  });
-  
-  
- console.log(loginUser.data.loginUser.user)
-  dispatch(login(loginUser.data.loginUser.user))
- 
- console.log(loginUser,"loginUser");
-  localStorage.setItem('token', loginUser.data.loginUser.token);
-  // if(localStorage.getItem('token')){
-  //   dispatch(login(loginUser.data.loginUser.user))
-  // }
-  history.push('/')
-  
-    }
-=======
 
      const handleChange = (name, value) => {
          setState({...state, [name]: value})
@@ -118,7 +71,7 @@ query($userName: String!, $password: String!){
                  })
          }
      }
->>>>>>> bf0966effde2ef6b5dcdf21660806cb139943321
+
 
     return (
         loading ? <Loader/> :
@@ -153,26 +106,6 @@ query($userName: String!, $password: String!){
                                 value={state.password}
                             />
 
-<<<<<<< HEAD
-            <FormControlLabel
-            control={<Checkbox />}
-            label="Remember me"
-          /><br />
-          <button className="button">Login</button>
-          </form>
-          </div>
-        
-          <div className="register">
-          <h4>Don’t have an account?&nbsp;<Link to='/register'>Register</Link></h4>
-          </div>
-        </div>
-    )
-}
-const client = new ApolloClient({
-  uri: 'http://192.168.1.28:4000/graphql',
-  cache: new InMemoryCache()
-});
-=======
                             <FormControlLabel
                                 control={<Checkbox/>}
                                 label="Remember me"

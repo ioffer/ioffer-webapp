@@ -11,7 +11,7 @@ function Register() {
         <div className="login-flex">
             <div className="figure-side">
                <Link to='/'><img src={ioffer} /></Link> 
-            <h1 className="h1"> Manage the job more <br/ >effectively with ioffer</h1>
+            <h1 className="h1"> Manage the job more <br/>effectively with ioffer</h1>
             <figure>
                 <img className="img-width" src={register} />
                 </figure>

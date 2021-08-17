@@ -6,7 +6,6 @@ import {Link} from 'react-router-dom'
 import google from '../../assets/images/google.png'
 import './register-form.scss'
 import {useHistory} from 'react-router-dom'
-import {useDispatch} from 'react-redux';
 import { useAlert} from "react-alert";
 import { login } from '../../redux/reducer/userSlice';
 import {RegisterUserHook} from "../../hooks/useMutationsHooks";

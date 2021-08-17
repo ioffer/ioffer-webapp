@@ -3,7 +3,7 @@ import {ApolloClient,createHttpLink,  ApolloProvider, InMemoryCache} from "@apol
 import {setContext} from "apollo-link-context";
 
 
-export const backendUri='http://localhost:4000/graphql';
+export const backendUri='http://192.168.1.4:4000/graphql';
 const httpLink = createHttpLink({
     uri:backendUri,
 });

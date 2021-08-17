@@ -14,11 +14,11 @@ mutation ($id: String!,$mobile: String!, $nationality: String!, $city: String!, 
       mobile: $mobile,
       nationality:  $nationality,
       city: $city,
-      country: $country
-      street: $street
-      building: $building
-      birthDate: $birthDate
-      postalCode: $postalCode
+      country: $country,
+      street: $street,
+      building: $building,
+      birthDate: $birthDate,
+      postalCode: $postalCode,
     ){
       id
       userName

@@ -7,6 +7,7 @@ export const useMeQuery=gql`
   email
   userName
   type
+  avatar
    kyc {
         birthDate
         building
@@ -27,6 +28,7 @@ query($userName: String!, $password: String!){
     user {
     id
     email
+    avatar
     userName
     type
         kyc {

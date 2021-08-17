@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React from 'react';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import { AppBar } from "@material-ui/core";
 import Toolbar from '@material-ui/core/Toolbar';
@@ -152,70 +152,70 @@ export default function PrimarySearchAppBar() {
             {
                 !localStorage.getItem('token') &&
                 <div>
-           <Link className="color-link" to="/login">
-               <MenuItem>
-                    <IconButton aria-label="show 4 new favorites" color="inherit">
-                        <VpnKeyIcon/>
-                    </IconButton>
-                    <p>Login </p>
-                </MenuItem>
-            </Link>
-            <MenuItem>
-            <IconButton aria-label="show 11 new notifications" color="inherit">
-                <TextsmsIcon />
-            </IconButton>
-            <p>About Us </p>
-        </MenuItem> 
-        </div>
+                    <Link className="color-link" to="/login">
+                        <MenuItem>
+                            <IconButton aria-label="show 4 new favorites" color="inherit">
+                                <VpnKeyIcon/>
+                            </IconButton>
+                            <p>Login </p>
+                        </MenuItem>
+                    </Link>
+                    <MenuItem>
+                        <IconButton aria-label="show 11 new notifications" color="inherit">
+                            <TextsmsIcon/>
+                        </IconButton>
+                        <p>About Us </p>
+                    </MenuItem>
+                </div>
             }
 
-                
-              
-             { 
-             localStorage.getItem('token')&& 
-             <div>
-              <Link to="/profile" className="color-link"> <MenuItem>
-                <IconButton aria-label="show 4 new favorites" color="inherit">
-                        <Avatar>  </Avatar> 
-                </IconButton>
-                { user ? <p>{user.userName} </p> : !user ?  <p></p> : ""}
-               
-            </MenuItem></Link><hr />
-            <Link className="color-link" to="/vendorshop"><MenuItem>
-                <IconButton aria-label="show 4 new favorites" color="inherit">
-                        <StoreIcon/> 
-                </IconButton>
-                <p>Add Shop</p>
-            </MenuItem></Link>
-            <MenuItem>
-                <IconButton aria-label="show 4 new favorites" color="inherit">
-                    <Badge badgeContent={4} color="secondary">
-                        <FavoriteIcon/>
-                    </Badge>
-                </IconButton>
-                <p>Favourites</p>
-            </MenuItem>
-            <MenuItem>
-                <IconButton aria-label="show 11 new notifications" color="inherit">
-                    <Badge badgeContent={11} color="secondary">
-                        <NotificationsIcon />
-                    </Badge>
-                </IconButton>
-                <p>Notifications</p>
-            </MenuItem>
-            <MenuItem>
-                <IconButton aria-label="show 11 new notifications" color="inherit">
-                    <TextsmsIcon />
-                </IconButton>
-                <p>About Us </p>
-            </MenuItem>
-           <Link to="/" className="color-link" onClick={signout}><MenuItem>
-                <IconButton aria-label="show 11 new notifications" color="inherit">
-                    <ExitToAppIcon />
-                </IconButton>
-                <p>LogOut </p>
-            </MenuItem></Link> 
-            </div>
+
+            {
+                localStorage.getItem('token') &&
+                <div>
+                    <Link to="/profile" className="color-link"> <MenuItem>
+                        <IconButton aria-label="show 4 new favorites" color="inherit">
+                            <Avatar src={user.avatar} />
+                        </IconButton>
+                        {user ? <p>{user.userName} </p> : !user ? <p></p> : ""}
+
+                    </MenuItem></Link>
+                    <hr/>
+                    <Link className="color-link" to="/vendorshop"><MenuItem>
+                        <IconButton aria-label="show 4 new favorites" color="inherit">
+                            <StoreIcon/>
+                        </IconButton>
+                        <p>Add Shop</p>
+                    </MenuItem></Link>
+                    <MenuItem>
+                        <IconButton aria-label="show 4 new favorites" color="inherit">
+                            <Badge badgeContent={4} color="secondary">
+                                <FavoriteIcon/>
+                            </Badge>
+                        </IconButton>
+                        <p>Favourites</p>
+                    </MenuItem>
+                    <MenuItem>
+                        <IconButton aria-label="show 11 new notifications" color="inherit">
+                            <Badge badgeContent={11} color="secondary">
+                                <NotificationsIcon/>
+                            </Badge>
+                        </IconButton>
+                        <p>Notifications</p>
+                    </MenuItem>
+                    <MenuItem>
+                        <IconButton aria-label="show 11 new notifications" color="inherit">
+                            <TextsmsIcon/>
+                        </IconButton>
+                        <p>About Us </p>
+                    </MenuItem>
+                    <Link to="/" className="color-link" onClick={signout}><MenuItem>
+                        <IconButton aria-label="show 11 new notifications" color="inherit">
+                            <ExitToAppIcon/>
+                        </IconButton>
+                        <p>LogOut </p>
+                    </MenuItem></Link>
+                </div>
             }
             {/*<MenuItem onClick={handleProfileMenuOpen}>*/}
             {/*    <IconButton*/}
@@ -230,7 +230,6 @@ export default function PrimarySearchAppBar() {
             {/*</MenuItem>*/}
         </Menu>
     );
-
     return (
         <div className={classes.grow}>
             <AppBar position="static">

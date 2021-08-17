@@ -61,7 +61,7 @@ function EditProfile() {
     onCompleted: (data)=> console.log(data)
   })
   
-   const handleimage= e =>{
+   const handleImage= e =>{
     setFile(e.target.files[0])
     setLogoPath(URL.createObjectURL(e.target.files[0]))
     imageUploader({ variables: { file  } }); 
@@ -111,7 +111,7 @@ function EditProfile() {
 
             <div>
             <div >
-            <input className="avatar-icon" type="file" onChange={handleimage} />
+            <input className="avatar-icon" type="file" onChange={handleImage} />
            <div className="profile-pic-position">
            <img className="profile-pic-size" src={logoPath} />
            </div>

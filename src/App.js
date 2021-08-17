@@ -17,7 +17,7 @@ import Register from './Pages/Register'
 import VendorShop from './Pages/VendorShop'
 import ProfilePage from './Pages/ProfilePage'
 import EditProfile from './Pages/EditProfile'
-import {  selectUser } from './redux/reducer/userSlice'
+import {login, } from './redux/reducer/userSlice'
 import {useDispatch} from 'react-redux'
 import React  from 'react'
 import Loader from "./components/Loader/loader";
@@ -65,7 +65,7 @@ const UserRoot=()=>{
     console.log(error)
   }
   if (!loading&&data){
-    dispatch(selectUser(data.me))
+    dispatch(login(data.me))
     return <Root/>
   }
 

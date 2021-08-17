@@ -10,55 +10,34 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
 } from "react-router-dom";
 import Dashboard from './Pages/Dashboard'
 import Login from './Pages/Login'
 import Register from './Pages/Register'
 import VendorShop from './Pages/VendorShop'
-import QuerryRun from './QuerryRun'
 import ProfilePage from './Pages/ProfilePage'
 import EditProfile from './Pages/EditProfile'
-import { login, logout, selectUser } from './redux/reducer/userSlice'
-import {useDispatch, useSelector} from 'react-redux'
-import { gql, useQuery } from '@apollo/client'
-import React,{useEffect } from 'react'
-
-
-const userMe=gql`
-{
-  me{
-  id
-  email
-  userName
-  type
+import {  selectUser } from './redux/reducer/userSlice'
+import {useDispatch} from 'react-redux'
+import React  from 'react'
+import Loader from "./components/Loader/loader";
+import { transitions, positions, Provider as AlertProvider } from 'react-alert'
+import AlertTemplate from 'react-alert-template-basic';
+import {useMe} from "./hooks/useQueriesHooks";
+const options = {
+  position: positions.TOP_CENTER,
+  timeout: 10000,
+  offset: '30px',
+  transition: transitions.SCALE
 }
-}`
 
-function App() {
-  const dispatch= useDispatch()
-  const user= useSelector(selectUser)
-  // const { loading, error, data } = useQuery(userMe);
-  // if (loading) return <div className="loader"></div>;
 
-  // useEffect(()=>{
-  //   if(localStorage.getItem('token')){
-  //     console.log(data,"===>")
-  //     dispatch(login(data&&data.me))
-  //    }
-    
-  // },[])
-   
-  
- 
-
-  return (
-    <div className="App">
-     <Router>
-         <PrimarySearchAppBar/>
-      {/* <QuerryRun /> */}
+const Root=()=>{
+  return(
+      <Router>
+        <PrimarySearchAppBar/>
         <Switch>
-          <Route exact path='/' component={Home} /> 
+          <Route exact path='/' component={Home} />
           <Route path='/deals' component={Deals} />
           <Route path='/offers' component={Offers} />
           <Route path='/promotions'component={Promotions} />
@@ -72,10 +51,35 @@ function App() {
           <Route path='/dashboard'>
             <Dashboard />
           </Route>
-      </Switch>
+        </Switch>
       </Router>
-       
-    </div>
+  )
+}
+const UserRoot=()=>{
+  const { data, loading,error } =useMe()
+  const dispatch= useDispatch()
+  if (loading){
+    return <Loader/>
+  }
+  if (error){
+    console.log(error)
+  }
+  if (!loading&&data){
+    dispatch(selectUser(data.me))
+    return <Root/>
+  }
+
+}
+function App() {
+
+
+
+  return (
+      <AlertProvider template={AlertTemplate} {...options}>
+        <div className="App">
+          {localStorage.getItem('token') ? <UserRoot/> : <Root/>}
+        </div>
+      </AlertProvider>
   );
 }
 

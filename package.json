@@ -17,10 +17,12 @@
     "@testing-library/user-event": "^12.1.10",
     "@types/react-redux": "^7.1.18",
     "apollo-link-context": "^1.0.20",
+    "axios": "^0.21.1",
     "bulma": "^0.9.3",
     "cypress": "^7.4.0",
     "formik": "^2.2.9",
     "graphql": "^15.5.1",
+    "graphql-request": "^3.5.0",
     "material-auto-rotating-carousel": "^3.0.2",
     "material-design-icons": "^3.0.1",
     "pdf-viewer-reactjs": "^2.2.3",
@@ -30,6 +32,7 @@
     "react-elastic-carousel": "^0.11.5",
     "react-pdf-js": "^5.1.0",
     "react-redux": "^7.2.4",
+    "react-alert-template-basic": "^1.0.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "redux": "^4.1.1",
@@ -65,5 +68,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "react-alert": "^7.0.3"
   }
 }

@@ -94,7 +94,6 @@ export default function PrimarySearchAppBar() {
     const dispatch=useDispatch()
     const signout =()=>{
         localStorage.removeItem('token');
-        window.location.reload(false);
         dispatch(logout());
     }
    

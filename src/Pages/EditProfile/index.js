@@ -2,40 +2,10 @@ import React,{useState} from 'react'
 import './edit-profile.scss'
 import {useDispatch, useSelector} from 'react-redux'
 import TextField from '@material-ui/core/TextField';
-import {gql, useMutation } from '@apollo/client'
 import { useHistory } from 'react-router-dom';
 import { login, selectUser } from '../../redux/reducer/userSlice';
+import {AddkycHook,ImageUploadHook} from '../../hooks/useMutationsHooks'
 
-
-const addkyc= gql`
-mutation ($id: String!,$mobile: String!, $nationality: String!, $city: String!, $birthDate:String!, $postalCode: String!,$country:String!,$building: String!,$street: String!){
-    addKyc(
-      id: $id,
-      mobile: $mobile,
-      nationality:  $nationality,
-      city: $city,
-      country: $country,
-      street: $street,
-      building: $building,
-      birthDate: $birthDate,
-      postalCode: $postalCode,
-    ){
-      id
-      userName
-      email
-      kyc{
-        country
-        kycStatus
-      }
-    }
-  }
-`
-;
-const imageUpload =gql `
-mutation( $file: Upload!) {
-  imageUploader(file: $file)
-}
-`
 
 function EditProfile() {
   const history = useHistory();
@@ -57,17 +27,17 @@ function EditProfile() {
     const handelChange = (name, value) => {
         setEditstate({...editstate, [name]: value})
    }
-   const [imageUploader]=useMutation(imageUpload,{
+   const [imageUploader]=ImageUploadHook({
     onCompleted: (data)=> console.log(data)
-  })
-  
+   })
+    
    const handleImage= e =>{
     setFile(e.target.files[0])
     setLogoPath(URL.createObjectURL(e.target.files[0]))
     imageUploader({ variables: { file  } }); 
    }
 
-   const [addKyc, { data, loading, error }] = useMutation(addkyc);
+   const [addKyc, { data, loading, error }] = AddkycHook()
    if (loading) return 'Submitting...';
    if (error) return `Submission error! ${error.message}`;
    console.log(data)
@@ -120,7 +90,7 @@ function EditProfile() {
            <TextField
            fullWidth
             autoComplete="mobilenumber"
-            defaultValue="03441532505"
+            defaultValue="number"
             type="text"
             label="Mobile Number"
             onChange={(e) => handelChange('number', e.target.value)}

@@ -1,18 +1,7 @@
 import React,{useState} from 'react'
 import TextField from '@material-ui/core/TextField';
 import {gql, useMutation } from '@apollo/client'
-
-const addShop=gql`
-mutation ($name: String!, $website: String!, $shopCategory: String!,$logo: String!, $tags: String!, $phoneNumbers: String!, $location: String!, $address: String!, $mobileNumber: String!) {
-    registerShop(newShop: {name: $name, shopCategory: $shopCategory, logo: $logo, tags: $tags, website: $website, phoneNumbers:  $phoneNumbers, mobileNumber:$mobileNumber, location: $location, address: $address}) {
-      id
-    }
-  }`
-  const imageUpload =gql `
-  mutation( $file: Upload!) {
-    imageUploader(file: $file)
-  }
-  `
+import { AddShopHook,ImageUploadHook } from '../../hooks/useMutationsHooks';
 
 
 function VendorForm() {
@@ -37,7 +26,7 @@ function VendorForm() {
         setLogoPath(URL.createObjectURL(e.target.files[0]))
     }
     
-    const [calluploadMutation]=useMutation(imageUpload,{
+    const [calluploadMutation]=ImageUploadHook({
       onCompleted:data1 => {
         console.log(data1);
           // setImgPath(data1.imageUploader);
@@ -49,30 +38,30 @@ function VendorForm() {
       }
   });
   
-    // const [registerShop, { data, loading, error }] = useMutation(addShop);
-    //   if (loading) return 'Submitting...';
-    //   if (error) return `Submission error! ${error.message}`;
+    const [registerShop, { data, loading, error }] = AddShopHook()
+      if (loading) return 'Submitting...';
+      if (error) return `Submission error! ${error.message}`;
      
  const submitForm=(e)=>{
         e.preventDefault()
         calluploadMutation({variables: {file}});
-        // registerShop({
-        //     variables:{
-        //       name: addshop.shopname,
-        //       shopCategory: addshop.shopCategory,
-        //       address: addshop.address,
-        //       website:  addshop.website,
-        //       tags: addshop.tags,
-        //       phoneNumber: addshop.phonenumber,
-        //       location: addshop.location,
-        //       logo: addshop.logo
-        //     }
-        //   })
-          // imageUploader({
-          //   variables:{
-          //     file : logo,
-          //   }
-          // })
+        registerShop({
+            variables:{
+              name: addshop.shopname,
+              shopCategory: addshop.shopCategory,
+              address: addshop.address,
+              website:  addshop.website,
+              tags: addshop.tags,
+              phoneNumber: addshop.phonenumber,
+              location: addshop.location,
+              logo: addshop.logo
+            }
+          })
+          calluploadMutation({
+            variables:{
+              file : file,
+            }
+          })
   
          }
     

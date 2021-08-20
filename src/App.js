@@ -24,6 +24,7 @@ import Loader from "./components/Loader/loader";
 import { transitions, positions, Provider as AlertProvider } from 'react-alert'
 import AlertTemplate from 'react-alert-template-basic';
 import {useMe} from "./hooks/useQueriesHooks";
+
 const options = {
   position: positions.TOP_CENTER,
   timeout: 10000,
@@ -73,9 +74,7 @@ const UserRoot=()=>{
 }
 function App() {
 
-
-
-  return (
+return (
       <AlertProvider template={AlertTemplate} {...options}>
         <div className="App">
           {localStorage.getItem('token') ? <UserRoot/> : <Root/>}

@@ -1,58 +1,31 @@
-import React, {useEffect, useState} from 'react'
+import React,{useState} from 'react'
 import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import {Link} from 'react-router-dom'
 import google from '../../assets/images/google.png'
-import './register-form.scss'
 import {useHistory} from 'react-router-dom'
 import { useAlert} from "react-alert";
 import {RegisterUserHook} from "../../hooks/useMutationsHooks";
 import Loader from "../Loader/loader";
-import VendorRegister from '../VendorRegister';
 
-function RegisterForm() {
+
+function VendorRegister() {
     const history = useHistory();
     const alert=useAlert();
-    const [formType,setFormType]=useState("")
-    const [state, setState] = useState({
+    const [VendorState, setVendorState] = useState({
         fname: "",
         userName: "",
         email: "",
-        password: ""
+        password: "",
+        shopName:""
     })
-
-    const [register, {data, loading, error}] = RegisterUserHook()
-
     const handelChange = (name, value) => {
-        setState({...state, [name]: value})
-    }
-    useEffect(() => {
-        if (error) {
-            alert.error(error.message,{timeout:4000})
-        }
-        if (data&&!loading){
-            alert.success("Successfully Register",{timeout:4000})
-            history.push('/login')
-        }
-    }, [data, loading, error])
-
-    const submitForm = (e) => {
-        e.preventDefault()
-        register({
-            variables: {
-                name: state.fname,
-                userName: state.userName,
-                email: state.email,
-                password: state.password
-            }
-        }).catch(err => {
-            console.log(err)
-        })
+        setVendorState({...VendorState, [name]: value})
     }
 
     return(
-    loading ? <Loader/> :
+    
         <div className="all-item-alighn">
             <h1 className="h1"> Get started absolutely free.</h1>
             <p>Free forever. No credit card needed.</p>
@@ -64,7 +37,7 @@ function RegisterForm() {
                 </div>
             </div>
 
-            <form className="form-design" autoComplete="off" onSubmit={submitForm} >
+            <form className="form-design" autoComplete="off" >
                 <div className="form-grid">
                     <TextField
                         fullWidth
@@ -73,7 +46,7 @@ function RegisterForm() {
                         type="text"
                         label="Enter Your Name"
                         onChange={(e) => handelChange('fname', e.target.value)}
-                        value={state.fname}
+                        value={VendorState.fname}
                     />
                     <TextField
                         fullWidth
@@ -82,16 +55,25 @@ function RegisterForm() {
                         type="text"
                         label="Enter Your Username"
                         onChange={(e) => handelChange('userName', e.target.value)}
-                        value={state.lname}
+                        value={VendorState.lname}
                     />
                 </div>
+                <TextField
+                        fullWidth
+                        required
+                        autoComplete="Shop Name"
+                        type="text"
+                        label="Enter Your Shop Name"
+                        onChange={(e) => handelChange('shopName', e.target.value)}
+                        value={VendorState.shopName}
+                    />
                 <TextField
                     fullWidth
                     autoComplete="email"
                     type="email"
                     label="Email address"
                     onChange={(e) => handelChange('email', e.target.value)}
-                    value={state.email}
+                    value={VendorState.email}
                 />
                     <TextField
                         fullWidth
@@ -99,7 +81,7 @@ function RegisterForm() {
                         type="password"
                         label="Password"
                         onChange={(e) => handelChange('password', e.target.value)}
-                        value={state.password}
+                        value={VendorState.password}
                     />
 
                     <FormControlLabel
@@ -109,15 +91,8 @@ function RegisterForm() {
                     <button className="button">Register</button>
                   
                 </form>
-                    <button onClick={()=>setFormType("VendorForm")}>Login As a Vendor</button>
-                    <button onClick={()=>setFormType("UserForm")}>Login As a User</button>
-                {
-                    formType==="UserForm" && 
-                    <div>
-                        <VendorRegister />
-                    </div>
-                    
-                }
+                    <button>Login As a User</button>
+                
 
                 <div className="register">
                     <h4>Already have a account ?<Link to='/login'>Login</Link></h4>
@@ -126,4 +101,4 @@ function RegisterForm() {
     )
 }
 
-export default RegisterForm
+export default VendorRegister

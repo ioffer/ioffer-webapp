@@ -1,11 +1,13 @@
 // import {GraphQLClient} from "graphql-request";
-import {ApolloClient,createHttpLink,  ApolloProvider, InMemoryCache} from "@apollo/client";
+import {ApolloClient,createHttpLink, InMemoryCache} from "@apollo/client";
 import {setContext} from "apollo-link-context";
+import BACKEND_URL from "../config";
 
 
-export const backendUri='http://192.168.1.6:4000/graphql';
+
+
 const httpLink = createHttpLink({
-    uri:backendUri,
+    uri:BACKEND_URL,
 });
 const authLink = setContext((_, { headers }) => {
     return {

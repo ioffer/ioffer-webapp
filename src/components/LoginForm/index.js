@@ -20,32 +20,32 @@ import {useLoginHooks} from "../../hooks/useQueriesHooks";
          email: "",
          password:""
      });
+     const [loader,setLoader]=useState(false);
      const alert = useAlert()
      const dispatch= useDispatch()
      const history = useHistory();
-     const [
-         getUser,
-         { error, data,loading }
-     ]  =useLoginHooks()
 
+
+     const onSuccess=(data)=>{
+         dispatch(login(data.loginUser.user))
+         localStorage.setItem('token', data.loginUser.token);
+         setLoader(false)
+         history.push('/')
+     }
+     const onError=(error)=>{
+         alert.error(error.message,{timeout:5000})
+         setLoader(false)
+     }
+     const [getUser, { loading }]  =useLoginHooks(onSuccess,onError)
 
      const handleChange = (name, value) => {
          setState({...state, [name]: value})
      }
 
-     useEffect(()=>{
-         if (error){
-             alert.error(error.message,{timeout:5000})
-         }
-         if (!loading&&data){
-             dispatch(login(data.loginUser.user))
-             localStorage.setItem('token', data.loginUser.token);
-             history.push('/')
-         }
-     },[error,loading])
      const submitForm=async(e)=> {
          e.preventDefault()
          if (state.email.length&&state.password.length){
+             setLoader(true)
              getUser(
                  {
                      variables: {
@@ -58,7 +58,7 @@ import {useLoginHooks} from "../../hooks/useQueriesHooks";
 
 
     return (
-        loading ? <Loader/> :
+        loading||loader ? <Loader/> :
                 <div className="all-item-alighn">
                     <h1 className="h1"> Sign in to ioffer</h1>
                     <div className="button-postion">

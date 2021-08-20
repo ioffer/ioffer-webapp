@@ -64,7 +64,7 @@ function EditProfile() {
    const handleImage= e =>{
     setFile(e.target.files[0])
     setLogoPath(URL.createObjectURL(e.target.files[0]))
-    imageUploader({ variables: { file  } }); 
+    imageUploader({ variables: { file :e.target.files[0] } });
    }
 
    const [addKyc, { data, loading, error }] = useMutation(addkyc);

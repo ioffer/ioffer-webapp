@@ -63,6 +63,7 @@ const UserRoot=()=>{
   }
   if (error){
     console.log(error)
+   return <div>{error.message}</div>
   }
   if (!loading&&data){
     dispatch(login(data.me))

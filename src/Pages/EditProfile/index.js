@@ -5,12 +5,16 @@ import TextField from '@material-ui/core/TextField';
 import { useHistory } from 'react-router-dom';
 import { login, selectUser } from '../../redux/reducer/userSlice';
 import {AddkycHook,ImageUploadHook} from '../../hooks/useMutationsHooks'
+import Loader from '../../components/Loader/loader';
+import { useAlert} from "react-alert";
 
 
 function EditProfile() {
   const history = useHistory();
+  const alert=useAlert();
   const dispatch= useDispatch()
   const user= useSelector(selectUser)
+  const [newData,setNewData]=useState([])
     const [editstate, setEditstate ] = useState({
         city: "",
         number: "",
@@ -36,10 +40,8 @@ function EditProfile() {
     setLogoPath(URL.createObjectURL(e.target.files[0]))
     imageUploader({ variables: { file :e.target.files[0] } });
    }
-
    const [addKyc, { data, loading, error }] = AddkycHook()
-  //  if (loading) return 'Submitting...';
-  //  if (error) return `Submission error! ${error.message}`;
+
   useEffect(() => {
     if (error) {
         alert.error(error.message,{timeout:4000})
@@ -48,7 +50,8 @@ function EditProfile() {
         alert.success("Profile Updated",{timeout:4000})
         history.push('/profile')
     }
-}, [data, loading, error])
+      }, [data, loading, error])
+
    const submitForm=(e)=>{
     e.preventDefault()
     addKyc({
@@ -76,13 +79,13 @@ function EditProfile() {
         postalCode: editstate.postcode
       }
     }))
-    
-   
-    console.log(login)
-    history.push("/profile")
+     console.log(login)
    }
+   
+   
  
     return (
+      loading ? <Loader/> :
         <div>
             <div className="edit-heading">
             <h2>Edit Profile</h2>
@@ -136,7 +139,6 @@ function EditProfile() {
           />
            <TextField
            fullWidth
-           defaultValue="44000"
             autoComplete="country"
             type="text"
             label="Country"

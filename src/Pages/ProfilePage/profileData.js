@@ -9,14 +9,14 @@ import React from "react";
 
 export const arrayProfile =[
     {
-        icon: <AddLocationIcon /> ,
-        title: "Country" ,
-        data: "country",
-    },
-    {
         icon: <CallIcon /> ,
         title: "Mobile" ,
         data: "mobile",
+    },
+    {
+        icon: <AddLocationIcon /> ,
+        title: "Country" ,
+        data: "country",
     },
     {
         icon: <EventIcon /> ,

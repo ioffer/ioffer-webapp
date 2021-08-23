@@ -1,10 +1,14 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import TextField from '@material-ui/core/TextField';
-import {gql, useMutation } from '@apollo/client'
 import { AddShopHook,ImageUploadHook } from '../../hooks/useMutationsHooks';
+import { selectUser } from '../../redux/reducer/userSlice';
+import {useSelector} from 'react-redux'
+import {useHistory} from 'react-router-dom'
 
 
 function VendorForm() {
+  const user= useSelector(selectUser)
+  const history = useHistory();
     const [addshop, setAddshop ] = useState({
         shopname: "",
         shopCategory: "",
@@ -12,7 +16,6 @@ function VendorForm() {
         website:"",
         location: "",
         tags: "",
-        logo: "",
         phonenumber: "",
     })
     const [file,setFile]=useState([])
@@ -21,22 +24,22 @@ function VendorForm() {
         setAddshop({...addshop, [name]: value})
    }
  
-    const handleimage= e =>{
-        setFile(e.target.files[0])
-        setLogoPath(URL.createObjectURL(e.target.files[0]))
-    }
+  //   const handleimage= e =>{
+  //       setFile(e.target.files[0])
+  //       setLogoPath(URL.createObjectURL(e.target.files[0]))
+  //   }
     
-    const [calluploadMutation]=ImageUploadHook({
-      onCompleted:data1 => {
-        console.log(data1);
-          // setImgPath(data1.imageUploader);
-          // alert.success("Source Uploaded",{timeout:1000})
-      },
-      onError:error1 => {
-          // alert.error(error1.toString(),{timeout:2000})
-          console.log(error1.toString())
-      }
-  });
+  //   const [calluploadMutation]=ImageUploadHook({
+  //     onCompleted:data1 => {
+  //       console.log(data1);
+  //         // setImgPath(data1.imageUploader);
+  //         // alert.success("Source Uploaded",{timeout:1000})
+  //     },
+  //     onError:error1 => {
+  //         // alert.error(error1.toString(),{timeout:2000})
+  //         console.log(error1.toString())
+  //     }
+  // });
   
     const [registerShop, { data, loading, error }] = AddShopHook()
       if (loading) return 'Submitting...';
@@ -44,9 +47,10 @@ function VendorForm() {
      
  const submitForm=(e)=>{
         e.preventDefault()
-        calluploadMutation({variables: {file}});
+        // calluploadMutation({variables: {file}});
         registerShop({
             variables:{
+              id:user.id,
               name: addshop.shopname,
               shopCategory: addshop.shopCategory,
               address: addshop.address,
@@ -54,22 +58,22 @@ function VendorForm() {
               tags: addshop.tags,
               phoneNumber: addshop.phonenumber,
               location: addshop.location,
-              logo: addshop.logo
             }
           })
-          calluploadMutation({
-            variables:{
-              file : file,
-            }
-          })
+          // calluploadMutation({
+          //   variables:{
+          //     file : file,
+          //   }
+          // })
   
          }
+      
     
     return (
         <div className="register">
              <h1 className="h1"> Get started absolutely free.</h1>
               <p>Free forever. No credit card needed.</p>
-              <form className="form-design" autoComplete="off" onSubmit={submitForm}>
+              <form className="register-form" autoComplete="off" onSubmit={submitForm}>
                  <div className="form-grid">
                     <TextField
                     fullWidth
@@ -131,13 +135,13 @@ function VendorForm() {
             onChange={(e) => handelChange('phonenumber', e.target.value)}
             value={addshop.phonenumber}
           />
-          <div >
+          {/* <div >
               <label>Upload Your Logo</label>
             <input  type="file" onChange={handleimage} />
            <div >
            <img className="profile-pic-size" src={logoPath} />
            </div>
-            </div>
+            </div> */}
             <button className="button">Register</button>
           
           </form>

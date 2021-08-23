@@ -43,8 +43,8 @@ mutation( $file: Upload!) {
 `
 
 export const addShop=gql`
-mutation ($name: String!, $website: String!, $shopCategory: String!,$logo: String!, $tags: String!, $phoneNumbers: String!, $location: String!, $address: String!, $mobileNumber: String!) {
-    registerShop(newShop: {name: $name, shopCategory: $shopCategory, logo: $logo, tags: $tags, website: $website, phoneNumbers:  $phoneNumbers, mobileNumber:$mobileNumber, location: $location, address: $address}) {
+mutation ($id: String!,$name: String!, $website: String!, $shopCategory: String!, $tags: String!, $phoneNumbers: String!, $location: String!, $address: String!, $mobileNumber: String!) {
+    registerShop(newShop: {name: $name, shopCategory: $shopCategory, tags: $tags, website: $website, phoneNumbers:  $phoneNumbers, mobileNumber:$mobileNumber, location: $location, address: $address}) {
       id
     }
   }`

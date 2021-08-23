@@ -5,7 +5,6 @@ import Checkbox from '@material-ui/core/Checkbox';
 import google from '../../assets/images/google.png'
 import './login-form.scss';
 import { useAlert} from "react-alert";
-
 import {Link} from 'react-router-dom';
 import { useHistory } from 'react-router';
 import { useDispatch } from 'react-redux';
@@ -68,7 +67,7 @@ import {useLoginHooks} from "../../hooks/useQueriesHooks";
                         </div>
                     </div>
                     <div className="all-item-alighn">
-                        <form className="form-design" autoComplete="off" onSubmit={submitForm}>
+                        <form className="register-form" autoComplete="off" onSubmit={submitForm}>
                             <TextField
                                 fullWidth
                                 // error={error}

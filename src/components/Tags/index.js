@@ -29,9 +29,9 @@ import './tags.scss'
             </li>
           ))}
         </ul>
+
         <input
           type="text"
-          label="Tags"
           onKeyUp={event => event.key === "Enter" ? addTags(event) : null}
           placeholder="Press enter to add tags"
         />

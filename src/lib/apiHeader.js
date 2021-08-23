@@ -4,8 +4,6 @@ import {setContext} from "apollo-link-context";
 import BACKEND_URL from "../config";
 
 
-
-
 const httpLink = createHttpLink({
     uri:BACKEND_URL,
 });

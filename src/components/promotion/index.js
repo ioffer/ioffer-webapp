@@ -51,10 +51,7 @@ function Promotion() {
                         <div className="promotion-flex">
                             <div className="text">
                             <img  src={promotion.title} width="50px" height="50px" />
-                            {
-                                seePdf &&
-                                <Pdffile/>
-                            }
+                           
                             
                             <p>{promotion.desc}</p>
                             <p>{promotion.sale}</p>

@@ -25,6 +25,7 @@ import { transitions, positions, Provider as AlertProvider } from 'react-alert'
 import AlertTemplate from 'react-alert-template-basic';
 import {useMe} from "./hooks/useQueriesHooks";
 
+
 const options = {
   position: positions.TOP_CENTER,
   timeout: 10000,

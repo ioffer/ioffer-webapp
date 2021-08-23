@@ -9,7 +9,7 @@ import {useHistory} from 'react-router-dom'
 import { useAlert} from "react-alert";
 import {RegisterUserHook} from "../../hooks/useMutationsHooks";
 import Loader from "../Loader/loader";
-import VendorRegister from '../VendorRegister';
+
 
 function RegisterForm() {
     const history = useHistory();
@@ -64,7 +64,7 @@ function RegisterForm() {
                 </div>
             </div>
 
-            <form className="form-design" autoComplete="off" onSubmit={submitForm} >
+            <form className="register-form" autoComplete="off" onSubmit={submitForm} >
                 <div className="form-grid">
                     <TextField
                         fullWidth
@@ -106,19 +106,11 @@ function RegisterForm() {
                         control={<Checkbox/>}
                         label="Remember me"
                     />
-                    <button className="button">Register</button>
-                  
-                </form>
-                    <button onClick={()=>setFormType("VendorForm")}>Login As a Vendor</button>
-                    <button onClick={()=>setFormType("UserForm")}>Login As a User</button>
-                {
-                    formType==="UserForm" && 
-                    <div>
-                        <VendorRegister />
-                    </div>
+                    <button className="button">Register as User</button>
                     
-                }
-
+                  
+                </form> 
+                <button className="button">Register as Vendor</button>
                 <div className="register">
                     <h4>Already have a account ?<Link to='/login'>Login</Link></h4>
                 </div>

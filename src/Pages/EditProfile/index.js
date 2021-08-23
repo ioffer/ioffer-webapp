@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import './edit-profile.scss'
 import {useDispatch, useSelector} from 'react-redux'
 import TextField from '@material-ui/core/TextField';
@@ -38,9 +38,17 @@ function EditProfile() {
    }
 
    const [addKyc, { data, loading, error }] = AddkycHook()
-   if (loading) return 'Submitting...';
-   if (error) return `Submission error! ${error.message}`;
-   console.log(data)
+  //  if (loading) return 'Submitting...';
+  //  if (error) return `Submission error! ${error.message}`;
+  useEffect(() => {
+    if (error) {
+        alert.error(error.message,{timeout:4000})
+    }
+    if (data&&!loading){
+        alert.success("Profile Updated",{timeout:4000})
+        history.push('/profile')
+    }
+}, [data, loading, error])
    const submitForm=(e)=>{
     e.preventDefault()
     addKyc({
@@ -73,6 +81,7 @@ function EditProfile() {
     console.log(login)
     history.push("/profile")
    }
+ 
     return (
         <div>
             <div className="edit-heading">

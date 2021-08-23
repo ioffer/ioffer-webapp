@@ -27,6 +27,7 @@ import {useLoginHooks} from "../../hooks/useQueriesHooks";
 
      const onSuccess=(data)=>{
          dispatch(login(data.loginUser.user))
+         // dispatch(userKyc(data.loginUser.user.kyc))
          localStorage.setItem('token', data.loginUser.token);
          setLoader(false)
          history.push('/')

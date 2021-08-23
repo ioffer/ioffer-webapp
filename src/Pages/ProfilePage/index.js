@@ -37,7 +37,7 @@ function ProfilePage() {
               }
             </div>
 
-           <Link to='/editprofile'><p className="manintext">Edit Profile</p></Link> 
+           <Link to='/editprofile'><p className="manintext">Edit KYC</p></Link>
         </div>
     )
 }

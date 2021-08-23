@@ -30,7 +30,7 @@ function ProfilePage() {
                          <span>{result.icon}</span>
                           <div className="profile-text">
                               <p>{result.title}</p>
-                              <h3>{result.data==='email'?user.email: kyc[result.data]}</h3>
+                              <h3>{result.data ==="email"?user.email: kyc[result.data]}</h3>
                           </div>
                       </div>
                  ))

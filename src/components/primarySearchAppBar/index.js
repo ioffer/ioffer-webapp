@@ -24,6 +24,7 @@ import VpnKeyIcon from '@material-ui/icons/VpnKey';
 import {useDispatch, useSelector} from 'react-redux'
 import { selectUser } from '../../redux/reducer/userSlice';
 import { logout } from '../../redux/reducer/userSlice';
+import ContactMailIcon from '@material-ui/icons/ContactMail';
 
 const useStyles = makeStyles((theme) => ({
     grow: {
@@ -185,7 +186,17 @@ export default function PrimarySearchAppBar() {
                             <StoreIcon/>
                         </IconButton>
                         <p>Add Shop</p>
-                    </MenuItem></Link>
+                    </MenuItem>
+                    </Link>
+                    
+                    <Link className="color-link" to="/editprofile"><MenuItem>
+                        <IconButton aria-label="show 4 new favorites" color="inherit">
+                            <ContactMailIcon/>
+                        </IconButton>
+                        <p>Add KYC</p>
+                    </MenuItem>
+                    </Link>
+                   
                     <MenuItem>
                         <IconButton aria-label="show 4 new favorites" color="inherit">
                             <Badge badgeContent={4} color="secondary">

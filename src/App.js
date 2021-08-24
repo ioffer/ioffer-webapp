@@ -15,8 +15,8 @@ import Dashboard from './Pages/Dashboard'
 import Login from './Pages/Login'
 import Register from './Pages/Register'
 import VendorShop from './Pages/VendorShop'
-import ProfilePage from './Pages/ProfilePage'
-import EditProfile from './Pages/EditProfile'
+import ShowKyc from './Pages/ShowKyc'
+import AddKyc from './Pages/AddKyc'
 import {login, } from './redux/reducer/userSlice'
 import {useDispatch} from 'react-redux'
 import React  from 'react'
@@ -24,6 +24,8 @@ import Loader from "./components/Loader/loader";
 import { transitions, positions, Provider as AlertProvider } from 'react-alert'
 import AlertTemplate from 'react-alert-template-basic';
 import {useMe} from "./hooks/useQueriesHooks";
+import ProfilePage from './Pages/ProfilePage'
+import EditKyc from './Pages/EditKyc'
 
 
 const options = {
@@ -48,8 +50,10 @@ const Root=()=>{
           <Route path='/login' component={Login} />
           <Route path='/register' component={Register} />
           <Route path='/vendorshop' component={VendorShop} />
-          <Route path="/profile" component={ProfilePage} />
-          <Route path='/editprofile' component={EditProfile} />
+          <Route path='/profile' component={ProfilePage} />
+          <Route path="/profile-info" component={ShowKyc} />
+          <Route path="/editkyc" component={EditKyc} />
+          <Route path='/editprofile' component={AddKyc} />
           <Route path='/dashboard'>
             <Dashboard />
           </Route>

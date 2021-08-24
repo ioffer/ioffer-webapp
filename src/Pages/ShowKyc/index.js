@@ -1,6 +1,6 @@
 import React from 'react'
 import './profile-page.scss'
-import {Link} from 'react-router-dom'
+import {Link, Redirect} from 'react-router-dom'
 import { selectUser } from '../../redux/reducer/userSlice';
 import { useSelector } from 'react-redux';
 import {arrayProfile} from "./profileData";
@@ -9,13 +9,13 @@ import ProfilePageHero from '../../components/ProfilePageHero';
 function ShowKyc() {
     const user= useSelector(selectUser)
     const {kyc}=user
-    console.log(kyc)
+    if (!kyc.city){
+        console.log(kyc)
+        return <Redirect to={'/edit_kyc'}/>
+    }
     return (
-        
         <div>
-            <ProfilePageHero />
-
-            
+            <ProfilePageHero status={true} avatar={false} />
             <div>
               {
                   arrayProfile.map((result)=>(
@@ -30,7 +30,7 @@ function ShowKyc() {
               }
             </div>
 
-           <Link to='/editkyc'><p className="manintext">Edit KYC</p></Link>
+           <Link to='/edit_kyc'><p className="manintext">Edit KYC</p></Link>
         </div>
     )
 }

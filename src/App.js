@@ -7,7 +7,7 @@ import Shops from './Pages/Shops'
 import Brands from './Pages/Brands'
 import './styles/global.scss'
 import {
-  BrowserRouter as Router,
+  BrowserRouter as Router,Redirect,
   Switch,
   Route,
 } from "react-router-dom";
@@ -17,8 +17,8 @@ import Register from './Pages/Register'
 import VendorShop from './Pages/VendorShop'
 import ShowKyc from './Pages/ShowKyc'
 import AddKyc from './Pages/AddKyc'
-import {login, } from './redux/reducer/userSlice'
-import {useDispatch} from 'react-redux'
+import {addkyc, login, selectUser,} from './redux/reducer/userSlice'
+import {useDispatch, useSelector} from 'react-redux'
 import React  from 'react'
 import Loader from "./components/Loader/loader";
 import { transitions, positions, Provider as AlertProvider } from 'react-alert'
@@ -26,6 +26,7 @@ import AlertTemplate from 'react-alert-template-basic';
 import {useMe} from "./hooks/useQueriesHooks";
 import ProfilePage from './Pages/ProfilePage'
 import EditKyc from './Pages/EditKyc'
+import {removeLocalStorage} from "./lib/services";
 
 
 const options = {
@@ -36,7 +37,10 @@ const options = {
 }
 
 
-const Root=()=>{
+const Root=({logged})=>{
+
+  const user= useSelector(selectUser)
+  logged=(!!user)||logged
   return(
       <Router>
         <PrimarySearchAppBar/>
@@ -47,16 +51,14 @@ const Root=()=>{
           <Route path='/promotions' component={Promotions} />
           <Route path='/shops' component={Shops} />
           <Route path='/brands' component={Brands} />
-          <Route path='/login' component={Login} />
-          <Route path='/register' component={Register} />
-          <Route path='/vendorshop' component={VendorShop} />
-          <Route path='/profile' component={ProfilePage} />
-          <Route path="/profile-info" component={ShowKyc} />
-          <Route path="/editkyc" component={EditKyc} />
-          <Route path='/editprofile' component={AddKyc} />
-          <Route path='/dashboard'>
-            <Dashboard />
-          </Route>
+          <Route path='/login'  component={()=>logged?<Redirect to={'/'}/>:<Login/>} />
+          <Route path='/register' component={()=>logged?<Redirect to={'/'}/>:<Register/>}/>
+          <Route path='/vendor_shop' component={VendorShop} />
+          <Route path="/user_kyc" component={ShowKyc} />
+          <Route path="/edit_kyc" component={EditKyc} />
+          <Route path='/user_profile' component={ProfilePage} />
+          <Route path='/edit_profile' component={AddKyc} />
+          <Route path='/dashboard' components={Dashboard}/>
         </Switch>
       </Router>
   )
@@ -68,23 +70,27 @@ const UserRoot=()=>{
     return <Loader/>
   }
   if (error){
-    console.log(error)
+    if (error.message.includes('Authentication')){
+      removeLocalStorage();
+      return <Root logged={false}/>
+    }
    return <div>{error.message}</div>
   }
   if (!loading&&data){
     dispatch(login(data.me))
-    return <Root/>
+    dispatch(addkyc(data.me.kyc))
+    return <Root logged={true}/>
   }
 
 }
 function App() {
 
 return (
-      <AlertProvider template={AlertTemplate} {...options}>
-        <div className="App">
-          {localStorage.getItem('token') ? <UserRoot/> : <Root/>}
-        </div>
-      </AlertProvider>
+    <AlertProvider template={AlertTemplate} {...options}>
+      <div className="App">
+        {localStorage.getItem('token') ? <UserRoot/> : <Root logged={false}/>}
+      </div>
+    </AlertProvider>
   );
 }
 

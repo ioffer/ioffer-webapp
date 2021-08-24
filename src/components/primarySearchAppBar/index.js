@@ -25,6 +25,7 @@ import {useDispatch, useSelector} from 'react-redux'
 import { selectUser } from '../../redux/reducer/userSlice';
 import { logout } from '../../redux/reducer/userSlice';
 import ContactMailIcon from '@material-ui/icons/ContactMail';
+import {removeLocalStorage} from "../../lib/services";
 
 const useStyles = makeStyles((theme) => ({
     grow: {
@@ -93,8 +94,8 @@ const useStyles = makeStyles((theme) => ({
 export default function PrimarySearchAppBar() {
     const user= useSelector(selectUser)
     const dispatch=useDispatch()
-    const signout =()=>{
-        localStorage.removeItem('token');
+    const signOut =()=>{
+        removeLocalStorage();
         dispatch(logout());
     }
    
@@ -152,7 +153,7 @@ export default function PrimarySearchAppBar() {
             {
                 !localStorage.getItem('token') &&
                 <div>
-                    <Link className="color-link" to="/login">
+                    <Link onClick={handleMenuClose} className="color-link" to="/login">
                         <MenuItem>
                             <IconButton aria-label="show 4 new favorites" color="inherit">
                                 <VpnKeyIcon/>
@@ -160,7 +161,7 @@ export default function PrimarySearchAppBar() {
                             <p>Login </p>
                         </MenuItem>
                     </Link>
-                    <MenuItem>
+                    <MenuItem onClick={handleMenuClose}>
                         <IconButton aria-label="show 11 new notifications" color="inherit">
                             <TextsmsIcon/>
                         </IconButton>
@@ -173,53 +174,66 @@ export default function PrimarySearchAppBar() {
             {
                 localStorage.getItem('token') &&
                 <div>
-                    <Link to="/profile" className="color-link"> <MenuItem>
-                        <IconButton aria-label="show 4 new favorites" color="inherit">
-                            <Avatar src={user.avatar} />
-                        </IconButton>
-                        {user ? <p>{user.userName} </p> : !user ? <p></p> : ""}
-
-                    </MenuItem></Link>
+                    <Link onClick={handleMenuClose} to="/profile" className="color-link">
+                        <MenuItem>
+                            <IconButton aria-label="show 4 new favorites" color="inherit">
+                                <Avatar src={user.avatar} />
+                            </IconButton>
+                            {user ? <p>{user.userName} </p> : !user ? <p></p> : ""}
+                        </MenuItem>
+                    </Link>
                     <hr/>
-                    <Link className="color-link" to="/vendorshop"><MenuItem>
+                    <Link  onClick={handleMenuClose} className="color-link" to="/vendor_shop">
+                        <MenuItem>
                         <IconButton aria-label="show 4 new favorites" color="inherit">
                             <StoreIcon/>
                         </IconButton>
                         <p>Add Shop</p>
                     </MenuItem>
                     </Link>
-                    
-                    <Link className="color-link" to="/editprofile"><MenuItem>
+                    <Link onClick={handleMenuClose} className="color-link" to="/user_profile"><MenuItem>
                         <IconButton aria-label="show 4 new favorites" color="inherit">
                             <ContactMailIcon/>
                         </IconButton>
-                        <p>Add KYC</p>
+                        <p>User Profile</p>
                     </MenuItem>
                     </Link>
-                   
-                    <MenuItem>
+                    <Link onClick={handleMenuClose} className="color-link" to="/user_kyc"><MenuItem>
                         <IconButton aria-label="show 4 new favorites" color="inherit">
-                            <Badge badgeContent={4} color="secondary">
-                                <FavoriteIcon/>
-                            </Badge>
+                            <ContactMailIcon/>
                         </IconButton>
-                        <p>Favourites</p>
+                        <p>User KYC</p>
                     </MenuItem>
-                    <MenuItem>
-                        <IconButton aria-label="show 11 new notifications" color="inherit">
-                            <Badge badgeContent={11} color="secondary">
-                                <NotificationsIcon/>
-                            </Badge>
-                        </IconButton>
-                        <p>Notifications</p>
-                    </MenuItem>
-                    <MenuItem>
-                        <IconButton aria-label="show 11 new notifications" color="inherit">
-                            <TextsmsIcon/>
-                        </IconButton>
-                        <p>About Us </p>
-                    </MenuItem>
-                    <Link to="/" className="color-link" onClick={signout}><MenuItem>
+                    </Link>
+                    <Link onClick={handleMenuClose} to={'favorite'}>
+                        <MenuItem>
+                            <IconButton aria-label="show 4 new favorites" color="inherit">
+                                <Badge badgeContent={4} color="secondary">
+                                    <FavoriteIcon/>
+                                </Badge>
+                            </IconButton>
+                            <p>Favourites</p>
+                        </MenuItem>
+                    </Link>
+                    <Link onClick={handleMenuClose} to={'notification'}>
+                        <MenuItem>
+                            <IconButton aria-label="show 11 new notifications" color="inherit">
+                                <Badge badgeContent={11} color="secondary">
+                                    <NotificationsIcon/>
+                                </Badge>
+                            </IconButton>
+                            <p>Notifications</p>
+                        </MenuItem>
+                    </Link>
+                    <Link onClick={handleMenuClose} to={'about_us'}>
+                        <MenuItem>
+                            <IconButton aria-label="show 11 new notifications" color="inherit">
+                                <TextsmsIcon/>
+                            </IconButton>
+                            <p>About Us </p>
+                        </MenuItem>
+                    </Link>
+                    <Link to="/" className="color-link" onClick={signOut}><MenuItem>
                         <IconButton aria-label="show 11 new notifications" color="inherit">
                             <ExitToAppIcon/>
                         </IconButton>

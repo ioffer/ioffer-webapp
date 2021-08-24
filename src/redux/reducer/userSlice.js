@@ -17,7 +17,7 @@ export const userSlice = createSlice({
 export const kycSlice = createSlice({
     name: 'kyc',
     initialState :{
-        user: null,
+        kyc: null,
     },
     reducers: {
        addkyc:( state, action)=>{
@@ -32,7 +32,7 @@ export const {login , logout }= userSlice.actions
 export const {addkyc , removekyc }= kycSlice.actions
 
 export const selectUser= (state) => state.user.user
-export const selectKyc=(state)=> state.kyc
+export const selectKyc=(state)=> state.kyc.kyc
 
 
   

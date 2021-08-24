@@ -4,7 +4,7 @@ import ProfilePageHero from '../../components/ProfilePageHero'
 function ProfilePage() {
     return (
         <div>
-            <ProfilePageHero />
+            <ProfilePageHero avatar={true} status={false} />
         </div>
     )
 }

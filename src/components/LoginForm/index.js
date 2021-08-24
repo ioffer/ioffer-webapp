@@ -8,7 +8,7 @@ import { useAlert} from "react-alert";
 import {Link} from 'react-router-dom';
 import { useHistory } from 'react-router';
 import { useDispatch } from 'react-redux';
-import { login } from '../../redux/reducer/userSlice';
+import { login,addkyc } from '../../redux/reducer/userSlice';
 import Loader from "../Loader/loader";
 import {useLoginHooks} from "../../hooks/useQueriesHooks";
 
@@ -27,7 +27,7 @@ import {useLoginHooks} from "../../hooks/useQueriesHooks";
 
      const onSuccess=(data)=>{
          dispatch(login(data.loginUser.user))
-         // dispatch(userKyc(data.loginUser.user.kyc))
+         dispatch(addkyc(data.loginUser.user.kyc))
          localStorage.setItem('token', data.loginUser.token);
          setLoader(false)
          history.push('/')

@@ -5,5 +5,5 @@ export const useMe=() =>{
     return useQuery(useMeQuery);
 }
 export const useLoginHooks=(onSuccess,onError) =>{
-    return useLazyQuery(loginUser,{onCompleted:data => onSuccess(data),onError:error => onError(error)})
+    return useLazyQuery(loginUser,{onError:error => onError(error),onCompleted:data => onSuccess(data)})
 }

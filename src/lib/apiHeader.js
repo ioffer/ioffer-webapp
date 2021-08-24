@@ -1,21 +1,20 @@
-// import {GraphQLClient} from "graphql-request";
-import {ApolloClient,createHttpLink, InMemoryCache} from "@apollo/client";
-import {setContext} from "apollo-link-context";
+import {ApolloClient,ApolloLink,concat, InMemoryCache} from "@apollo/client";
+import {createUploadLink} from "apollo-upload-client";
 import BACKEND_URL from "../config";
 
 
-const httpLink = createHttpLink({
-    uri:BACKEND_URL,
-});
-const authLink = setContext((_, { headers }) => {
-    return {
+const httpLink=createUploadLink({uri:BACKEND_URL});
+const authMiddleware = new ApolloLink((operation, forward) => {
+    operation.setContext({
         headers: {
-            ...headers,
-            Authorization: `${localStorage.getItem('token')?localStorage.getItem('token'):''}`
+            authorization: localStorage.getItem('token') || null,
         }
-    }
-});
+    });
+
+    return forward(operation);
+})
+
 export const client = new ApolloClient({
-    link: authLink.concat(httpLink),
+    link:  concat(authMiddleware,httpLink) ,
     cache: new InMemoryCache()
 });

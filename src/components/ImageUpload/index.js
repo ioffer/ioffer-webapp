@@ -1,16 +1,27 @@
 import React,{useState} from 'react'
-import {AddkycHook,ImageUploadHook} from '../../hooks/useMutationsHooks'
+import {ImageUploadHook} from '../../hooks/useMutationsHooks'
+
 function ImageUpload() {
-    const [file,setFile]=useState([])
+    const [onfile,setFile]=useState([])
     const [logoPath,setLogoPath]=useState(null)
-    const [imageUploader]=ImageUploadHook({
-        onCompleted: (data)=> console.log(data)
-       })
-        
-       const handleImage= e =>{
+
+    const onSuccess=(data)=>{
+        console.log(data)
+    }
+    const onError=(error)=>{
+        console.log(error)
+    }
+    const [imageUploader]=ImageUploadHook(onError,onSuccess)
+
+    const handleImage= e =>{
         setFile(e.target.files[0])
         setLogoPath(URL.createObjectURL(e.target.files[0]))
-        imageUploader({ variables: { file :e.target.files[0] } });
+        let file=e.target.files[0]
+        imageUploader({
+            variables: {file}
+        }).catch(err =>{
+            console.log(err)
+        });
        }
     return (
         <div>

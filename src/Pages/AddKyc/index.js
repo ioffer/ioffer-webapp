@@ -3,7 +3,7 @@ import './edit-profile.scss'
 import {useDispatch, useSelector} from 'react-redux'
 import TextField from '@material-ui/core/TextField';
 import { useHistory } from 'react-router-dom';
-import { login, selectUser } from '../../redux/reducer/userSlice';
+import { login, selectUser,selectKyc } from '../../redux/reducer/userSlice';
 import {AddkycHook} from '../../hooks/useMutationsHooks'
 import Loader from '../../components/Loader/loader';
 import { useAlert} from "react-alert";
@@ -15,6 +15,8 @@ function AddKyc() {
   const alert=useAlert();
   const dispatch= useDispatch()
   const user= useSelector(selectUser)
+  const kyc= useSelector(selectKyc)
+    const [loading,setLoading]=useState(false)
     const [editstate, setEditstate ] = useState({
       id:"",
       number: "",
@@ -32,33 +34,33 @@ function AddKyc() {
         setEditstate({...editstate, [name]: value})
    }
  
-   const [addKyc, { data, loading, error }] = AddkycHook()
+   // const [addKyc, { data, loading, error }] = AddkycHook()
 
-   useEffect(() => {
-    if (error) {
-        alert.error(error.message,{timeout:4000})
-    }
-    if (data&&!loading){
-        alert.success("Profile Updated",{timeout:4000})
-        history.push('/profile')
-    }
-  }, [data, loading, error])
+  //  useEffect(() => {
+  //   if (error) {
+  //       alert.error(error.message,{timeout:4000})
+  //   }
+  //   if (data&&!loading){
+  //       alert.success("Profile Updated",{timeout:4000})
+  //       history.push('/profile')
+  //   }
+  // }, [data, loading, error])
 
    const submitForm=(e)=>{
     e.preventDefault()
-    addKyc({
-        variables:{
-            id:user.id,
-            mobile: editstate.number,
-            city: editstate.city,
-            nationality: editstate.nationality,
-            country: editstate.country,
-            street: editstate.street,
-            birthDate: editstate.birthDate,
-            building: editstate.building,
-            postalCode: editstate.postcode
-          }
-    })
+    // addKyc({
+    //     variables:{
+    //         id:user.id,
+    //         mobile: editstate.number,
+    //         city: editstate.city,
+    //         nationality: editstate.nationality,
+    //         country: editstate.country,
+    //         street: editstate.street,
+    //         birthDate: editstate.birthDate,
+    //         building: editstate.building,
+    //         postalCode: editstate.postcode
+    //       }
+    // })
     
     console.log(login)
     history.push("/profile-info")

@@ -4,7 +4,7 @@ import { selectUser } from '../../redux/reducer/userSlice';
 import Avatar from '@material-ui/core/Avatar';
 
 
-function ProfilePageHero() {
+function ProfilePageHero({status,avatar}) {
     const user= useSelector(selectUser)
     return (
         <div>
@@ -13,10 +13,16 @@ function ProfilePageHero() {
                     <h2>{ user ? <p>{user.userName} </p> : !user ?  <p></p> : ""}</h2>
                     <p>{ user ? <p>{user.email} </p> : !user ?  <p></p> : ""}</p>
                 </div>
-                 
-                <div className="image-postion">
-                    <Avatar className="avatar-size" src={user.avatar} />
-                </div>
+                 {status&&<div>
+                     Status
+                 </div>}
+                 {
+                     avatar&&
+                     <div className="image-postion">
+                         <Avatar className="avatar-size" src={user.avatar} />
+                     </div>
+                 }
+
                
              </div>
         </div>

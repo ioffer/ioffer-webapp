@@ -16,7 +16,6 @@ import Login from './Pages/Login'
 import Register from './Pages/Register'
 import VendorShop from './Pages/VendorShop'
 import ShowKyc from './Pages/ShowKyc'
-import AddKyc from './Pages/AddKyc'
 import {addkyc, login, selectUser,} from './redux/reducer/userSlice'
 import {useDispatch, useSelector} from 'react-redux'
 import React  from 'react'
@@ -57,7 +56,6 @@ const Root=({logged})=>{
           <Route path="/user_kyc" component={ShowKyc} />
           <Route path="/edit_kyc" component={EditKyc} />
           <Route path='/user_profile' component={ProfilePage} />
-          <Route path='/edit_profile' component={AddKyc} />
           <Route path='/dashboard' components={Dashboard}/>
         </Switch>
       </Router>

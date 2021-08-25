@@ -6,7 +6,7 @@ import {addkyc, selectKyc,selectUser} from '../../redux/reducer/userSlice';
 import {AddKycHook} from '../../hooks/useMutationsHooks'
 import Loader from '../../components/Loader/loader';
 import { useAlert} from "react-alert";
-
+import './edit-kyc.scss'
 
 function EditKyc() {
     const history = useHistory();

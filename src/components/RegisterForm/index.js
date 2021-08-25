@@ -14,30 +14,31 @@ import Loader from "../Loader/loader";
 function RegisterForm() {
     const history = useHistory();
     const alert=useAlert();
-    const [formType,setFormType]=useState("")
+    const [loader,setLoader]=useState(false);
     const [state, setState] = useState({
         fname: "",
         userName: "",
         email: "",
         password: ""
     })
-
-    const [register, {data, loading, error}] = RegisterUserHook()
+    const onSuccess=(data)=>{ 
+        console.log(data,"===")
+        alert.success("Successfully Register",{timeout:4000})
+        setLoader(false)
+        history.push('/login')
+    }
+    const onError=(error)=>{
+        console.log(error,"===")
+        alert.error(error.message,{timeout:4000})
+        setLoader(false)
+    }
+    const [register, { loading}] = RegisterUserHook(onSuccess,onError)
 
     const handelChange = (name, value) => {
         setState({...state, [name]: value})
     }
-    useEffect(() => {
-        if (error) {
-            alert.error(error.message,{timeout:4000})
-        }
-        if (data&&!loading){
-            alert.success("Successfully Register",{timeout:4000})
-            history.push('/login')
-        }
-    }, [data, loading, error])
-
-    const submitForm = (e) => {
+  
+    const submitForm = async(e) => {
         e.preventDefault()
         register({
             variables: {
@@ -46,7 +47,7 @@ function RegisterForm() {
                 email: state.email,
                 password: state.password
             }
-        }).catch(err => {
+        }).catch(err =>{
             console.log(err)
         })
     }
@@ -115,7 +116,7 @@ function RegisterForm() {
                     <h4>Already have a account ?<Link to='/login'>Login</Link></h4>
                 </div>
     </div>
-    )
+    ) 
 }
 
 export default RegisterForm

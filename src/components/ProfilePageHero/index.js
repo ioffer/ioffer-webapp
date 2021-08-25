@@ -1,30 +1,31 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
 import { selectUser } from '../../redux/reducer/userSlice';
-import Avatar from '@material-ui/core/Avatar';
-
+import './profile-image-hero.scss'
+import ImageUpload from '../ImageUpload';
 
 function ProfilePageHero({status,avatar}) {
     const user= useSelector(selectUser)
+    const {kyc}=user
     return (
         <div>
              <div  className="profile-banner">
-                <div className="font-postion">
-                    <h2>{ user ? <p>{user.userName} </p> : !user ?  <p></p> : ""}</h2>
-                    <p>{ user ? <p>{user.email} </p> : !user ?  <p></p> : ""}</p>
+                <div className="font-postion"> 
+                  <h2> User profile</h2>
                 </div>
-                 {status&&<div>
-                     Status
+                 {status&&<div className="status-updaing">
+                     <h4 className="font-color">{user.kyc.kycStatus}</h4>
                  </div>}
                  {
                      avatar&&
-                     <div className="image-postion">
-                         <Avatar className="avatar-size" src={user.avatar} />
+                     <div className="image-upload">
+                        <ImageUpload />
                      </div>
                  }
-
                
              </div>
+           
+           
         </div>
     )
 }

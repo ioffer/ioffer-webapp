@@ -153,8 +153,8 @@ export default function PrimarySearchAppBar() {
             {
                 !localStorage.getItem('token') &&
                 <div>
-                    <Link onClick={handleMenuClose} className="color-link" to="/login">
-                        <MenuItem>
+                    <Link  className="color-link" to="/login">
+                        <MenuItem onClick={handleMenuClose}>
                             <IconButton aria-label="show 4 new favorites" color="inherit">
                                 <VpnKeyIcon/>
                             </IconButton>
@@ -174,7 +174,7 @@ export default function PrimarySearchAppBar() {
             {
                 localStorage.getItem('token') &&
                 <div>
-                    <Link onClick={handleMenuClose} to="/profile" className="color-link">
+                    <Link onClick={handleMenuClose} className="color-link">
                         <MenuItem>
                             <IconButton aria-label="show 4 new favorites" color="inherit">
                                 <Avatar src={user.avatar} />
@@ -205,7 +205,7 @@ export default function PrimarySearchAppBar() {
                         <p>User KYC</p>
                     </MenuItem>
                     </Link>
-                    <Link onClick={handleMenuClose} to={'favorite'}>
+                    <Link className="color-link" onClick={handleMenuClose} to={'favorite'}>
                         <MenuItem>
                             <IconButton aria-label="show 4 new favorites" color="inherit">
                                 <Badge badgeContent={4} color="secondary">
@@ -215,7 +215,7 @@ export default function PrimarySearchAppBar() {
                             <p>Favourites</p>
                         </MenuItem>
                     </Link>
-                    <Link onClick={handleMenuClose} to={'notification'}>
+                    <Link  className="color-link" onClick={handleMenuClose} to={'notification'}>
                         <MenuItem>
                             <IconButton aria-label="show 11 new notifications" color="inherit">
                                 <Badge badgeContent={11} color="secondary">
@@ -225,7 +225,7 @@ export default function PrimarySearchAppBar() {
                             <p>Notifications</p>
                         </MenuItem>
                     </Link>
-                    <Link onClick={handleMenuClose} to={'about_us'}>
+                    <Link className="color-link" onClick={handleMenuClose} to={'about_us'}>
                         <MenuItem>
                             <IconButton aria-label="show 11 new notifications" color="inherit">
                                 <TextsmsIcon/>

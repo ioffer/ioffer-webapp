@@ -4,7 +4,7 @@ import './styles.scss'
 const Loader = () => {
     return (
         <div className={'loading-container'}>
-            <CircularProgress size={100} color="secondary" />
+            <CircularProgress size={100} color="primary" />
         </div>
     );
 };

@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, { useState} from 'react'
 import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
@@ -13,8 +13,7 @@ import Loader from "../Loader/loader";
 import {useLoginHooks} from "../../hooks/useQueriesHooks";
 
 
-
- function LoginForm() {
+function LoginForm() {
      const [state, setState ] = useState({
          email: "",
          password:""
@@ -56,7 +55,6 @@ import {useLoginHooks} from "../../hooks/useQueriesHooks";
          }
      }
 
-
     return (
         loading||loader ? <Loader/> :
                 <div className="all-item-alighn">
@@ -71,7 +69,6 @@ import {useLoginHooks} from "../../hooks/useQueriesHooks";
                         <form className="register-form" autoComplete="off" onSubmit={submitForm}>
                             <TextField
                                 fullWidth
-                                // error={error}
                                 autoComplete="username"
                                 type="email"
                                 label="Email address"
@@ -82,7 +79,6 @@ import {useLoginHooks} from "../../hooks/useQueriesHooks";
 
                             <TextField
                                 fullWidth
-                                // error={error}
                                 autoComplete="current-password"
                                 type="password"
                                 label="Password"

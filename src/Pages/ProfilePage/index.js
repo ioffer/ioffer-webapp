@@ -59,15 +59,7 @@ function ProfilePage() {
              
             <ProfilePageHero avatar={true} editUser={editUser} handleChange={handleChange} user={user} status={false} />
             <div>
-                <div className="profile-info">
-                         <EmailIcon />
-                          <div className="profile-text">
-                              <p>Email</p>
-                              <h3>{user.email}</h3>
-                          </div>
-                 </div>
-                 <form autoComplete="off" onSubmit={submitProfile}>
-                <div className="profile-info">
+            <div className="profile-info">
                          <AccountCircleIcon />
                           <div className="profile-text">
                               <p>Full Name</p>
@@ -80,19 +72,22 @@ function ProfilePage() {
                              />
                           </div>
                  </div>
+                <div className="profile-info">
+                         <EmailIcon />
+                          <div className="profile-text">
+                              <p>Email</p>
+                              <h3>{user.email}</h3>
+                          </div>
+                 </div>
+                 <form autoComplete="off" onSubmit={submitProfile}>
+             
                  <div className="profile-info">
                          <FaceIcon />
                           <div className="profile-text">
                               <p>User Name</p>
-                              <TextField
-                                fullWidth
-                                autoComplete="dateofbirth"
-                                type="text"
-                                onChange={(e) => handleChange('userName', e.target.value)}
-                                value={editUser.userName}
-                             />
+                              <h3>{user.userName}</h3>
                           </div>
-                </div>
+                 </div>
                 <div className="profile-button-info">
                 <button disabled={matchObject(editUser, user)} className="button">Save</button>
             </div>

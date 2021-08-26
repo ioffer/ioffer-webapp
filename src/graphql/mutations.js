@@ -48,3 +48,12 @@ mutation ($id: String!,$name: String!, $website: String!, $shopCategory: String!
       id
     }
   }`
+
+  export const editUser= gql`
+  mutation ($fullName:String, $avatar:String,$userName: String!) {
+    editUser(newUser: {fullName: $fullName, avatar: $avatar,userName:$userName}){
+      avatar
+      fullName
+      userName
+    }
+  }`

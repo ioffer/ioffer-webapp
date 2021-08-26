@@ -5,6 +5,8 @@ import IconButton from '@material-ui/core/IconButton';
 import PhotoCamera from '@material-ui/icons/PhotoCamera';
 import { makeStyles } from '@material-ui/core/styles';
 import './imgae-upload.scss'
+import { useDispatch, useSelector } from 'react-redux';
+import { login, selectUser } from '../../redux/reducer/userSlice';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -26,14 +28,17 @@ const useStyles = makeStyles((theme) => ({
   }));
 function ImageUpload() {
     const classes = useStyles();
+    const dispatch= useDispatch()
+    const user= useSelector(selectUser)
     const [onfile,setFile]=useState([])
     const [logoPath,setLogoPath]=useState(null)
 
     const onSuccess=(data)=>{
         console.log(data)
+        dispatch(login(user))
     }
     const onError=(error)=>{
-        console.log("upload-error",error)
+        alert.error(error.message,{timeout:4000})
     }
     const [imageUploader]=ImageUploadHook(onError,onSuccess)
 

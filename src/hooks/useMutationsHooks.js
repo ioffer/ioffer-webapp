@@ -1,5 +1,5 @@
 import {  useMutation } from '@apollo/client';
-import {addkyc, addShop, imageUploader, registerUser} from "../graphql/mutations";
+import {addkyc, addShop, editUser, imageUploader, registerUser} from "../graphql/mutations";
 
 export const RegisterUserHook=(onError,onSuccess)=>{
     return useMutation(registerUser,{onError:error => onError(error),onCompleted:data => onSuccess(data)})
@@ -12,4 +12,7 @@ export const ImageUploadHook=(onError,onSuccess)=>{
 }
 export const AddShopHook=()=>{
     return useMutation(addShop)
+}
+export const EditUserHook=(onError,onSuccess)=>{
+    return useMutation( editUser, {onError:error =>onError(error),onCompleted:data => onSuccess(data) })
 }

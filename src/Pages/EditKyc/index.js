@@ -51,7 +51,6 @@ function EditKyc() {
                 console.log(err)
             })
         }
-
    }
  
     return (

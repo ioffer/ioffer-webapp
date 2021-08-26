@@ -1,12 +1,10 @@
-import React,{useState} from 'react'
+import React from 'react'
 import {ImageUploadHook} from '../../hooks/useMutationsHooks'
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import PhotoCamera from '@material-ui/icons/PhotoCamera';
 import { makeStyles } from '@material-ui/core/styles';
 import './imgae-upload.scss'
-import { useDispatch, useSelector } from 'react-redux';
-import { login, selectUser } from '../../redux/reducer/userSlice';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -26,16 +24,11 @@ const useStyles = makeStyles((theme) => ({
         height: theme.spacing(3),
       }
   }));
-function ImageUpload() {
+function ImageUpload({handleChange,editUser}) {
     const classes = useStyles();
-    const dispatch= useDispatch()
-    const user= useSelector(selectUser)
-    const [onfile,setFile]=useState([])
-    const [logoPath,setLogoPath]=useState(null)
 
     const onSuccess=(data)=>{
-        console.log(data)
-        dispatch(login(user))
+        handleChange('avatar',data.imageUploader)
     }
     const onError=(error)=>{
         alert.error(error.message,{timeout:4000})
@@ -43,9 +36,8 @@ function ImageUpload() {
     const [imageUploader]=ImageUploadHook(onError,onSuccess)
 
     const handleImage= e =>{
-        setFile(e.target.files[0])
-        setLogoPath(URL.createObjectURL(e.target.files[0]))
         let file=e.target.files[0]
+        console.log(file)
         imageUploader({
             variables: {file:file}
         }).catch(err =>{
@@ -56,13 +48,13 @@ function ImageUpload() {
         <div>
             <div>
                     <div >
-                        <Avatar className={classes.large} src={logoPath} />
+                        <Avatar className={classes.large} src={editUser.avatar} />
                     </div>
                     <div className="camera-icon">
                     <input accept="image/*"  className={classes.input} id="icon-button-file" type="file" onChange={handleImage} />
                 <label htmlFor="icon-button-file">
                     <IconButton  style={{background: "#3F51B5",color:"white"}} aria-label="upload picture" component="span">
-                    <PhotoCamera  className={classes.small} />
+                         <PhotoCamera  className={classes.small} />
                     </IconButton>
                 </label>
                 </div>

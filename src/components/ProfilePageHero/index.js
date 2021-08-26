@@ -1,12 +1,8 @@
 import React from 'react'
-import { useSelector } from 'react-redux';
-import { selectUser } from '../../redux/reducer/userSlice';
 import './profile-image-hero.scss'
 import ImageUpload from '../ImageUpload';
 
-function ProfilePageHero({status,avatar}) {
-    const user= useSelector(selectUser)
-    const {kyc}=user
+function ProfilePageHero({status,avatar,user,kyc,handleChange,editUser}) {
     return (
         <div>
              <div  className="profile-banner">
@@ -14,12 +10,12 @@ function ProfilePageHero({status,avatar}) {
                   <h2> User profile</h2>
                 </div>
                  {status&&<div className="status-updaing">
-                     <h4 className="font-color">{user.kyc.kycStatus}</h4>
+                     <h4 className="font-color">{kyc.kycStatus}</h4>
                  </div>}
                  {
                      avatar&&
                      <div className="image-upload">
-                        <ImageUpload />
+                        <ImageUpload editUser={editUser} handleChange={handleChange} avatarUrl={user.avatar} />
                      </div>
                  }
                

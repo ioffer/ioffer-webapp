@@ -3,3 +3,6 @@ export const removeLocalStorage=()=>{
         localStorage.removeItem('token')
     }
 }
+export const matchObject=(oldValue,newValue)=>{
+    return JSON.stringify(newValue) === JSON.stringify(oldValue);
+}

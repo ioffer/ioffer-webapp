@@ -11,6 +11,7 @@ import TextField from '@material-ui/core/TextField';
 import {useHistory} from 'react-router-dom'
 import { useAlert} from "react-alert";
 import Loader from '../../components/Loader/loader';
+import {matchObject} from "../../lib/services";
 
 function ProfilePage() {
     const user= useSelector(selectUser)
@@ -25,6 +26,7 @@ function ProfilePage() {
 
     const onSuccess=(data)=>{
         if (data){
+            console.log(data)
             alert.success("User Updated",{timeout:4000})
             dispatch(login(editUser))
             history.push('/user_profile')
@@ -33,29 +35,29 @@ function ProfilePage() {
     const onError=(error)=>{
         alert.error(error.message,{timeout:4000})
     }
-    const [edituser, { loading}] = EditUserHook(onSuccess,onError)
+    const [updateUser, { loading}] = EditUserHook(onError,onSuccess)
   
     const submitProfile = (e) => {
         e.preventDefault()
-        if(JSON.stringify(editUser) === JSON.stringify(user)){
+        if(matchObject(editUser,user)){
             alert.error("You Did not change",{timeout:1000})
-        }else{
-        edituser({
-            variables: {
-              avatar:editUser.avatar,
-              fullName: editUser.fullName,
-            }
-        }).catch(err =>{
-            console.log(err)
-        })
+        }else {
+            updateUser({
+                variables: {
+                  avatar:editUser.avatar,
+                  fullName: editUser.fullName,
+                }
+            }).catch(err =>{
+                console.log(err)
+            })
+
+        }
     }
-    }
-    
     return (
         loading ? <Loader/> :
         <div> 
              
-            <ProfilePageHero avatar={true} status={false} />
+            <ProfilePageHero avatar={true} editUser={editUser} handleChange={handleChange} user={user} status={false} />
             <div>
             <div className="profile-info">
                          <AccountCircleIcon />
@@ -88,7 +90,7 @@ function ProfilePage() {
                           </div>
                  </div>
                 <div className="profile-button-info">
-                <button  className="button">Save</button>
+                <button disabled={matchObject(editUser, user)} className="button">Save</button>
             </div>
                    </form>      
             </div>

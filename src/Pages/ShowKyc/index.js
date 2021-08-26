@@ -1,21 +1,20 @@
 import React from 'react'
 import './profile-page.scss'
 import {Link, Redirect} from 'react-router-dom'
-import { selectUser } from '../../redux/reducer/userSlice';
+import { selectUser,selectKyc } from '../../redux/reducer/userSlice';
 import { useSelector } from 'react-redux';
 import {arrayProfile} from "./profileData";
 import ProfilePageHero from '../../components/ProfilePageHero';
 
 function ShowKyc() {
+    const kyc= useSelector(selectKyc)
     const user= useSelector(selectUser)
-    const {kyc}=user
     if (!kyc.city){
-        console.log(kyc)
         return <Redirect to={'/edit_kyc'}/>
     }
     return (
         <div>
-            <ProfilePageHero status={true} avatar={false} />
+            <ProfilePageHero status={true} kyc={kyc} avatar={false} />
             <div>
               {
                   arrayProfile.map((result)=>(

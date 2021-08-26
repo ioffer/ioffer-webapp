@@ -11,11 +11,12 @@ mutation ($name:String!, $userName: String!, $email:String!, $password:String!){
 }
 `;
 
-export const addkyc= gql`
+export const addKyc= gql`
 mutation ($id: String!,$mobile: String!, $nationality: String!, $city: String!, $birthDate:String!, $postalCode: String!,$country:String!,$building: String!,$street: String!){
     addKyc(
       id: $id,
       mobile: $mobile,
+      kycStatus: PENDING,
       nationality:  $nationality,
       city: $city,
       country: $country,

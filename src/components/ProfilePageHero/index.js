@@ -3,6 +3,7 @@ import './profile-image-hero.scss'
 import ImageUpload from '../ImageUpload';
 
 function ProfilePageHero({status,avatar,user,kyc,handleChange,editUser}) {
+    console.log(kyc)
     return (
         <div>
              <div  className="profile-banner">

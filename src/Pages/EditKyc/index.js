@@ -21,6 +21,8 @@ function EditKyc() {
     const onSuccess=(data)=>{
         if (data){
             alert.success("KYC Updated",{timeout:4000})
+            handleChange('kycStatus',"PENDING")
+            console.log(editState)
             dispatch(addkyc(editState))
             history.push('/user_kyc')
         }

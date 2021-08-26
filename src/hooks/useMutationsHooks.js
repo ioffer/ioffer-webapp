@@ -10,8 +10,8 @@ export const AddKycHook=(onError,onSuccess)=>{
 export const ImageUploadHook=(onError,onSuccess)=>{
     return useMutation(imageUploader,{onError:error =>onError(error),onCompleted:data => onSuccess(data) })
 }
-export const AddShopHook=()=>{
-    return useMutation(addShop)
+export const AddShopHook=(onError,onSuccess)=>{
+    return useMutation(addShop,{onError:error =>onError(error),onCompleted:data => onSuccess(data) })
 }
 export const EditUserHook=(onError,onSuccess)=>{
     return useMutation( editUser, {onError:error =>onError(error),onCompleted:data => onSuccess(data) })

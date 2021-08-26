@@ -63,6 +63,7 @@ function ProfilePage() {
                               <p>Full Name</p>
                               <TextField
                                 fullWidth
+                                className="input-font-style"
                                 autoComplete="dateofbirth"
                                 type="text"
                                 onChange={(e) => handleChange('fullName', e.target.value)}

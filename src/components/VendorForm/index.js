@@ -1,14 +1,17 @@
-import React,{useState,useEffect} from 'react'
+import React,{useState} from 'react'
 import TextField from '@material-ui/core/TextField';
 import { AddShopHook,ImageUploadHook } from '../../hooks/useMutationsHooks';
 import { selectUser } from '../../redux/reducer/userSlice';
 import {useSelector} from 'react-redux'
 import {useHistory} from 'react-router-dom'
+import ImageUpload from '../ImageUpload';
+import Loader from '../Loader/loader';
 
 
 function VendorForm() {
   const user= useSelector(selectUser)
   const history = useHistory();
+  const [loader,setLoader]=useState(false);
     const [addshop, setAddshop ] = useState({
         shopname: "",
         shopCategory: "",
@@ -23,31 +26,23 @@ function VendorForm() {
     const handelChange = (name, value) => {
         setAddshop({...addshop, [name]: value})
    }
- 
-  //   const handleimage= e =>{
-  //       setFile(e.target.files[0])
-  //       setLogoPath(URL.createObjectURL(e.target.files[0]))
-  //   }
-    
-  //   const [calluploadMutation]=ImageUploadHook({
-  //     onCompleted:data1 => {
-  //       console.log(data1);
-  //         // setImgPath(data1.imageUploader);
-  //         // alert.success("Source Uploaded",{timeout:1000})
-  //     },
-  //     onError:error1 => {
-  //         // alert.error(error1.toString(),{timeout:2000})
-  //         console.log(error1.toString())
-  //     }
-  // });
-  
-    const [registerShop, { data, loading, error }] = AddShopHook()
-      if (loading) return 'Submitting...';
-      if (error) return `Submission error! ${error.message}`;
+
+   const onSuccess=(data)=>{ 
+    console.log(data,"===")
+    alert.success("Successfully Register",{timeout:4000})
+    setLoader(false)
+    history.push('/login')
+  }
+  const onError=(error)=>{
+      console.log(error,"===")
+      alert.error(error.message,{timeout:4000})
+      setLoader(false)
+  }
+    const [registerShop, { data, loading, error }] = AddShopHook(onSuccess,onError)
+     
      
  const submitForm=(e)=>{
         e.preventDefault()
-        // calluploadMutation({variables: {file}});
         registerShop({
             variables:{
               id:user.id,
@@ -60,16 +55,11 @@ function VendorForm() {
               location: addshop.location,
             }
           })
-          // calluploadMutation({
-          //   variables:{
-          //     file : file,
-          //   }
-          // })
-  
          }
       
     
     return (
+      loading ? <Loader/> :
         <div className="register">
              <h1 className="h1"> Get started absolutely free.</h1>
               <p>Free forever. No credit card needed.</p>
@@ -135,13 +125,9 @@ function VendorForm() {
             onChange={(e) => handelChange('phonenumber', e.target.value)}
             value={addshop.phonenumber}
           />
-          {/* <div >
-              <label>Upload Your Logo</label>
-            <input  type="file" onChange={handleimage} />
-           <div >
-           <img className="profile-pic-size" src={logoPath} />
-           </div>
-            </div> */}
+          <div className="shop-logo">
+          <ImageUpload />
+          </div>
             <button className="button">Register</button>
           
           </form>

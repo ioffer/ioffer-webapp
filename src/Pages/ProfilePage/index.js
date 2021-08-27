@@ -39,7 +39,7 @@ function ProfilePage() {
   
     const submitProfile = (e) => {
         e.preventDefault()
-        if(matchObject(editUser,user)){
+        if(JSON.stringify(editUser) === JSON.stringify(user)){
             alert.error("You Did not change",{timeout:1000})
         }else {
             updateUser({
@@ -56,8 +56,7 @@ function ProfilePage() {
     return (
         loading ? <Loader/> :
         <div> 
-             
-            <ProfilePageHero avatar={true} editUser={editUser} handleChange={handleChange} user={user} status={false} />
+             <ProfilePageHero avatar={true} editUser={editUser} handleChange={handleChange} user={user} status={false} />
             <div>
             <div className="profile-info">
                          <AccountCircleIcon />

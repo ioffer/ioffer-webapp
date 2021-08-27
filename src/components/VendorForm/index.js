@@ -6,10 +6,13 @@ import {useSelector} from 'react-redux'
 import {useHistory} from 'react-router-dom'
 import ImageUpload from '../ImageUpload';
 import Loader from '../Loader/loader';
-
+import TagsInput from '../Tags';
+import { useAlert} from "react-alert";
 
 function VendorForm() {
   const user= useSelector(selectUser)
+  const alert=useAlert()
+  const selectedTags = tags => {console.log(tags)};
   const history = useHistory();
   const [loader,setLoader]=useState(false);
     const [addshop, setAddshop ] = useState({
@@ -43,18 +46,18 @@ function VendorForm() {
      
  const submitForm=(e)=>{
         e.preventDefault()
-        registerShop({
-            variables:{
-              id:user.id,
-              name: addshop.shopname,
-              shopCategory: addshop.shopCategory,
-              address: addshop.address,
-              website:  addshop.website,
-              tags: addshop.tags,
-              phoneNumber: addshop.phonenumber,
-              location: addshop.location,
-            }
-          })
+        // registerShop({
+        //     variables:{
+        //       id:user.id,
+        //       name: addshop.shopname,
+        //       shopCategory: addshop.shopCategory,
+        //       address: addshop.address,
+        //       website:  addshop.website,
+        //       tags: addshop.tags,
+        //       phoneNumber: addshop.phonenumber,
+        //       location: addshop.location,
+        //     }
+        //   })
          }
       
     
@@ -99,14 +102,7 @@ function VendorForm() {
                 onChange={(e) => handelChange('website', e.target.value)}
                 value={addshop.website}
             />
-             <TextField
-                fullWidth
-                autoComplete="tags"
-                type="text"
-                label="Tags"
-                onChange={(e) => handelChange('tags', e.target.value)}
-                value={addshop.tags}
-            />
+           <TagsInput  selectedTags={selectedTags} />
              <TextField
                 fullWidth
                 autoComplete="Location"

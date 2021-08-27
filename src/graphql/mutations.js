@@ -51,10 +51,9 @@ mutation ($id: String!,$name: String!, $website: String!, $shopCategory: String!
   }`
 
   export const editUser= gql`
-  mutation ($fullName:String, $avatar:String,$userName: String!) {
-    editUser(newUser: {fullName: $fullName, avatar: $avatar,userName:$userName}){
+  mutation ($fullName:String, $avatar:String) {
+    editUser(newUser: {fullName: $fullName, avatar: $avatar}){
       avatar
       fullName
-      userName
     }
   }`

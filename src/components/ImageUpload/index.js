@@ -47,10 +47,9 @@ function ImageUpload({handleChange,editUser}) {
     return (
         <div>
             <div>
-                    <div >
-                        <Avatar className={classes.large} src={editUser.avatar} />
-                    </div>
-                    <div className="camera-icon">
+                    <div className="main-imageupload-div">
+                        <Avatar className={classes.large} src={editUser} />
+                        <div className="camera-icon">
                     <input accept="image/*"  className={classes.input} id="icon-button-file" type="file" onChange={handleImage} />
                 <label htmlFor="icon-button-file">
                     <IconButton  style={{background: "#3F51B5",color:"white"}} aria-label="upload picture" component="span">
@@ -58,6 +57,8 @@ function ImageUpload({handleChange,editUser}) {
                     </IconButton>
                 </label>
                 </div>
+                    </div>
+                   
                     </div>
         </div>
     )

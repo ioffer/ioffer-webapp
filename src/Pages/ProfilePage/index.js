@@ -55,37 +55,37 @@ function ProfilePage() {
     }
     return (
         loading ? <Loader/> :
-        <div> 
-             <ProfilePageHero avatar={true} editUser={editUser} handleChange={handleChange} user={user} status={false} />
-            <div>
+        <div > 
+             <ProfilePageHero  avatar={true} editUser={editUser} handleChange={handleChange} user={user} status={false} />
+            <div className="top-gap">
             <div className="profile-info">
-                         <AccountCircleIcon />
-                          <div className="profile-text">
-                              <p>Full Name</p>
-                              <TextField
+                 <span><AccountCircleIcon /></span>
+                     <div className="profile-text">
+                         <p>Full Name</p>
+                         <TextField
                                 fullWidth
                                 className="input-font-style"
                                 autoComplete="dateofbirth"
                                 type="text"
                                 onChange={(e) => handleChange('fullName', e.target.value)}
-                                 value={editUser.fullName}
+                                value={editUser.fullName}
                              />
-                          </div>
+                     </div>
                  </div>
                 <div className="profile-info">
-                         <EmailIcon />
+                        <span><EmailIcon /></span> 
                           <div className="profile-text">
                               <p>Email</p>
-                              <h3>{user.email}</h3>
+                              <h5>{user.email}</h5>
                           </div>
                  </div>
                  <form autoComplete="off" onSubmit={submitProfile}>
              
                  <div className="profile-info">
-                         <FaceIcon />
+                        <span> <FaceIcon /></span>
                           <div className="profile-text">
                               <p>User Name</p>
-                              <h3>{user.userName}</h3>
+                              <h5>{user.userName}</h5>
                           </div>
                  </div>
                 <div className="profile-button-info">

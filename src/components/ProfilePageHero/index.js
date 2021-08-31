@@ -8,7 +8,7 @@ function ProfilePageHero({status,avatar,user,kyc,handleChange,editUser}) {
         <div>
              <div  className="profile-banner">
                 <div className="font-postion"> 
-                  <h2> User profile</h2>
+                <h2>User {status? "KYC":"profile"}</h2> 
                 </div>
                  {status&&<div className="status-updaing">
                      <h4 className="font-color">{kyc.kycStatus}</h4>
@@ -16,7 +16,7 @@ function ProfilePageHero({status,avatar,user,kyc,handleChange,editUser}) {
                  {
                      avatar&&
                      <div className="image-upload">
-                        <ImageUpload editUser={editUser} handleChange={handleChange} avatarUrl={user.avatar} />
+                        <ImageUpload cameraIcon={true} editUser={editUser} handleChange={handleChange} avatarUrl={user.avatar} />
                      </div>
                  }
                

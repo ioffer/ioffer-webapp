@@ -1,4 +1,5 @@
 import PrimarySearchAppBar from './components/primarySearchAppBar'
+import VarifyEmail from './components/VeryEmail'
 import Home from './Pages/Home'
 import Offers from './Pages/Offers'
 import Deals from './Pages/Deals'
@@ -10,6 +11,7 @@ import {
   BrowserRouter as Router,Redirect,
   Switch,
   Route,
+  useHistory,
 } from "react-router-dom";
 import Dashboard from './Pages/Dashboard'
 import Login from './Pages/Login'
@@ -26,6 +28,7 @@ import {useMe} from "./hooks/useQueriesHooks";
 import ProfilePage from './Pages/ProfilePage'
 import EditKyc from './Pages/EditKyc'
 import {removeLocalStorage} from "./lib/services";
+import OptCodePage from './Pages/OptCodePage'
 
 
 const options = {
@@ -37,12 +40,14 @@ const options = {
 
 
 const Root=({logged})=>{
-
   const user= useSelector(selectUser)
+  console.log(window.location.pathname.includes('/user/confirm'))
   logged=(!!user)||logged
   return(
       <Router>
-        <PrimarySearchAppBar/>
+        {!window.location.pathname.includes('/user/confirm')&&<PrimarySearchAppBar/>}
+        
+       
         <Switch>
           <Route exact path='/' component={Home} />
           <Route path='/deals' component={Deals} />
@@ -55,10 +60,12 @@ const Root=({logged})=>{
           <Route path='/vendor_shop' component={VendorShop} />
           <Route path="/user_kyc" component={ShowKyc} />
           <Route path="/edit_kyc" component={EditKyc} />
+          <Route path='/otp_code' component={OptCodePage} />
           <Route path='/user_profile' component={ProfilePage} />
-          <Route path='/dashboard' components={Dashboard}/>
+          <Route path='/dashboard' component={Dashboard}/>
+          <Route path='/user/confirm/:token' component={VarifyEmail}/>
         </Switch>
-      </Router>
+      </Router> 
   )
 }
 const UserRoot=()=>{

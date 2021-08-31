@@ -153,8 +153,8 @@ export default function PrimarySearchAppBar() {
             {
                 !localStorage.getItem('token') &&
                 <div>
-                    <Link  className="color-link" to="/login">
-                        <MenuItem onClick={handleMenuClose}>
+                    <Link onClick={handleMenuClose} className="color-link" to="/login">
+                        <MenuItem >
                             <IconButton aria-label="show 4 new favorites" color="inherit">
                                 <VpnKeyIcon/>
                             </IconButton>
@@ -174,14 +174,14 @@ export default function PrimarySearchAppBar() {
             {
                 localStorage.getItem('token') &&
                 <div>
-                    <Link onClick={handleMenuClose} className="color-link">
+                    <div onClick={handleMenuClose} className="color-link">
                         <MenuItem>
                             <IconButton aria-label="show 4 new favorites" color="inherit">
                                 <Avatar src={user.avatar} />
                             </IconButton>
-                            {user ? <p>{user.userName} </p> : !user ? <p></p> : ""}
+                            {user ? <p>{user.fullName} </p> : !user ? <p></p> : ""}
                         </MenuItem>
-                    </Link>
+                    </div>
                     <hr/>
                     <Link  onClick={handleMenuClose} className="color-link" to="/vendor_shop">
                         <MenuItem>

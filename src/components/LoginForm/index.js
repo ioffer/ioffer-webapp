@@ -94,7 +94,7 @@ function LoginForm() {
                         </form>
                     </div>
                     <div className="register">
-                        <h4>Don’t have an account?&nbsp;<Link to='/register'>Register</Link></h4>
+                        <h4>Don’t have an account?&nbsp;<Link className="link-color" to='/register'>Register</Link></h4>
                     </div>
                 </div>
     )

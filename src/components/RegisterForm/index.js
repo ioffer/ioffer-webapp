@@ -23,7 +23,7 @@ function RegisterForm() {
     })
     const onSuccess=(data)=>{ 
         console.log(data,"===")
-        alert.success("Successfully Register",{timeout:4000})
+        alert.success("User Register Successfully Please Check your Email for Verification ",{timeout:4000})
         setLoader(false)
         history.push('/login')
     }
@@ -32,14 +32,14 @@ function RegisterForm() {
         alert.error(error.message,{timeout:4000})
         setLoader(false)
     }
-    const [register, { loading}] = RegisterUserHook(onSuccess,onError)
+    const [register, { loading}] = RegisterUserHook(onError,onSuccess)
 
     const handelChange = (name, value) => {
         setState({...state, [name]: value})
     }
   
     const submitForm = async(e) => {
-        e.preventDefault()
+        e.preventDefault() 
         register({
             variables: {
                 name: state.fname,
@@ -51,7 +51,7 @@ function RegisterForm() {
             console.log(err)
         })
     }
-
+  
     return(
     loading ? <Loader/> :
         <div className="all-item-alighn">
@@ -89,8 +89,9 @@ function RegisterForm() {
                 <TextField
                     fullWidth
                     autoComplete="email"
-                    type="email"
+                    type="text"
                     label="Email address"
+                    required
                     onChange={(e) => handelChange('email', e.target.value)}
                     value={state.email}
                 />
@@ -99,6 +100,7 @@ function RegisterForm() {
                         autoComplete="current-password"
                         type="password"
                         label="Password"
+                        required
                         onChange={(e) => handelChange('password', e.target.value)}
                         value={state.password}
                     />
@@ -113,7 +115,7 @@ function RegisterForm() {
                 </form> 
                 <button className="button">Register as Vendor</button>
                 <div className="register">
-                    <h4>Already have a account ?<Link to='/login'>Login</Link></h4>
+                    <h4>Already have a account ?  <Link className="link-color" to='/login'>Login</Link></h4>
                 </div>
     </div>
     ) 

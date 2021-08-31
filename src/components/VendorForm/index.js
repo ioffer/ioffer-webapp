@@ -46,18 +46,18 @@ function VendorForm() {
      
  const submitForm=(e)=>{
         e.preventDefault()
-        // registerShop({
-        //     variables:{
-        //       id:user.id,
-        //       name: addshop.shopname,
-        //       shopCategory: addshop.shopCategory,
-        //       address: addshop.address,
-        //       website:  addshop.website,
-        //       tags: addshop.tags,
-        //       phoneNumber: addshop.phonenumber,
-        //       location: addshop.location,
-        //     }
-        //   })
+        registerShop({
+            variables:{
+              id:user.id,
+              name: addshop.shopname,
+              shopCategory: addshop.shopCategory,
+              address: addshop.address,
+              website:  addshop.website,
+              tags: addshop.tags,
+              phoneNumber: addshop.phonenumber,
+              location: addshop.location,
+            }
+          })
          }
       
     
@@ -122,7 +122,7 @@ function VendorForm() {
             value={addshop.phonenumber}
           />
           <div className="shop-logo">
-          <ImageUpload />
+          <ImageUpload cameraIcon={true} />
           </div>
             <button className="button">Register</button>
           

@@ -5,6 +5,7 @@ import { selectUser,selectKyc } from '../../redux/reducer/userSlice';
 import { useSelector } from 'react-redux';
 import {arrayProfile} from "./profileData";
 import ProfilePageHero from '../../components/ProfilePageHero';
+import ImageUpload from '../../components/ImageUpload';
 
 function ShowKyc() {
     const kyc= useSelector(selectKyc)
@@ -13,23 +14,29 @@ function ShowKyc() {
         return <Redirect to={'/edit_kyc'}/>
     }
     return (
-        <div>
-            <ProfilePageHero status={true} kyc={kyc} avatar={false} />
-            <div>
+        <div className="static-position">
+            <ProfilePageHero  status={true} kyc={kyc} avatar={false} />
+            
+            <div className="kyc_absoulute">
+                <div className="kyc-image-position">
+            <ImageUpload cameraIcon={false} />
+            </div>
               {
                   arrayProfile.map((result)=>(
                       <div className="profile-info">
                          <span>{result.icon}</span>
                           <div className="profile-text">
                               <p>{result.title}</p>
-                              <h3>{result.data ==="email"?user.email: kyc[result.data]}</h3>
+                              <h5>{result.data ==="email"?user.email: kyc[result.data]}</h5>
                           </div>
                       </div>
                  ))
               }
+               <div className="button-position-otp">
+              <Link to='/edit_kyc'><button className="button">Edit KYC</button></Link>
+              </div>
             </div>
-
-           <Link to='/edit_kyc'><p className="manintext">Edit KYC</p></Link>
+             
         </div>
     )
 }

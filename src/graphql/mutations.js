@@ -57,3 +57,8 @@ mutation ($id: String!,$name: String!, $website: String!, $shopCategory: String!
       fullName
     }
   }`
+
+  export const confirmEmail = gql`
+  mutation ($token: String!){
+    confirmEmail(token: $token)
+  }`

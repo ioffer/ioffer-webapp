@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
         height: theme.spacing(3),
       }
   }));
-function ImageUpload({handleChange,editUser}) {
+function ImageUpload({handleChange,editUser,cameraIcon}) {
     const classes = useStyles();
 
     const onSuccess=(data)=>{
@@ -49,14 +49,15 @@ function ImageUpload({handleChange,editUser}) {
             <div>
                     <div className="main-imageupload-div">
                         <Avatar className={classes.large} src={editUser} />
-                        <div className="camera-icon">
+                      { cameraIcon &&
+                       <div className="camera-icon">
                     <input accept="image/*"  className={classes.input} id="icon-button-file" type="file" onChange={handleImage} />
                 <label htmlFor="icon-button-file">
                     <IconButton  style={{background: "#3F51B5",color:"white"}} aria-label="upload picture" component="span">
                          <PhotoCamera  className={classes.small} />
                     </IconButton>
                 </label>
-                </div>
+                </div>}
                     </div>
                    
                     </div>

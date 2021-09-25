@@ -1,5 +1,5 @@
 .edit-heading{
-    background: white;
+    background: #f1f1f1;
     padding: 14px;
     text-align: center;
 }
@@ -28,7 +28,7 @@
 .profile-button{
     background: #27B4E4;
     border: none;
-    padding: 10px 66px;
+    padding: 11px 61px;
     border-radius: 21px;
     color: white;
     font-size: 18px;
@@ -60,4 +60,9 @@ input[type=file]::file-selector-button {
   }
   input[type=file]::file-selector-text {
         display: none;
+  }
+  .back-icon{
+    position: absolute;
+    top: 9%;
+    left: 2%;
   }

@@ -1,24 +1,46 @@
-.avatar{
+.terms-condition{
     display: flex;
-    align-items: center;
-    background: #F4F6F8;
-    border-radius: 13px;
-    padding: 10px;
-    justify-content: space-around;
-    margin-top: 65px;
-    margin-right: 13px;
+    justify-content: space-between;
+    margin-top: 18px;
+    border-bottom: 1px solid black;
+    overflow: auto;
+    h2{
+        cursor: pointer;
+        margin-right: 41px;
+        margin-left: 11px;
+    }
+   
 }
-.link-flex{
-    display: flex;
-    align-items: center;
-    margin-top: 15px;
-    color: #637381;
+.sidebar-terms{
+    background: #00082C;
+    padding: 12px;
+    line-height: 1.9;
+    height: 500px;
+    p{
+        font-size:19px;
+    }
 }
-.link-flex:hover{
-    background-color: lightgray;
-    color: black;
+.main-grid-terms{
+    margin-top: 25px;
+    margin-right: 20px;
+    margin-left: 20px;
+    .main-textarea{
+        line-height: 1.6;
+    }
+    h1{
+        margin-bottom:15px;
+    }
+    span{
+        font-size: 22px;
+    }
 }
-.active{
-    border-right: 3px solid blue;
-    color: #3F51B5;
+.active-term-heading{
+    border-bottom: 5px solid #58C9A0;
+    padding-bottom: 24px;
+}
+.active-main-grid-terms{
+    display: block;
+}
+.hide-element{
+    display: none;
 }

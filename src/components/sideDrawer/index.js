@@ -15,6 +15,9 @@ import StorefrontIcon from '@material-ui/icons/Storefront';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import LocalActivityIcon from '@material-ui/icons/LocalActivity';
 import HomeIcon from '@material-ui/icons/Home';
+import DashboardIcon from '@material-ui/icons/Dashboard';
+import { selectUser } from '../../redux/reducer/userSlice';
+import { useSelector } from 'react-redux';
 
 const useStyles = makeStyles({
   list: {
@@ -71,6 +74,7 @@ const sidebars = [
 ];
 
 export default function SwipeableTemporaryDrawer() {
+  const user= useSelector(selectUser)
   const classes = useStyles();
   const [state, setState] = useState({
     left: false,
@@ -97,8 +101,8 @@ export default function SwipeableTemporaryDrawer() {
         <div className={classes.logo}>
         <Link to='/'><img src={ioffer} /></Link>
         </div>
-        {sidebars.map((sidebar) => (
-          <Link className={classes.linkColor} to={sidebar.link}><ListItem button >
+        {sidebars.map((sidebar,index) => (
+          <Link key={index}   className={classes.linkColor} to={sidebar.link}><ListItem button >
             {sidebar.icon}
             <ListItemText className={classes.text} primary={sidebar.title} />
           </ListItem></Link>

@@ -7,12 +7,7 @@ import Promotions from './Pages/Promotions'
 import Shops from './Pages/Shops'
 import Brands from './Pages/Brands'
 import './styles/global.scss'
-import {
-  BrowserRouter as Router,Redirect,
-  Switch,
-  Route,
-  useHistory,
-} from "react-router-dom";
+import {BrowserRouter as Router,Redirect,Switch,Route,} from "react-router-dom";
 import Dashboard from './Pages/Dashboard'
 import Login from './Pages/Login'
 import Register from './Pages/Register'
@@ -29,7 +24,13 @@ import ProfilePage from './Pages/ProfilePage'
 import EditKyc from './Pages/EditKyc'
 import {removeLocalStorage} from "./lib/services";
 import OptCodePage from './Pages/OptCodePage'
-
+import ForgotPassword from './components/ForgotPassword'
+import ResetPassword from './components/ResetPassword'
+import VerifyEmailPassword from './components/VerifyEmailPassword'
+import CreatePromotionForm from './components/CreatePromotionForm'
+import DisplayAllShop from './components/DisplayAllSops'
+import EnterYourShop from './components/EnterYourShop'
+import ShowPromotion from './components/ShowPromotion'
 
 const options = {
   position: positions.TOP_CENTER,
@@ -45,9 +46,7 @@ const Root=({logged})=>{
   logged=(!!user)||logged
   return(
       <Router>
-        {!window.location.pathname.includes('/user/confirm')&&<PrimarySearchAppBar/>}
-        
-       
+         {!window.location.pathname.includes('/user/confirm')&&<PrimarySearchAppBar/>}
         <Switch>
           <Route exact path='/' component={Home} />
           <Route path='/deals' component={Deals} />
@@ -64,6 +63,13 @@ const Root=({logged})=>{
           <Route path='/user_profile' component={ProfilePage} />
           <Route path='/dashboard' component={Dashboard}/>
           <Route path='/user/confirm/:token' component={VarifyEmail}/>
+          <Route path="/forgot_password" component={ForgotPassword} />
+          <Route path='/verify-email' component={VerifyEmailPassword} />
+          <Route path="/user/reset-password/:token" component={ResetPassword}/>
+          <Route path='/promotion/:shopid' component={CreatePromotionForm} />
+          <Route path='/shop_data/:id' component={EnterYourShop} />
+          <Route path="/all_shops/:addShop" component={DisplayAllShop} />
+          <Route path="/show-promotion" component={ShowPromotion} />
         </Switch>
       </Router> 
   )

@@ -23,6 +23,8 @@ function VendorForm() {
         location: "",
         tags: "",
         phonenumber: "",
+        mobilenumber:"",
+        id:"",
     })
     const [file,setFile]=useState([])
     const [logoPath,setLogoPath]=useState(null)
@@ -32,30 +34,30 @@ function VendorForm() {
 
    const onSuccess=(data)=>{ 
     console.log(data,"===")
-    alert.success("Successfully Register",{timeout:4000})
+    alert.success("Shop Successfully Register",{timeout:4000})
     setLoader(false)
-    history.push('/login')
+    history.push('/dashboard')
   }
   const onError=(error)=>{
       console.log(error,"===")
       alert.error(error.message,{timeout:4000})
       setLoader(false)
   }
-    const [registerShop, { data, loading, error }] = AddShopHook(onSuccess,onError)
+    const [registerShop, { loading}] = AddShopHook(onError,onSuccess)
      
      
  const submitForm=(e)=>{
         e.preventDefault()
         registerShop({
             variables:{
-              id:user.id,
               name: addshop.shopname,
               shopCategory: addshop.shopCategory,
               address: addshop.address,
               website:  addshop.website,
               tags: addshop.tags,
-              phoneNumber: addshop.phonenumber,
+              phoneNumbers: addshop.phonenumber,
               location: addshop.location,
+              mobileNumber: addshop.mobilenumber,
             }
           })
          }
@@ -102,7 +104,15 @@ function VendorForm() {
                 onChange={(e) => handelChange('website', e.target.value)}
                 value={addshop.website}
             />
-           <TagsInput  selectedTags={selectedTags} />
+           <TagsInput handelChange={handelChange} addshop={addshop} selectedTags={selectedTags} />
+            <TextField
+              fullWidth
+              autoComplete="Mobile Number"
+              type="text"
+              label="Enter Your mobile Number"
+              onChange={(e) => handelChange('mobilenumber', e.target.value)}
+              value={addshop.mobilenumber}
+            />
              <TextField
                 fullWidth
                 autoComplete="Location"
@@ -121,8 +131,10 @@ function VendorForm() {
             onChange={(e) => handelChange('phonenumber', e.target.value)}
             value={addshop.phonenumber}
           />
+           <h3>Upload Your Shop Logo</h3>
           <div className="shop-logo">
-          <ImageUpload cameraIcon={true} />
+           
+          <ImageUpload cameraIcon={true}  />
           </div>
             <button className="button">Register</button>
           

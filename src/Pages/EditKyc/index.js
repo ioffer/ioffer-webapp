@@ -7,6 +7,8 @@ import {AddKycHook} from '../../hooks/useMutationsHooks'
 import Loader from '../../components/Loader/loader';
 import { useAlert} from "react-alert";
 import './edit-kyc.scss'
+import {Link} from 'react-router-dom'
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
 function EditKyc() {
     const history = useHistory();
@@ -58,10 +60,12 @@ function EditKyc() {
     return (
       loading ? <Loader/> :
         <div>
+            <Link className="back-icon" to="/user_kyc"><ArrowBackIcon style={{width: "40px",height: "36px",background: "#3F51B5",  color: "white",borderRadius: "19px", marginTop: "7px"}} /></Link>
             <div className="edit-heading">
                 <h2>{kyc.country.length?"Update KYC":"Add New KYC"}</h2>
             </div>
             <div>
+               
          <form className="form-design" onSubmit={submitForm}  >
              <TextField
                   fullWidth

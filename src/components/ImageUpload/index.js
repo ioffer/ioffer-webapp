@@ -5,6 +5,7 @@ import IconButton from '@material-ui/core/IconButton';
 import PhotoCamera from '@material-ui/icons/PhotoCamera';
 import { makeStyles } from '@material-ui/core/styles';
 import './imgae-upload.scss'
+import { useAlert} from "react-alert";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -25,6 +26,7 @@ const useStyles = makeStyles((theme) => ({
       }
   }));
 function ImageUpload({handleChange,editUser,cameraIcon}) {
+    const alert=useAlert();
     const classes = useStyles();
 
     const onSuccess=(data)=>{

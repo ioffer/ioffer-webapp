@@ -23,7 +23,7 @@ function RegisterForm() {
     })
     const onSuccess=(data)=>{ 
         console.log(data,"===")
-        alert.success("User Register Successfully Please Check your Email for Verification ",{timeout:4000})
+        alert.success("User Register Successfully Please Check your Email for Verification ",{timeout:5000})
         setLoader(false)
         history.push('/login')
     }
@@ -51,7 +51,7 @@ function RegisterForm() {
             console.log(err)
         })
     }
-  
+   
     return(
     loading ? <Loader/> :
         <div className="all-item-alighn">
@@ -86,14 +86,14 @@ function RegisterForm() {
                         value={state.lname}
                     />
                 </div>
-                <TextField
-                    fullWidth
-                    autoComplete="email"
-                    type="text"
-                    label="Email address"
-                    required
-                    onChange={(e) => handelChange('email', e.target.value)}
-                    value={state.email}
+                  <TextField
+                        fullWidth
+                        autoComplete="email"
+                        type="text"
+                        label="Email address"
+                        required
+                        onChange={(e) => handelChange('email', e.target.value)}
+                        value={state.email}
                 />
                     <TextField
                         fullWidth

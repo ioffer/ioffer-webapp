@@ -8,50 +8,50 @@ import React from "react";
 import RoomIcon from '@material-ui/icons/Room';
 import StreetviewIcon from '@material-ui/icons/Streetview';
 
-export const arrayProfile =[
+export const arrayShop =[
     {
         icon: <CallIcon /> ,
-        title: "Mobile" ,
-        data: "mobile",
+        title: "Shop Name" ,
+        data: "name",
     },
     {
         icon: <AddLocationIcon /> ,
-        title: "Country" ,
-        data: "country",
+        title: "Address" ,
+        data: "address",
     },
     {
         icon: <EventIcon /> ,
-        title: "Date of Birth" ,
-        data: "birthDate",
+        title: "Location" ,
+        data: "location",
     },
     {
         icon: <RoomIcon />,
-        title: "Nationality" ,
-        data: "nationality",
+        title: "Mobile Number" ,
+        data: "mobileNumber",
     },
     {
         icon: <PostAddIcon /> ,
-        title: "Postal Code" ,
-        data: "postalCode",
+        title: "Phone Number" ,
+        data: "phoneNumbers",
     },
     {
         icon: <EmailIcon /> ,
-        title: "Email" ,
-        data: "email",
+        title: "Shop Catogery" ,
+        data: "shopCategory",
     },
     {
         icon: <LocationCityIcon /> ,
-        title: "City" ,
-        data: "city",
+        title: "Tags" ,
+        data: "tags",
     },
     {
         icon: <AddLocationIcon /> ,
-        title: "Building" ,
-        data: "building",
+        title: "Website" ,
+        data: "website",
     },
     {
         icon: <StreetviewIcon /> ,
-        title: "Street" ,
-        data: "street",
+        title: "Email" ,
+        data: "email",
     },
 ];

@@ -26,6 +26,7 @@ import { selectUser } from '../../redux/reducer/userSlice';
 import { logout } from '../../redux/reducer/userSlice';
 import ContactMailIcon from '@material-ui/icons/ContactMail';
 import {removeLocalStorage} from "../../lib/services";
+import DashboardIcon from '@material-ui/icons/Dashboard';
 
 const useStyles = makeStyles((theme) => ({
     grow: {
@@ -91,7 +92,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function PrimarySearchAppBar() {
+export default function PrimarySearchAppBar({handleChange}) {
     const user= useSelector(selectUser)
     const dispatch=useDispatch()
     const signOut =()=>{
@@ -152,7 +153,7 @@ export default function PrimarySearchAppBar() {
         >
             {
                 !localStorage.getItem('token') &&
-                <div>
+                <div >
                     <Link onClick={handleMenuClose} className="color-link" to="/login">
                         <MenuItem >
                             <IconButton aria-label="show 4 new favorites" color="inherit">
@@ -174,16 +175,17 @@ export default function PrimarySearchAppBar() {
             {
                 localStorage.getItem('token') &&
                 <div>
-                    <div onClick={handleMenuClose} className="color-link">
+                    <Link onClick={handleMenuClose} to="/user_profile" className="color-link">
                         <MenuItem>
                             <IconButton aria-label="show 4 new favorites" color="inherit">
                                 <Avatar src={user.avatar} />
                             </IconButton>
-                            {user ? <p>{user.fullName} </p> : !user ? <p></p> : ""}
+                             <p>{user.fullName} </p>
                         </MenuItem>
-                    </div>
+                    </Link>
                     <hr/>
-                    <Link  onClick={handleMenuClose} className="color-link" to="/vendor_shop">
+                    {  user.type==="ADMIN" &&
+                        <Link  onClick={handleMenuClose} className="color-link" to="/vendor_shop">
                         <MenuItem>
                         <IconButton aria-label="show 4 new favorites" color="inherit">
                             <StoreIcon/>
@@ -191,13 +193,16 @@ export default function PrimarySearchAppBar() {
                         <p>Add Shop</p>
                     </MenuItem>
                     </Link>
-                    <Link onClick={handleMenuClose} className="color-link" to="/user_profile"><MenuItem>
+                    }
+                    
+                   {user.type==="ADMIN" && 
+                   <Link onClick={handleMenuClose} className="color-link" to="/dashboard"><MenuItem>
                         <IconButton aria-label="show 4 new favorites" color="inherit">
-                            <ContactMailIcon/>
+                            <DashboardIcon/>
                         </IconButton>
-                        <p>User Profile</p>
+                        <p>Dashboard</p>
                     </MenuItem>
-                    </Link>
+                    </Link>}
                     <Link onClick={handleMenuClose} className="color-link" to="/user_kyc"><MenuItem>
                         <IconButton aria-label="show 4 new favorites" color="inherit">
                             <ContactMailIcon/>

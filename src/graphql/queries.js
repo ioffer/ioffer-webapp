@@ -9,6 +9,28 @@ export const useMeQuery=gql`
   fullName
   type
   avatar
+  shops {
+    id
+    address
+    location
+    logo
+    mobileNumber
+    name
+    phoneNumbers
+    shopCategory
+    tags
+    website
+    promotions {
+      category
+      description
+      endDate
+      id
+      name
+      price
+      tags
+      startDate
+    }
+  }
    kyc {
         birthDate
         building

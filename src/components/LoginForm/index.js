@@ -92,6 +92,7 @@ function LoginForm() {
                             /><br/>
                             <button className="button">Login</button>
                         </form>
+                        <Link className="link-color" to="/forgot_password"><p>Forgotten Password ?</p></Link>
                     </div>
                     <div className="register">
                         <h4>Don’t have an account?&nbsp;<Link className="link-color" to='/register'>Register</Link></h4>

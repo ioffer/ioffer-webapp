@@ -39,7 +39,7 @@ const VarifyEmail=()=>{
         <div className="verify-height">
             <div >
            <img src={success} className="success-svg" />
-           <h2>Successfully Register</h2>
+           <h2>Successfully Verified</h2>
             </div>
            
             

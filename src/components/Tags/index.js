@@ -3,7 +3,7 @@ import React,{useState} from "react";
 import './tags.scss'
 
 
-  const TagsInput = props => {
+  const TagsInput =( {props,handelChange,addshop}) => {
     const [tags, setTags] = useState([]);
     const removeTags = indexToRemove => {
       setTags([...tags.filter((_, index) => index !== indexToRemove)]);
@@ -33,9 +33,13 @@ import './tags.scss'
         <TextField
           fullWidth
           type="text"
-          onKeyUp={event => event.key === "Enter" ? addTags(event) : null}
+          // onKeyUp={event => event.key === "Enter" ? addTags(event) : null}
           label="Tags"
+          onChange={(e) => handelChange('tags', e.target.value)}
+          value={addshop.tags}
+          
         />
+        
       </div>
     );
   };

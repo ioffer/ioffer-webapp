@@ -44,14 +44,24 @@ mutation( $file: Upload!) {
 `
 
 export const addShop=gql`
-mutation ($id: String!,$name: String!, $website: String!, $shopCategory: String!, $tags: String!, $phoneNumbers: String!, $location: String!, $address: String!, $mobileNumber: String!) {
-    registerShop(newShop: {name: $name, shopCategory: $shopCategory, tags: $tags, website: $website, phoneNumbers:  $phoneNumbers, mobileNumber:$mobileNumber, location: $location, address: $address}) {
+mutation ($name: String!, $website: String!, $shopCategory: [String], $tags: [String], $phoneNumbers: String!, $location: String!, $address: String!, $mobileNumber: String!) {
+    registerShop(newShop:  { 
+        name: $name,
+        shopCategory: $shopCategory,
+        tags: $tags, 
+        website: $website, 
+        phoneNumbers:  $phoneNumbers, 
+        mobileNumber:$mobileNumber, 
+        location: $location, 
+        address: $address,
+      }) {
       id
+      name
     }
   }`
 
   export const editUser= gql`
-  mutation ($fullName:String, $avatar:String) {
+  mutation ($fullName:String!, $avatar:String!) {
     editUser(newUser: {fullName: $fullName, avatar: $avatar}){
       avatar
       fullName
@@ -62,3 +72,28 @@ mutation ($id: String!,$name: String!, $website: String!, $shopCategory: String!
   mutation ($token: String!){
     confirmEmail(token: $token)
   }`
+
+  export const forgotPassword= gql`
+  mutation ($email:String!) {
+    forgetPassword(email: $email)
+  }`;
+
+  export const resetPassword= gql`
+  mutation ($password:String!,$token:String!){
+    resetPassword(token: $token, password:$password)
+  }`;
+
+  export const createPromotion= gql`
+  mutation ($shopID:ID!, $newPromotion:PromotionInput!){
+    createPromotion( newPromotion:$newPromotion,shopID: $shopID) {
+      category
+      description
+      id
+      tags
+    }
+  }`;
+
+  export const changePassword= gql`
+  mutation($password:String!,$newPassword: String!) {
+    changePassword(password: $password, newPassword: $newPassword)
+  }`;

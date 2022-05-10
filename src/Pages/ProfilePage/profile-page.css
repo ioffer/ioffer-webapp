@@ -1,0 +1,19 @@
+.profile-main-info {
+  padding: 34px;
+  line-height: 1.5;
+}
+
+.profile-button-info {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.MuiInputBase-input {
+  font-size: 1.17em !important;
+  font-weight: 400 !important;
+}
+
+.top-gap {
+  padding-top: 27px;
+}
+/*# sourceMappingURL=profile-page.css.map */

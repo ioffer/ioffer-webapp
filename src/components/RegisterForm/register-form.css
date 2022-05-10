@@ -1,0 +1,90 @@
+.icon-flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  margin-top: 20px;
+  margin-bottom: 18px;
+}
+
+.facebook {
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  padding: 6px;
+  cursor: pointer;
+  width: 50%;
+}
+
+.facebook:hover {
+  background-color: lightgray;
+}
+
+.button-postion {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-bottom: 1px solid lightgray;
+}
+
+.background-color {
+  background-color: #FFFFFF;
+}
+
+.form-grid {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto auto;
+      grid-template-columns: auto auto;
+  grid-gap: 33px;
+  margin-bottom: 11px;
+  margin-top: 17px;
+}
+
+.button-choice {
+  border: none;
+  padding: 10px 40px;
+  background: lightgray;
+  font-size: 16px;
+  border-radius: 6px;
+}
+
+.register-form {
+  margin-top: 15px;
+  margin-right: 32px;
+  margin-left: 27px;
+  line-height: 4.5;
+}
+
+.link-color {
+  color: red;
+}
+
+@media only screen and (max-width: 480px) {
+  .facebook {
+    width: 53%;
+  }
+  .register {
+    text-align: center;
+  }
+  .form-grid {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: auto;
+        grid-template-columns: auto;
+    grid-gap: 10px;
+    margin-bottom: 11px;
+    margin-top: 17px;
+  }
+  .h1 {
+    font-size: 24px;
+  }
+}
+/*# sourceMappingURL=register-form.css.map */

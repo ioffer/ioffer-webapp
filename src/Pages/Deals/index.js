@@ -7,7 +7,7 @@ import SingleLineGridList from '../../components/cardsSlider/index.js';
 function Deals() {
     return (
         <div>
-             <SingleLineGridList title="Upto 30% Off" array={dealData} icon={<LocalOfferIcon/>} />
+            <SingleLineGridList title="Upto 30% Off" array={dealData} icon={<LocalOfferIcon/>} />
             <SingleLineGridList title="Upto 50% Off" array={SecondDeal} icon={<LocalOfferIcon/>} />
             <AllDeals />
         </div>

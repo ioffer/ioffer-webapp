@@ -4,19 +4,19 @@ import './catogeryicon.scss'
 function Catogeryicons() {
     const tileData = [
         {
-            img: 'https://image.flaticon.com/icons/png/512/1161/1161674.png',
+            img: 'https://cdn.pixabay.com/photo/2016/07/07/16/46/dice-1502706__340.jpg',
         },
         {
-            img:'https://image.flaticon.com/icons/png/512/2933/2933190.png',
+            img:'https://cdn.pixabay.com/photo/2017/01/08/13/58/cube-1963036__340.jpg',
         },
         {
-            img:'https://image.flaticon.com/icons/png/512/24/24697.png',
+            img:'https://cdn.pixabay.com/photo/2020/06/13/08/33/star-scatter-5293466__340.png',
         },
         {
-            img:'https://image.flaticon.com/icons/png/512/821/821528.png',
+            img:'https://cdn.pixabay.com/photo/2013/07/13/12/38/dices-160005__340.png',
         },
         {
-            img:'https://image.flaticon.com/icons/png/512/287/287623.png',
+            img:'https://cdn.pixabay.com/photo/2016/03/31/21/57/crown-1296751__340.png',
         },
         
     ];

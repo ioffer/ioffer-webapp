@@ -1,0 +1,66 @@
+.header {
+  position: relative;
+  color: #B1B5C4;
+}
+
+.header .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  max-width: 1330px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 15px 40px;
+}
+
+.header .container .wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.header .container .wrapper a h5 {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.header .container .wrapper form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-left: 15px;
+}
+
+.header .container .wrapper form input {
+  font-size: 15px;
+  padding-left: 2.375rem;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 30px;
+  border: 1px solid #B1B5C4;
+}
+
+.header .container .navbar ul {
+  list-style: none;
+  display: inline-block;
+}
+
+.header .container .navbar ul a {
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  padding: 0 13px;
+}
+/*# sourceMappingURL=primary-search.css.map */

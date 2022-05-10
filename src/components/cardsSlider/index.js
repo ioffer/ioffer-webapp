@@ -17,14 +17,19 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: theme.palette.background.paper,
         marginRight: 9,
         marginLeft : 11,
-        marginTop: 21,
-        boxShadow: "3px 4px 3px 5px lightgrey",
+        marginTop: 30,
+        boxShadow: "3px 4px 11px 5px lightgrey",
         borderRadius: 10,
     },
     gridList: {
         flexWrap: 'nowrap',
         transform: 'translateZ(0)',
         padding: 8,
+        overflow: 'auto',
+        '&::-webkit-scrollbar': {
+            display: 'none'
+        },
+        
     },
     title: {
         color: "white",
@@ -42,12 +47,12 @@ const useStyles = makeStyles((theme) => ({
         paddingBottom: 3,
         fontFamily: ['Roboto', "Helvetica", "Arial",'sans-serif'],
         fontWeight: 400,
-        lineHeight: 1.75,
+        lineHeight: 1.2,
         letterSpacing: '0.00938em',
     },
     icon:{
         marginLeft: 11,
-        color: '#3F51B5',
+        color: '#45B26B',
     },
     imgBorder:{
         borderRadius: "6px",
@@ -61,11 +66,12 @@ export default function SingleLineGridList({array,title,icon}) {
     return (
         <div className={classes.root}>
             <div className={classes.gridtitle}>
-               <h3>{title}</h3><span className={classes.icon}>{icon}</span> 
+               <h3>{title}</h3>
+               <span className={classes.icon}>{icon}</span> 
             </div>
-            <GridList className={classes.gridList} cols={2.5}>
+            <GridList classes={{root:classes.gridList}} className="scroller" cols={2.5}>
                 {array.map((tile) => (
-                    <GridListTile key={tile.img}>
+                    <GridListTile key={tile.img} className="items">
                         <img src={tile.img} alt={tile.title}/>
                         <GridListTileBar  
                             title={tile.title}

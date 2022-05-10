@@ -5,9 +5,9 @@ import ShowPromotion from '../../components/ShowPromotion';
 
 function Dashboard() {
   const[tabs,setTabs]=useState(1)
-    const toggleTab = (index) => {
-        setTabs(index);
-      };
+  const toggleTab = (index) => {
+      setTabs(index);
+    };
   return (
     <div className="container">
             <div className="terms-condition">

@@ -2,13 +2,19 @@
   margin:0;
   padding:0;
   box-sizing: border-box;
-  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-family: 'DM Sans', 'sans-serif';
 }
 a{
   text-decoration: none;
-  :hover{
-    color:#000;
+  color: #B1B5C4;
+  transition: 0.2s ease-in-out;
+
+  &:hover{
+    color:#45B26B;
   }
+}
+.active{
+  color: #45B26B;
 }
 .outer-container{
   margin:0 10px;

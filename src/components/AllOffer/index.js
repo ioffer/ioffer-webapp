@@ -45,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
     icon:{
         fontSize: 37,
         marginLeft: 11,
-        color: '#3F51B5',
+        color: '#45B26B',
     },
 }));
 
@@ -108,7 +108,8 @@ export default function AllOffer() {
     return (
         <div className={classes.root}>
             <div className={classes.foodtitle}>
-               <h3>All Offers</h3><LocalOfferIcon className={classes.icon}/> 
+               <h3>All Offers</h3>
+               <LocalOfferIcon className={classes.icon}/> 
             </div>
             <GridList className={classes.gridList} cols={2}>
                 {AllDealData.map((tile) => (

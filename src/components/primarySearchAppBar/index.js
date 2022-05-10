@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import { AppBar } from "@material-ui/core";
 import Toolbar from '@material-ui/core/Toolbar';
@@ -14,7 +14,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import ResponsiveDrawer from '../sideDrawer'
-import {Link} from 'react-router-dom'
+import {Link,NavLink} from 'react-router-dom'
 import StoreIcon from '@material-ui/icons/Store';
 import Avatar from '@material-ui/core/Avatar';
 import './primary-search.scss'
@@ -37,6 +37,10 @@ const useStyles = makeStyles((theme) => ({
     },
     title: {
         display: 'none',
+        color: 'rgba(255,255,255,0.8)',
+        '&:hover': {
+            color: '#fff',
+        },
         [theme.breakpoints.up('sm')]: {
             display: 'block',
         },
@@ -57,7 +61,7 @@ const useStyles = makeStyles((theme) => ({
         },
     },
     searchIcon: {
-        padding: theme.spacing(0, 2),
+        padding: theme.spacing(0, 1),
         height: '100%',
         position: 'absolute',
         pointerEvents: 'none',
@@ -65,19 +69,23 @@ const useStyles = makeStyles((theme) => ({
         alignItems: 'center',
         justifyContent: 'center',
     },
+    search_icon:{
+        width: '25px',
+        height: '23px',
+    },
     inputRoot: {
         color: 'inherit',
     },
-    inputInput: {
-        padding: theme.spacing(1, 1, 1, 0),
-        // vertical padding + font size from searchIcon
-        paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
-        transition: theme.transitions.create('width'),
-        width: '100%',
-        [theme.breakpoints.up('md')]: {
-            width: '20ch',
-        },
-    },
+    // inputInput: {
+    //     padding: theme.spacing(1, 1, 1, 0),
+    //     // vertical padding + font size from searchIcon
+    //     paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
+    //     transition: theme.transitions.create('width'),
+    //     width: '100%',
+    //     [theme.breakpoints.up('md')]: {
+    //         width: '20ch',
+    //     },
+    // },
     sectionDesktop: {
         display: 'none',
         [theme.breakpoints.up('md')]: {
@@ -93,8 +101,35 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function PrimarySearchAppBar({handleChange}) {
-    const user= useSelector(selectUser)
-    const dispatch=useDispatch()
+    const user= useSelector(selectUser);
+    const dispatch=useDispatch();
+    const sidebars = [
+        {
+          title: 'Home',
+          link: '/',
+      },
+        {
+            title: 'Deals',
+            link: '/deals',
+        },
+        {
+          title: 'Offers',
+          link: '/offers',
+        },
+        {
+          title: 'Promotions',
+          link: '/promotions',
+        },
+        {
+          title: 'Shops',
+          link: '/shops',
+        },
+        {
+          title: 'Brands',
+          link: '/brands',
+       },
+      ];
+
     const signOut =()=>{
         removeLocalStorage();
         dispatch(logout());
@@ -110,6 +145,13 @@ export default function PrimarySearchAppBar({handleChange}) {
     const handleProfileMenuOpen = (event) => {
         setAnchorEl(event.currentTarget);
     };
+
+    // const [active, setActive] = useState(false);
+
+    // const handleActive = (e) =>{
+    //     e.currentTarget.className = active ? console.log("active") : console.log("Not active");
+    //     console.log("active",e.currentTarget);
+    // }
 
     const handleMobileMenuClose = () => {
         setMobileMoreAnchorEl(null);
@@ -135,7 +177,7 @@ export default function PrimarySearchAppBar({handleChange}) {
             open={isMenuOpen}
             onClose={handleMenuClose}
         >
-           <Link to="/profile"> <MenuItem onClick={handleMenuClose}>Profile</MenuItem></Link>
+            <Link to="/profile"> <MenuItem onClick={handleMenuClose}>Profile</MenuItem></Link>
             <Link to="/register"><MenuItem onClick={handleMenuClose}>My account</MenuItem></Link>
         </Menu>
     );
@@ -260,29 +302,36 @@ export default function PrimarySearchAppBar({handleChange}) {
         </Menu>
     );
     return (
-        <div className={classes.grow}>
-            <AppBar position="static">
-                <Toolbar>
-                    <ResponsiveDrawer/>
+        <div className="header">
+            <div className="container">
+                <div className="wrapper">
+                    {/* <ResponsiveDrawer/> */}
                 
-                   <Link to="/"> <Typography className={classes.title} variant="h6" noWrap>
-                        IOFFER.PK
-                    </Typography></Link>
-                    <div className={classes.search}>
+                    <Link to="/">
+                        <h5>
+                            IOFFER.PK
+                        </h5>
+                    </Link>
+                    <form>
                         <div className={classes.searchIcon}>
-                            <SearchIcon />
+                            <SearchIcon className={classes.search_icon}/>
                         </div>
-                        <InputBase
-                            placeholder="Search…"
-                            classes={{
-                                root: classes.inputRoot,
-                                input: classes.inputInput,
-                            }}
-                            inputProps={{ 'aria-label': 'search' }}
-                        />
-                    </div>
-                    <div className={classes.grow} />
-                    <div className={classes.sectionDesktop}>
+                        <input type="text" className="form-control" placeholder="Search"/>
+                    </form>
+                </div>
+                <div className="navbar">
+                    <ul>
+                        {sidebars.map((sidebar,index) => (
+                            <NavLink 
+                                key={index} 
+                                to={sidebar.link} 
+                                exact
+                            >
+                                {sidebar.title}
+                            </NavLink>
+                    ))}
+                    </ul>
+                    {/* <div className={classes.sectionDesktop}>
                         <IconButton aria-label="show 4 new favorites" color="inherit">
                             <Badge badgeContent={4} color="secondary">
                                 <FavoriteIcon />
@@ -303,8 +352,8 @@ export default function PrimarySearchAppBar({handleChange}) {
                         >
                             <AccountCircle />
                         </IconButton>
-                    </div>
-                    <div className={classes.sectionMobile}>
+                    </div> */}
+                    {/* <div className={classes.sectionMobile}>
                         <IconButton
                             aria-label="show more"
                             aria-controls={mobileMenuId}
@@ -314,11 +363,11 @@ export default function PrimarySearchAppBar({handleChange}) {
                         >
                             <MoreIcon />
                         </IconButton>
-                    </div>
-                </Toolbar>
-            </AppBar>
-            {renderMobileMenu}
-            {renderMenu}
+                    </div> */}
+                </div>
+            </div>
+            {/* {renderMobileMenu} */}
+            {/* {renderMenu} */}
         </div>
     );
 }

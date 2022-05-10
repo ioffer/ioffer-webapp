@@ -26,6 +26,7 @@
     "formik": "^2.2.9",
     "graphql": "^15.5.1",
     "graphql-request": "^3.5.0",
+    "infinite-react-carousel": "^1.2.11",
     "material-auto-rotating-carousel": "^3.0.2",
     "material-design-icons": "^3.0.1",
     "pdf-viewer-reactjs": "^2.2.3",

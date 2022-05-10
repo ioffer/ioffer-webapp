@@ -1,3 +1,64 @@
-.color-link{
-    color: black;
+.header{
+    position: relative;
+    // background:#45B26B;
+    color: #B1B5C4;
+
+    .container{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        max-width: 1330px;
+        width: 100%;
+        margin: 0 auto;
+        padding: 15px 40px;
+
+        .wrapper{
+            display: flex;
+            align-items: center;
+            
+            a{
+                // text-decoration: none;
+                // color: #B1B5C4;
+
+                h5{
+                    font-size: 24px;
+                    font-weight: 600;
+                }
+            }
+
+            form{
+                display: flex;
+                align-items: center;
+                margin-left: 15px;
+
+                input{
+                    font-size: 15px;
+                    padding-left: 2.375rem;
+                    padding-top: 5px;
+                    padding-bottom: 5px;
+                    border-radius: 30px;
+                    border: 1px solid #B1B5C4;
+                }
+            }
+        }
+        .navbar{
+            ul{
+                list-style: none;
+                display: inline-block;
+                
+                a{
+                    font-size: 16px;
+                    font-weight: 600;
+                    letter-spacing: 1px;
+                    padding: 0 13px;
+
+                    // &:hover{
+                    //     color: #45B26B;
+                    // }
+
+                }
+            }
+        }
+    }
 }
+

@@ -1,0 +1,19 @@
+.MuiGridListTile-tile {
+  border-radius: 10px;
+}
+
+.MuiSvgIcon-root {
+  font-size: 32px !important;
+}
+
+.scroller {
+  -ms-scroll-snap-type: x mandatory;
+      scroll-snap-type: x mandatory;
+  white-space: nowrap;
+  scroll-padding-left: 5px;
+}
+
+.scroller .items {
+  scroll-snap-align: start;
+}
+/*# sourceMappingURL=card-slider.css.map */

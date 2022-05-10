@@ -1,0 +1,29 @@
+.verify-height {
+  height: 100vh;
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.verify-height h2 {
+  text-transform: uppercase;
+  background: -webkit-gradient(linear, left top, right top, from(#30CFD0), to(#330867));
+  background: linear-gradient(to right, #30CFD0 0%, #330867 100%);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 27px;
+  margin-top: 30px;
+}
+
+.success-svg {
+  width: 300px;
+  height: 300px;
+}
+/*# sourceMappingURL=verify-email.css.map */

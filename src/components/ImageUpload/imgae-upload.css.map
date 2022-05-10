@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,YAAY,CAAA;EACR,UAAU,EAAE,KAAK;EACjB,QAAQ,EAAE,QAAQ;EAClB,IAAI,EAAE,KAAK;CACd;;AAED,AAAA,qBAAqB,CAAA;EACjB,QAAQ,EAAC,QAAQ;CACpB;;AACD,AAAA,UAAU,CAAA;EACN,UAAU,EAAE,IAAI;EAChB,OAAO,EAAE,IAAI;EACb,eAAe,EAAE,MAAM;EACvB,aAAa,EAAE,IAAI;CACtB",
+    "sources": [
+        "imgae-upload.scss"
+    ],
+    "names": [],
+    "file": "imgae-upload.css"
+}

@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,qBAAqB,CAAA;EACjB,aAAa,EAAE,IAAI;CACtB;;AACD,AAAA,gBAAgB,CAAA;EACZ,SAAS,EAAE,eAAe;CAC7B;;AAED,AAAA,SAAS,CAAA;EACL,gBAAgB,EAAE,WAAW;EAC7B,WAAW,EAAE,MAAM;EACnB,mBAAmB,EAAE,GAAG;CAK3B;;AARD,AAKI,SALK,CAKL,MAAM,CAAC;EACH,iBAAiB,EAAE,KAAK;CAC3B",
+    "sources": [
+        "card-slider.scss"
+    ],
+    "names": [],
+    "file": "card-slider.css"
+}

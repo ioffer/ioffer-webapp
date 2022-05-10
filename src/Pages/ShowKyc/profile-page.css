@@ -1,0 +1,119 @@
+.profile-banner {
+  background-image: -webkit-gradient(linear, left top, right top, from(#3F51B5), to(#153CE4));
+  background-image: linear-gradient(to right, #3F51B5, #153CE4);
+  padding: 21px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  position: relative;
+  border-radius: 0px 0px 42px 0px;
+  height: 175px;
+}
+
+.profile-banner img {
+  border-radius: 50px;
+}
+
+.profile-banner h2 {
+  color: white;
+}
+
+.profile-banner p {
+  color: white;
+}
+
+.profile-banner .image-postion {
+  position: absolute;
+  right: 6%;
+  top: 54%;
+}
+
+.profile-banner .avatar-size {
+  width: 119px;
+  height: 109px;
+}
+
+.profile-banner .font-postion {
+  position: absolute;
+  top: 28%;
+}
+
+.profile-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 37px;
+  margin-left: 29px;
+  background: white;
+  margin-right: 25px;
+  padding: 12px;
+  -webkit-box-shadow: 2px 2px 2px 0px lightgrey;
+          box-shadow: 2px 2px 2px 0px lightgrey;
+  border-radius: 14px;
+  width: 87%;
+  overflow: hidden;
+}
+
+.profile-info h2 {
+  margin-bottom: 10px;
+}
+
+.profile-info span {
+  color: #4295EB;
+}
+
+.profile-info p {
+  font-size: 25px;
+}
+
+.profile-info h5 {
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.profile-text {
+  margin-left: 20px;
+}
+
+.manintext {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 20px;
+  color: #0561F6;
+  margin-bottom: 40px;
+}
+
+.kyc_absoulute {
+  background: whitesmoke;
+  padding: 5px;
+  margin-right: 26px;
+  margin-left: 21px;
+  border-radius: 20px;
+  padding-bottom: 25px;
+  position: absolute;
+  top: 71%;
+  width: 90%;
+  -webkit-box-shadow: 1px 1px 7px 1px #8080808a;
+          box-shadow: 1px 1px 7px 1px #8080808a;
+}
+
+.kyc-image-position {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: -50px;
+}
+
+.static-position {
+  position: relative;
+}
+/*# sourceMappingURL=profile-page.css.map */

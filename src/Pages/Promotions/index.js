@@ -4,7 +4,7 @@ import Promotion from '../../components/promotion'
 
 function Promotions() {
     return (
-        <div>
+        <div className="container">
            <Catogeryicons />
            <Promotion />
         </div>

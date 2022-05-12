@@ -4,7 +4,7 @@ import Catogeryicons from '../../components/catogeryicons'
 
 function Shops() {
     return (
-        <div>
+        <div className="container">
             <Catogeryicons />
             <AllShops />
         </div>

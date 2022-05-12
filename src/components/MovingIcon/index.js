@@ -8,6 +8,7 @@ import movingicon4 from '../../assets/images/movingicon4.png';
 
 
 function MovingIcon(){
+  const sliderImages = [movingicon1,movingicon2,movingicon3,movingicon4,movingicon2,movingicon3,movingicon1,movingicon4]
   return (
       <div className="top-icon">
           <Slider 
@@ -19,18 +20,49 @@ function MovingIcon(){
             arrows={false}
             centerMode
           >
-            <div className="box"><img src={movingicon1} /></div >
-            <div className="box"><img src={movingicon2} /></div >
-            <div className="box"><img src={movingicon3} /></div >
-            <div className="box"><img src={movingicon4} /></div >
-            <div className="box"><img src={movingicon1} /></div >
-            <div className="box"><img src={movingicon2} /></div >
-            <div className="box"><img src={movingicon3} /></div >
-            <div className="box"><img src={movingicon4} /></div >
-            <div className="box"><img src={movingicon1} /></div >
-            <div className="box"><img src={movingicon2} /></div >
-            <div className="box"><img src={movingicon3} /></div >
-            <div className="box"><img src={movingicon4} /></div >
+            {
+              sliderImages.map((image,index) =>(
+                <div key={index}>
+                  <img src={image} />
+                </div >
+              ))
+            }
+            {/* <div>
+              <img src={movingicon1} />
+            </div >
+            <div>
+              <img src={movingicon2} />
+            </div >
+            <div>
+              <img src={movingicon3} />
+            </div >
+            <div>
+              <img src={movingicon4} />
+            </div >
+            <div>
+              <img src={movingicon1} />
+            </div >
+            <div>
+              <img src={movingicon2} />
+            </div >
+            <div>
+              <img src={movingicon3} />
+            </div >
+            <div>
+              <img src={movingicon4} />
+            </div >
+            <div>
+              <img src={movingicon1} />
+            </div >
+            <div>
+              <img src={movingicon2} />
+            </div >
+            <div>
+              <img src={movingicon3} />
+            </div >
+            <div>
+              <img src={movingicon4} />
+            </div > */}
           </Slider>
       </div>
   )

@@ -7,7 +7,7 @@ import { PopularOffer, near } from '../../data'
 
 function Offers() {
     return (
-        <div>
+        <div className="container">
             <Catogeryicons />
             <SingleLineGridList title="Popular Offers" array={PopularOffer}  icon={<LoyaltyIcon/>}/>
             <SingleLineGridList title="NearBy Offers" array={near} icon={<LoyaltyIcon/>}/>

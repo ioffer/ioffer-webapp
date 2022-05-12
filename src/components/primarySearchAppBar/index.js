@@ -17,7 +17,6 @@ import ResponsiveDrawer from '../sideDrawer'
 import {Link,NavLink} from 'react-router-dom'
 import StoreIcon from '@material-ui/icons/Store';
 import Avatar from '@material-ui/core/Avatar';
-import './primary-search.scss'
 import TextsmsIcon from '@material-ui/icons/Textsms';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import VpnKeyIcon from '@material-ui/icons/VpnKey';
@@ -27,39 +26,9 @@ import { logout } from '../../redux/reducer/userSlice';
 import ContactMailIcon from '@material-ui/icons/ContactMail';
 import {removeLocalStorage} from "../../lib/services";
 import DashboardIcon from '@material-ui/icons/Dashboard';
+import './primary-search.scss'
 
 const useStyles = makeStyles((theme) => ({
-    grow: {
-        flexGrow: 1,
-    },
-    menuButton: {
-        marginRight: theme.spacing(2),
-    },
-    title: {
-        display: 'none',
-        color: 'rgba(255,255,255,0.8)',
-        '&:hover': {
-            color: '#fff',
-        },
-        [theme.breakpoints.up('sm')]: {
-            display: 'block',
-        },
-    },
-    search: {
-        position: 'relative',
-        borderRadius: theme.shape.borderRadius,
-        backgroundColor: fade(theme.palette.common.white, 0.15),
-        '&:hover': {
-            backgroundColor: fade(theme.palette.common.white, 0.25),
-        },
-        marginRight: theme.spacing(2),
-        marginLeft: 0,
-        width: '100%',
-        [theme.breakpoints.up('sm')]: {
-            marginLeft: theme.spacing(3),
-            width: 'auto',
-        },
-    },
     searchIcon: {
         padding: theme.spacing(0, 1),
         height: '100%',
@@ -73,31 +42,18 @@ const useStyles = makeStyles((theme) => ({
         width: '25px',
         height: '23px',
     },
-    inputRoot: {
-        color: 'inherit',
-    },
-    // inputInput: {
-    //     padding: theme.spacing(1, 1, 1, 0),
-    //     // vertical padding + font size from searchIcon
-    //     paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
-    //     transition: theme.transitions.create('width'),
-    //     width: '100%',
+    // sectionDesktop: {
+    //     display: 'none',
     //     [theme.breakpoints.up('md')]: {
-    //         width: '20ch',
+    //         display: 'flex',
     //     },
     // },
-    sectionDesktop: {
-        display: 'none',
-        [theme.breakpoints.up('md')]: {
-            display: 'flex',
-        },
-    },
-    sectionMobile: {
-        display: 'flex',
-        [theme.breakpoints.up('md')]: {
-            display: 'none',
-        },
-    },
+    // sectionMobile: {
+    //     display: 'flex',
+    //     [theme.breakpoints.up('md')]: {
+    //         display: 'none',
+    //     },
+    // },
 }));
 
 export default function PrimarySearchAppBar({handleChange}) {
@@ -109,8 +65,8 @@ export default function PrimarySearchAppBar({handleChange}) {
           link: '/',
       },
         {
-            title: 'Deals',
-            link: '/deals',
+          title: 'Deals',
+          link: '/deals',
         },
         {
           title: 'Offers',
@@ -145,13 +101,6 @@ export default function PrimarySearchAppBar({handleChange}) {
     const handleProfileMenuOpen = (event) => {
         setAnchorEl(event.currentTarget);
     };
-
-    // const [active, setActive] = useState(false);
-
-    // const handleActive = (e) =>{
-    //     e.currentTarget.className = active ? console.log("active") : console.log("Not active");
-    //     console.log("active",e.currentTarget);
-    // }
 
     const handleMobileMenuClose = () => {
         setMobileMoreAnchorEl(null);
@@ -304,9 +253,7 @@ export default function PrimarySearchAppBar({handleChange}) {
     return (
         <div className="header">
             <div className="container">
-                <div className="wrapper">
-                    {/* <ResponsiveDrawer/> */}
-                
+                <div className="wrapper">                
                     <Link to="/">
                         <h5>
                             IOFFER.PK
@@ -364,6 +311,9 @@ export default function PrimarySearchAppBar({handleChange}) {
                             <MoreIcon />
                         </IconButton>
                     </div> */}
+                </div>
+                <div className="mobile-nav">
+                    <ResponsiveDrawer/>
                 </div>
             </div>
             {/* {renderMobileMenu} */}

@@ -7,10 +7,11 @@ import FastfoodIcon from '@material-ui/icons/Fastfood';
 import StoreIcon from '@material-ui/icons/Store';
 import { fashionData,electronicsData,FoodData } from '../../data'
 import SingleLineGridList from '../../components/cardsSlider'
+import './style.css'
 
 function Home() {
     return (
-        <div>
+        <div className="container">
             <HeroImage />
             <MovingIcon />
             <ButtonBases />

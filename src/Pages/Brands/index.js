@@ -5,7 +5,7 @@ import HeroImage from '../../components/HeroImage'
 
 function Brands() {
     return (
-        <div>
+        <div className="container">
             <HeroImage />
             <Catogeryicons />
             <AllShops />

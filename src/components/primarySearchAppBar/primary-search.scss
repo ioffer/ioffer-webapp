@@ -2,12 +2,16 @@
     position: relative;
     // background:#45B26B;
     color: #B1B5C4;
+    
 
     .wrapper{
         display: flex;
         align-items: center;
         justify-content: space-between;
         padding: 15px 40px;
+        border-bottom:1px solid #45B26B;
+        box-shadow: 1px 1px 10px 2px  lightgrey;
+        margin-bottom: 15px;
 
         .logo{
             display: flex;

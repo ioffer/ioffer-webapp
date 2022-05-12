@@ -5,12 +5,99 @@
     font-size: 32px !important;
 }
 
-.scroller{
-    scroll-snap-type: x mandatory;
-    white-space: nowrap;
-    scroll-padding-left: 5px;
-      
-    .items {
-        scroll-snap-align: start;
+.categories-sec{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    overflow: hidden;
+    padding: 20px 10px;
+    margin: 30px 15px;
+    box-shadow: 3px 11px 11px 5px lightgrey;
+    border-radius: 10px;
+
+    .cat-title{
+        display: flex;
+        align-items: center;
+        font-size: 22px;
+        font-weight: 400;
+        line-height: 1.2;
+        letter-spacing: 0.00938em;
+        font-family: 'Roboto', "Helvetica", "Arial",'sans-serif';
+        margin-left: 14px;
+        padding-top: 10px;
+        padding-bottom: 3px;
+
+        .icon{
+            margin-left: 11px;
+            color: #45B26B;
+        }
     }
+    .scroller{
+        display: flex;
+        flex-wrap: nowrap;
+        transform: translateZ(0);
+        padding: 8px 8px 20px;
+        overflow: auto;
+        scroll-snap-type: x mandatory;
+        white-space: nowrap;
+        scroll-padding-left: 5px;
+    
+        .card{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            flex-shrink: 0;
+            padding: 10px;
+            margin-right: 20px;
+            cursor: pointer;
+            border-radius: 15px;
+            scroll-snap-align: start;
+            border: 1px solid #B1B5C4;
+    
+            .card-img{
+                height: 220px;
+                overflow: hidden;
+                border-radius: 10px;
+
+                img{
+                    object-fit: cover;
+                    height: 100%;
+                }
+            }
+            .card-detail{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-top: 10px;
+                margin-bottom: 10px;
+
+                h3{
+                    font-size: 18px;
+                }
+                .card-icons{
+                    display: flex;
+                    img{
+                        margin: 5px;
+                        width: 20px;
+                        height: 20px;
+                    }
+                }
+            }
+            &:hover{
+                box-shadow: 0px 4px 13px 2px lightgrey;
+                border: 1px solid #45B26B;
+                transition: 0.2s ease-in-out;
+                // transform: translateY(-0.5rem);
+            }
+            &:hover #image{
+                transform: scale3d(1.1,1.1,1.1);
+                transition: 0.3s ease-in-out;
+            }
+        }
+        
+    }
+}
+
+.scroller::-webkit-scrollbar{
+    display: 'none'
 }

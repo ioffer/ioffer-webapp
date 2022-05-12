@@ -15,9 +15,9 @@ function Home() {
             <HeroImage />
             <MovingIcon />
             <ButtonBases />
-            <SingleLineGridList title ="Electronics" array={electronicsData} icon={<DevicesIcon/>} />
-            <SingleLineGridList  title="Restaurant" array={FoodData} icon={<FastfoodIcon/>}/>
-            <SingleLineGridList title="Fashion" array={fashionData} icon={<StoreIcon/>}/>
+            {/* <SingleLineGridList title ="Electronics" array={electronicsData} icon={<DevicesIcon/>} /> */}
+            {/* <SingleLineGridList  title="Restaurant" array={FoodData} icon={<FastfoodIcon/>}/> */}
+            {/* <SingleLineGridList title="Fashion" array={fashionData} icon={<StoreIcon/>}/> */}
         </div>
     )
 }

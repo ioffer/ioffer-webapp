@@ -1,3 +1,13 @@
 .awssld__bullets {
     display: none;
 }
+
+.awssld__timer--animated{
+    background-color: #45B26B !important;
+    opacity: 1;
+}
+
+.awssld__timer--run{
+    background-color: #45B26B !important;
+    opacity: 0.7;
+}

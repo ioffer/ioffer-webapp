@@ -1,5 +1,7 @@
 import React from 'react';
 import {makeStyles} from '@material-ui/core/styles';
+import EyeIcon from '../../assets/images/eye.svg';
+import HeartIcon from '../../assets/images/heart.svg';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
@@ -64,30 +66,31 @@ export default function SingleLineGridList({array,title,icon}) {
     const classes = useStyles();
 
     return (
-        <div className={classes.root}>
-            <div className={classes.gridtitle}>
-               <h3>{title}</h3>
-               <span className={classes.icon}>{icon}</span> 
+        <div className="categories-sec">
+            <div className="cat-title">
+               <h3>
+                   {title}
+                </h3>
+               <span className="icon">
+                   {icon}
+                </span> 
             </div>
-            <GridList classes={{root:classes.gridList}} className="scroller" cols={2.5}>
+            <div classes={{root:classes.gridList}} className="scroller" cols={2.5}>
                 {array.map((tile) => (
-                    <GridListTile key={tile.img} className="items">
-                        <img src={tile.img} alt={tile.title}/>
-                        <GridListTileBar  
-                            title={tile.title}
-                            classes={{
-                                root: classes.titleBar,
-                                title: classes.title,
-                            }}
-                            actionIcon={
-                                <IconButton aria-label={`star ${tile.title}`}>
-                                    <StarBorderIcon className={classes.title}/>
-                                </IconButton>
-                            }
-                        />
-                    </GridListTile>
+                    <div class="card" id="card">
+                        <div class="card-img">
+                            <img src={tile.img} alt={tile.title} id="image"/>
+                        </div>
+                        <div class="card-detail">
+                            <h3>{tile.title}</h3>
+                            <div class="card-icons">
+                                <img src={HeartIcon} alt="Eye Icon"/>
+                                <img src={EyeIcon} alt="Heart Icon"/>
+                            </div>
+                        </div>
+                    </div>
                 ))}
-            </GridList>
+            </div>
         </div>
     );
 }

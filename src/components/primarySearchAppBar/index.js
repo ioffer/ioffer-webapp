@@ -252,8 +252,8 @@ export default function PrimarySearchAppBar({handleChange}) {
     );
     return (
         <div className="header">
-            <div className="container">
-                <div className="wrapper">                
+            <div className="wrapper">
+                <div className="logo">                
                     <Link to="/">
                         <h5>
                             IOFFER.PK

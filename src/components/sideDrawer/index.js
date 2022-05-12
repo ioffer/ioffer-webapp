@@ -118,9 +118,9 @@ export default function SwipeableTemporaryDrawer() {
           <IconButton
             onClick={toggleDrawer(anchor, true)}
             edge="start"
-            className={classes.menuButton}
             color="inherit"
             aria-label="open drawer"
+            style={{padding: "0"}}
           >
             <MenuIcon />
           </IconButton>

@@ -3,23 +3,22 @@
     // background:#45B26B;
     color: #B1B5C4;
 
-    .container{
+    .wrapper{
         display: flex;
         align-items: center;
         justify-content: space-between;
         padding: 15px 40px;
 
-        .wrapper{
+        .logo{
             display: flex;
             align-items: center;
             
             a{
-                // text-decoration: none;
-                // color: #B1B5C4;
 
                 h5{
                     font-size: 24px;
                     font-weight: 600;
+                    color: #45B26B;
                 }
             }
 
@@ -49,9 +48,6 @@
                     letter-spacing: 1px;
                     padding: 0 13px;
 
-                    // &:hover{
-                    //     color: #45B26B;
-                    // }
 
                 }
             }
@@ -63,7 +59,7 @@
 }
 
 @media screen and (max-width: 940px) {
-    .header .container{
+    .header .wrapper{
         padding: 15px 25px;
 
         .navbar ul a{
@@ -74,7 +70,7 @@
 
 @media screen and (max-width: 860px) {
     .header{
-        .container{
+        .wrapper{
             .navbar{
                 display: none;
             }
@@ -85,24 +81,24 @@
     }
 }
 @media screen and (max-width:475px) {
-    .header .container .wrapper a h5{
-        font-size: 16px;
-    }
-    .header .container{
-        padding: 12px;
-    }
-    .header .container .wrapper form{
-        margin-left: 10px;
-    }
-    .makeStyles-search_icon-2{
-        width:18px !important;
-        height: 18px !important;
-    }
-    .header .container .wrapper form input{
-        width: 140px;
-        height: 24px;
-        font-size: 11px;
-        padding-left: 32px;
+    .header{
+        .wrapper{
+            padding: 12px;
+            .logo{ 
+                a {
+                    h5{
+                        font-size: 18px;
+                    }
+                }
+                form{
+                    display: none;
+                }
+                .makeStyles-search_icon-2{
+                    width:18px !important;
+                    height: 18px !important;
+                }
+            }
+        }
     }
 }
 

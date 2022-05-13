@@ -263,7 +263,7 @@ export default function PrimarySearchAppBar({handleChange}) {
                         <div className={classes.searchIcon}>
                             <SearchIcon className={classes.search_icon}/>
                         </div>
-                        <input type="text" className="form-control" placeholder="Search"/>
+                        <input type="text" className="form-control" placeholder="Search" maxLength="100"/>
                     </form>
                 </div>
                 <div className="navbar">

@@ -13,16 +13,31 @@
 .top-icon{
     margin-top: 15px;
 }
-.cAlXfM{
-    width: 230px !important;
-    justify-content: start !important;
-}
-.carousel-item{
-    width: 230px !important;
-}
+// .cAlXfM{
+//     margin-right: 10px !important;
+//     // width: 230px !important;
+//     // justify-content: start !important;
+// }
+// .carousel-item{
+//     margin-right: 10px !important;
+//     width: 230px !important;
+// }
 .carousel-row{
-    width: 230px !important;
+    margin-right: 10px !important;
+    // width: 230px !important;
+}
+
+img{
+    width: 100%;
+    height: 125px;
+    margin-right: 10px;
 }
 .sc-iCoGMd.xzcEF.rec.rec-pagination{
     display: none;
 }
+
+// @media screen and (max-width: 560px) {
+//     img{
+//         width: 220px;
+//     }
+// }

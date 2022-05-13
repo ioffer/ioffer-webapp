@@ -263,11 +263,7 @@ export default function PrimarySearchAppBar({handleChange}) {
                         <div className={classes.searchIcon}>
                             <SearchIcon className={classes.search_icon}/>
                         </div>
-<<<<<<< Updated upstream
-                        <input type="text" className="form-control" placeholder="Search" maxLength="100"/>
-=======
                         <input type="text" className="form-control" maxLength={130} placeholder="Search"/>
->>>>>>> Stashed changes
                     </form>
                 </div>
                 <div className="navbar">

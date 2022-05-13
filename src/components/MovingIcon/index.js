@@ -36,16 +36,16 @@ function MovingIcon(){
   const sliderImages = [movingicon1,movingicon2,movingicon3,movingicon4,movingicon2,movingicon3,movingicon1,movingicon4]
   let slides;
   if(width > 1280){
-    slides = 6;
-  }
-  else if(width > 1024 && width <= 1280){
     slides = 5;
   }
-  else if(width > 800 && width <= 1024){
+  else if(width > 1024 && width <= 1280){
     slides = 4;
   }
-  else if(width > 450 && width <= 800){
+  else if(width > 800 && width <= 1024){
     slides = 3;
+  }
+  else if(width > 450 && width <= 800){
+    slides = 2;
   }
   else if(width <= 450){
     slides = 1;
@@ -64,7 +64,7 @@ function MovingIcon(){
             {
               sliderImages.map((image,index) =>(
                 <div key={index}>
-                  <img src={image} />
+                  <img src={image} className="slider-img"/>
                 </div >
               ))
             }

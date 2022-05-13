@@ -62,6 +62,7 @@
                 img{
                     object-fit: cover;
                     height: 100%;
+                    width: 100%;
                 }
             }
             .card-detail{
@@ -100,4 +101,17 @@
 
 .scroller::-webkit-scrollbar{
     display: 'none'
+}
+@media screen and (max-width:425px) {
+    .categories-sec{
+        .scroller .card{
+            width: 100%;
+            max-width: 260px;
+        
+         .card-img img{
+            width: 100%;
+            max-width: 247px;
+            }
+        }
+    } 
 }

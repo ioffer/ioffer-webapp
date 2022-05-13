@@ -16,7 +16,8 @@ const useStyles = makeStyles((theme) => ({
         marginRight: 9,
         marginLeft : 11,
         marginTop: 21,
-        boxShadow: "3px 4px 3px 5px lightgrey",
+        marginBottom: 25,
+        boxShadow: "3px 11px 11px 5px lightgrey",
         borderRadius: 10,
     },
     gridList: {

@@ -77,7 +77,7 @@ export default function SingleLineGridList({array,title,icon}) {
             </div>
             <div classes={{root:classes.gridList}} className="scroller" cols={2.5}>
                 {array.map((tile) => (
-                    <div class="card" id="card">
+                    <div class="card">
                         <div class="card-img">
                             <img src={tile.img} alt={tile.title} id="image"/>
                         </div>

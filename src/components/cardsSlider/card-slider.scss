@@ -37,7 +37,7 @@
         flex-wrap: nowrap;
         transform: translateZ(0);
         padding: 8px 8px 20px;
-        overflow: auto;
+        overflow-x: auto;
         scroll-snap-type: x mandatory;
         white-space: nowrap;
         scroll-padding-left: 5px;
@@ -100,7 +100,7 @@
 }
 
 .scroller::-webkit-scrollbar{
-    display: 'none'
+    display: none;
 }
 @media screen and (max-width:425px) {
     .categories-sec{

@@ -3,7 +3,7 @@
   color: #B1B5C4;
 }
 
-.header .container {
+.header .wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -13,13 +13,13 @@
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  max-width: 1330px;
-  width: 100%;
-  margin: 0 auto;
   padding: 15px 40px;
+  border-bottom: 1px solid #45B26B;
+  -webkit-box-shadow: 1px 1px 10px 2px  lightgrey;
+          box-shadow: 1px 1px 10px 2px  lightgrey;
 }
 
-.header .container .wrapper {
+.header .wrapper .logo {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -28,12 +28,13 @@
           align-items: center;
 }
 
-.header .container .wrapper a h5 {
+.header .wrapper .logo a h5 {
   font-size: 24px;
   font-weight: 600;
+  color: #45B26B;
 }
 
-.header .container .wrapper form {
+.header .wrapper .logo form {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -43,24 +44,63 @@
   margin-left: 15px;
 }
 
-.header .container .wrapper form input {
+.header .wrapper .logo form input {
   font-size: 15px;
   padding-left: 2.375rem;
+  padding-right: 0.875rem;
   padding-top: 5px;
   padding-bottom: 5px;
   border-radius: 30px;
   border: 1px solid #B1B5C4;
 }
 
-.header .container .navbar ul {
+.header .wrapper .navbar ul {
   list-style: none;
   display: inline-block;
 }
 
-.header .container .navbar ul a {
+.header .wrapper .navbar ul a {
   font-size: 16px;
   font-weight: 600;
   letter-spacing: 1px;
   padding: 0 13px;
+}
+
+.header .wrapper .mobile-nav {
+  display: none;
+}
+
+@media screen and (max-width: 940px) {
+  .header .wrapper {
+    padding: 15px 25px;
+  }
+  .header .wrapper .navbar ul a {
+    padding: 0 8px;
+  }
+}
+
+@media screen and (max-width: 860px) {
+  .header .wrapper .navbar {
+    display: none;
+  }
+  .header .wrapper .mobile-nav {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 475px) {
+  .header .wrapper {
+    padding: 12px;
+  }
+  .header .wrapper .logo a h5 {
+    font-size: 18px;
+  }
+  .header .wrapper .logo form {
+    display: none;
+  }
+  .header .wrapper .logo .makeStyles-search_icon-2 {
+    width: 18px !important;
+    height: 18px !important;
+  }
 }
 /*# sourceMappingURL=primary-search.css.map */

@@ -5,18 +5,20 @@
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   min-width: 300px;
-  max-width: 1330px;
-  width: 100%;
-  margin: 0 auto;
 }
 
 .btn-container .btn-image {
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
   margin: 10px;
   -webkit-box-flex: 1;
       -ms-flex: auto;
           flex: auto;
   position: relative;
   height: 200px;
+  cursor: pointer;
+  -webkit-transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
 }
 
 .btn-container .btn-image .imageSrc {
@@ -29,19 +31,19 @@
   background-position: center;
 }
 
-.btn-container .btn-image .imageSrc .imageBackdrop {
+.btn-container .btn-image .imageBackdrop {
   position: absolute;
   left: 0;
   right: 0;
   top: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.9);
   opacity: 0.4;
   -webkit-transition: 0.2s ease-in-out;
   transition: 0.2s ease-in-out;
 }
 
-.btn-container .btn-image .imageSrc .image-button {
+.btn-container .btn-image .image-button {
   position: absolute;
   left: 0;
   right: 0;
@@ -56,5 +58,51 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+}
+
+.btn-container .btn-image .image-button .link {
+  color: #fff;
+}
+
+.btn-container .btn-image .image-button .link .imageTitle {
+  position: relative;
+}
+
+.btn-container .btn-image .image-button .link .imageTitle .imageMarked {
+  height: 3px;
+  width: 18px;
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  background: #fff;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
+
+.btn-container .btn-image .image-button:hover .link .imageTitle .imageMarked {
+  width: 40px;
+}
+
+.btn-container .btn-image:hover .imageBackdrop {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+@media screen and (max-width: 460px) {
+  .btn-container .btn-image {
+    height: 120px;
+    margin: 5px;
+  }
+  .btn-container .btn-image .image-button .imageTitle {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .btn-container .btn-image {
+    height: 90px;
+  }
 }
 /*# sourceMappingURL=card.css.map */

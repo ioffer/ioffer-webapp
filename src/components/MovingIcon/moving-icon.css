@@ -18,6 +18,16 @@
   margin-top: 15px;
 }
 
+.carousel-row {
+  margin-right: 10px !important;
+}
+
+.slider-img {
+  width: 100%;
+  height: 125px;
+  margin-right: 10px;
+}
+
 .sc-iCoGMd.xzcEF.rec.rec-pagination {
   display: none;
 }

@@ -33,6 +33,7 @@
         }
     }
     .scroller{
+        width: 100%;
         display: flex;
         flex-wrap: nowrap;
         transform: translateZ(0);
@@ -43,9 +44,7 @@
         scroll-padding-left: 5px;
     
         .card{
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+            width: 260px;
             flex-shrink: 0;
             padding: 10px;
             margin-right: 20px;
@@ -74,13 +73,17 @@
 
                 h3{
                     font-size: 18px;
+                    width: 175px;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
                 }
                 .card-icons{
                     display: flex;
                     img{
                         margin: 5px;
-                        width: 20px;
-                        height: 20px;
+                        width: 16px;
+                        height: 16px;
                     }
                 }
             }

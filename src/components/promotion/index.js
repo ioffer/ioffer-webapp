@@ -44,18 +44,16 @@ function Promotion() {
         },
     ];
     return (
-        <div>
-            <div>
+            <div  className="promotion">
                 {
                     promotions.map((promotion)=>(
+
                         <div className="promotion-flex">
                             <div className="text">
-                            <img  src={promotion.title} width="50px" height="50px" />
-                           
-                            
-                            <p>{promotion.desc}</p>
-                            <p>{promotion.sale}</p>
-                            <FavoriteBorderIcon />
+                                <img  src={promotion.title} width="50px" height="50px" />
+                                <p>{promotion.desc}</p>
+                                <p>{promotion.sale}</p>
+                                <FavoriteBorderIcon style={{width: 20, height: 20, marginTop: 5}}/>
                             </div>
                             <div className="promotion-img">
                                 <img onClick={()=>setSeePdf(!seePdf)} src={promotion.img} width="100%" height="100%"/>
@@ -64,7 +62,6 @@ function Promotion() {
                     ))
                 }
             </div>
-        </div>
     )
 }
 
